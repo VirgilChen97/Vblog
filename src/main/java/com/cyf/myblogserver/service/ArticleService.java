@@ -1,5 +1,6 @@
 package com.cyf.myblogserver.service;
 
+import com.cyf.myblogserver.Exception.CommonException;
 import org.slf4j.Logger; // 调用slf4j接口
 import org.slf4j.LoggerFactory;
 import com.cyf.myblogserver.entity.Article;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class ArticleService {
@@ -29,10 +31,19 @@ public class ArticleService {
         return article1.getId();
     }
 
-    public Page<Article> getArticles(int page, int limit){
+    public Page<Article> getArticles(Integer page, Integer limit){
         Sort sort = Sort.by(Sort.Direction.DESC, "createDate");
         Pageable pageable = PageRequest.of(page, limit, sort);
         Page<Article> articles = articleRepository.findByState(pageable, Article.PUBLISHED);
         return articles;
+    }
+
+    public Article getArticle(Long id) throws CommonException {
+        try {
+            Article article = articleRepository.findById(id).get();
+            return article;
+        }catch (NoSuchElementException e){
+            throw new CommonException(404,404,"Failed to find article with given id");
+        }
     }
 }

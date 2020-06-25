@@ -1,36 +1,25 @@
 package com.cyf.myblogserver.data;
 
+import lombok.Data;
+
+@Data
 public class ResponseData<T> {
     private Integer code;
     private String msg;
     private T data;
 
-    public ResponseData(Integer code, String msg) {
-        this.code = code;
-        this.msg = msg;
+    public static ResponseData success(){
+        ResponseData responseData = new ResponseData();
+        responseData.setCode(0);
+        responseData.setMsg("success");
+        return responseData;
     }
 
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public Object getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
+    public static <V> ResponseData<V> success(V data){
+        ResponseData responseData = new ResponseData();
+        responseData.setCode(0);
+        responseData.setMsg("success");
+        responseData.setData(data);
+        return responseData;
     }
 }

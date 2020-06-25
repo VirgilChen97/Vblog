@@ -1,7 +1,9 @@
 spring:
   datasource:
-    username: root
+    username: virgil
     password: 1A2S3D4F
-    url: jdbc:mysql://127.0.0.1:3306/myblog?serverTimezone=UTC&characterEncoding=UTF-8
+    url: jdbc:mysql://10.0.0.100:3306/myblog?serverTimezone=UTC&characterEncoding=UTF-8
   jpa:
     generate-ddl: true
+server:
+  port: 8081
