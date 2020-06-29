@@ -1,6 +1,6 @@
 package com.cyf.myblogserver.component;
 
-import com.cyf.myblogserver.Exception.CommonException;
+import com.cyf.myblogserver.exception.CommonException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 

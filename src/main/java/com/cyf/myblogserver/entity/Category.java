@@ -14,4 +14,5 @@ public class Category{
     @Column(nullable = false)
     private String categoryName;
 
+    private int count = 1;
 }

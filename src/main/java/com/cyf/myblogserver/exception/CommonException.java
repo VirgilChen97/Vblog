@@ -1,4 +1,4 @@
-package com.cyf.myblogserver.Exception;
+package com.cyf.myblogserver.exception;
 
 import lombok.Getter;
 

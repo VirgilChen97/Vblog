@@ -14,4 +14,6 @@ public class Tag{
 
     @Column(nullable = false)
     private String tagName;
+
+    private int count = 1;
 }
