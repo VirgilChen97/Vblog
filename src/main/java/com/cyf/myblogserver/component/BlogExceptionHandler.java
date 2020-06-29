@@ -4,6 +4,7 @@ import com.cyf.myblogserver.exception.CommonException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import javax.naming.AuthenticationException;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +18,14 @@ public class BlogExceptionHandler {
         request.setAttribute("javax.servlet.error.status_code", e.getResponseCode());
         request.setAttribute("code", e.getInternalCode());
         request.setAttribute("msg", e.getMsg());
+        return "forward:/error";
+    }
+
+    @ExceptionHandler(AuthenticationException.class)
+    public String handleAuthenticationException(AuthenticationException e, HttpServletRequest request){
+        request.setAttribute("javax.servlet.error.status_code", 403);
+        request.setAttribute("code", -1);
+        request.setAttribute("msg", "认证失败");
         return "forward:/error";
     }
 

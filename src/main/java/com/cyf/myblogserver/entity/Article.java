@@ -23,6 +23,9 @@ public class Article{
     private String title;
     private int state = PUBLISHED;
 
+    @ManyToOne(targetEntity = User.class)
+    User user;
+
     @ManyToMany(targetEntity = Tag.class)
     private List<Tag> tags;
 
