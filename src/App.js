@@ -7,19 +7,21 @@ import {
   Route
 } from 'react-router-dom'
 import EditArticle from "./component/EditArticle";
-import Slide from "@material-ui/core/Slide";
+import Login from "./component/login/Login";
+import AuthenticationRoute from "./component/common/AuthenticationRoute";
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/newpost">
+        <AuthenticationRoute path="/newpost">
           <EditArticle />
+        </AuthenticationRoute>
+        <Route path="/login">
+          <Login />
         </Route>
-        <Route path="/">
-          <Slide direction="up">
-            <Home />
-          </Slide>
+        <Route path="/page/:username">
+          <Home />
         </Route>
       </Switch>
     </Router>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import BlogAppBar from "./common/BlogAppBar";
 import {Container, Toolbar} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
@@ -13,7 +13,9 @@ import Input from "@material-ui/core/Input";
 import Grid from "@material-ui/core/Grid";
 import CardContent from "@material-ui/core/CardContent";
 import Editor from "./common/Editor";
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
+import JwtUtil from "../util/JwtUtil";
+
 
 const PUBLISHED = 0;
 const DRAFT = 1;
@@ -30,6 +32,8 @@ const useStyles = makeStyles((theme) => ({
 
 // Edit Article and new article page
 const EditArticle = () => {
+	const history = useHistory();
+	const location = useLocation();
 	const classes = useStyles();
 	const commonClasses = useCommonStyles();
 	const [title, setTitle] = useState("无标题文章")
@@ -38,7 +42,6 @@ const EditArticle = () => {
 	const [mdContent, setMdContent] = useState("")
 	const [uploading, setUploading] = useState("false")
 	const [error, setError] = useState("false")
-	const history = useHistory()
 
 	const handleTitleChange = (event) => {
 		setTitle(event.target.value)
@@ -58,7 +61,7 @@ const EditArticle = () => {
 	}
 
 	const handleSubmit = async (mode) =>{
-		console.log("begin submit")
+		// article upload request body
 		let data = {
 			"title": title,
 			"state": mode,
@@ -72,13 +75,11 @@ const EditArticle = () => {
 			},
 			"mdContent": mdContent
 		}
-		let request = new Request(`${process.env.REACT_APP_API_ENDPOINT}/articles`, {
-			headers: {
-				'Content-Type': "application/json"
-			},
-			method: 'POST',
-			body: JSON.stringify(data)
-		})
+		debugger
+		// construct request with proper authentication header
+		let request = JwtUtil.AuthenticateRequest(data, "/articles")
+
+		// begin request
 		setUploading(true)
 		try{
 			let response = await fetch(request)
@@ -89,7 +90,6 @@ const EditArticle = () => {
 			setError(true)
 		}
 		setUploading(false)
-		history.replace("/")
 	}
 
 	return (

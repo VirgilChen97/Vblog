@@ -5,6 +5,9 @@ import ArticleList from './article/ArticleList';
 import BlogDrawer from './common/Drawer'
 import { makeStyles } from '@material-ui/core/styles';
 import BlogFab from "./common/Fab";
+import {
+  useParams
+} from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root:{
@@ -14,12 +17,13 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
   const classes = useStyles();
-
+  let {username} = useParams()
   return (
+
     <div className={classes.root}>
-      <BlogAppBar />
+      <BlogAppBar username={username}/>
       <BlogDrawer />
-      <ArticleList />
+      <ArticleList username={username}/>
       <BlogFab />
     </div>
   );

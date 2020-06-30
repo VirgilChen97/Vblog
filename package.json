@@ -17,7 +17,8 @@
     "react-monaco-editor": "^0.36.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "react-syntax-highlighter": "^12.2.1"
+    "react-syntax-highlighter": "^12.2.1",
+    "universal-cookie": "^4.0.3"
   },
   "scripts": {
     "start": "react-app-rewired start",
