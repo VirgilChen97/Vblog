@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface CategoryRepository extends JpaRepository<Category, Long> {
     Category findByCategoryNameAndUserId(String categoryName, Long userId);
-    List<Category> findByCountIsNot(Integer count);
+    List<Category> findByUserId(Long userId);
 
     @Modifying
     @Transactional
