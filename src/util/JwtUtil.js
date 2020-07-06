@@ -1,5 +1,4 @@
 import Cookies from "universal-cookie/es6";
-import { Base64 } from 'js-base64';
 
 export default class JwtUtil {
 	static saveToken = (token) => {

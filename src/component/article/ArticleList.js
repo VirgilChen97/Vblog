@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {List, ListItem, Toolbar} from '@material-ui/core';
 import ArticleCard from './ArticleCard';
 
-const ArticleList = ({username}) => {
+const ArticleList = ({owner}) => {
 	const [articles, setArticles] = useState(null)
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState(false);
@@ -11,8 +11,7 @@ const ArticleList = ({username}) => {
 		const fetchArticles = async () => {
 			try {
 				setLoading(true)
-				console.log(`${process.env.REACT_APP_API_ENDPOINT}/articles?username=${username}`)
-				const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/articles?username=${username}`)
+				const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/articles?username=${owner.username}`)
 				if (response.status >= 400) {
 					setError(true)
 				} else {
@@ -27,7 +26,7 @@ const ArticleList = ({username}) => {
 			}
 		}
 		fetchArticles()
-	}, [username])
+	}, [owner])
 
 	if (articles != null) {
 		return (
