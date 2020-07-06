@@ -12,6 +12,9 @@ public class Tag{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    private User user;
+
     @Column(nullable = false)
     private String tagName;
 

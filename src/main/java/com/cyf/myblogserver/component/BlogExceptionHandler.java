@@ -1,5 +1,6 @@
 package com.cyf.myblogserver.component;
 
+import com.cyf.myblogserver.exception.AuthenticationFailedException;
 import com.cyf.myblogserver.exception.CommonException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,8 +22,8 @@ public class BlogExceptionHandler {
         return "forward:/error";
     }
 
-    @ExceptionHandler(AuthenticationException.class)
-    public String handleAuthenticationException(AuthenticationException e, HttpServletRequest request){
+    @ExceptionHandler(AuthenticationFailedException.class)
+    public String handleAuthenticationException(AuthenticationFailedException e, HttpServletRequest request){
         request.setAttribute("javax.servlet.error.status_code", 403);
         request.setAttribute("code", -1);
         request.setAttribute("msg", "认证失败");
@@ -35,6 +36,7 @@ public class BlogExceptionHandler {
         request.setAttribute("javax.servlet.error.status_code", 500);
         request.setAttribute("code", 500);
         request.setAttribute("msg", e.getMessage());
+        e.printStackTrace();
         return "forward:/error";
     }
 }

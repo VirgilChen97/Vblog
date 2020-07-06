@@ -2,9 +2,12 @@ package com.cyf.myblogserver.service;
 
 import com.cyf.myblogserver.entity.Category;
 import com.cyf.myblogserver.entity.Tag;
+import com.cyf.myblogserver.entity.User;
 import com.cyf.myblogserver.exception.CommonException;
+import com.cyf.myblogserver.exception.Error;
 import com.cyf.myblogserver.repository.CategoryRepository;
 import com.cyf.myblogserver.repository.TagRepository;
+import com.cyf.myblogserver.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger; // 调用slf4j接口
 import org.slf4j.LoggerFactory;
@@ -26,12 +29,13 @@ public class ArticleService {
     ArticleRepository articleRepository;
     TagRepository tagRepository;
     CategoryRepository categoryRepository;
+    UserRepository userRepository;
 
-    @Autowired
-    public ArticleService(ArticleRepository articleRepository, TagRepository tagRepository, CategoryRepository categoryRepository) {
+    public ArticleService(ArticleRepository articleRepository, TagRepository tagRepository, CategoryRepository categoryRepository, UserRepository userRepository) {
         this.articleRepository = articleRepository;
         this.tagRepository = tagRepository;
         this.categoryRepository = categoryRepository;
+        this.userRepository = userRepository;
     }
 
     /**
@@ -43,17 +47,18 @@ public class ArticleService {
 
         // Go through all tags in the article
         log.info("Article with tags {}", article.getTags());
+        User user = article.getUser();
         for(Tag tag: article.getTags()){
-            Tag getTag = tagRepository.findByTagName(tag.getTagName());
+            Tag existingTag = tagRepository.findByTagNameAndUserId(tag.getTagName(), user.getId());
 
-            if(getTag == null){
-
+            if(existingTag == null){
+                tag.setUser(user);
                 // If the tag doesn't exist, create the tag
                 tagRepository.save(tag);
             }else{
 
                 // If exist, replace the id and increase the tag count int the db
-                tag.setId(getTag.getId());
+                tag.setId(existingTag.getId());
                 tagRepository.increaseTagCount(tag.getId());
             }
         }
@@ -62,15 +67,15 @@ public class ArticleService {
         log.info("Article with category {}", article.getCategory());
 
         // Check whether the category exist
-        Category getCategory =  categoryRepository.findByCategoryName(article.getCategory().getCategoryName());
-        if (getCategory == null) {
-
+        Category existingCategory =  categoryRepository.findByCategoryNameAndUserId(article.getCategory().getCategoryName(), user.getId());
+        if (existingCategory == null) {
+            article.getCategory().setUser(user);
             // If not, then create the tag;
             categoryRepository.save(article.getCategory());
         }else{
 
             // If exist, replace the id and increase the category count int the db
-            article.getCategory().setId(getCategory.getId());
+            article.getCategory().setId(existingCategory.getId());
             categoryRepository.increaseCategoryCount(article.getCategory().getId());
         }
 
@@ -84,13 +89,18 @@ public class ArticleService {
      * Get Articles ordered by created date with limit and page
      * @param page The page number you want to retrieve
      * @param limit Number of articles within a page
+     * @param username The name of the user that the article belongs to
      * @return  The data containing all the article
      */
-    public Page<Article> getArticles(Integer page, Integer limit){
+    public Page<Article> getArticlesByUserName(Integer page, Integer limit, String username) throws CommonException {
         Sort sort = Sort.by(Sort.Direction.DESC, "createDate");
+        User user = userRepository.findByUsername(username);
+        if(user == null){
+            throw new CommonException(Error.USER_NOT_FOUNT.getCode(), 404, Error.USER_NOT_FOUNT.getMsg());
+        }
+
         Pageable pageable = PageRequest.of(page, limit, sort);
-        Page<Article> articles = articleRepository.findByState(pageable, Article.PUBLISHED);
-        return articles;
+        return articleRepository.findByStateAndUserId(pageable, Article.PUBLISHED, user.getId());
     }
 
     /**

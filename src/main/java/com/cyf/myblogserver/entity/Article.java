@@ -31,6 +31,8 @@ public class Article{
 
     @ManyToOne(targetEntity = Category.class)
     private Category category;
+
+    @Column(columnDefinition = "MEDIUMTEXT")
     private String mdContent;
 
     @CreatedDate

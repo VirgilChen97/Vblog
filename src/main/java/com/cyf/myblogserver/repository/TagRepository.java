@@ -9,7 +9,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 public interface TagRepository extends JpaRepository<Tag, Long> {
-    Tag findByTagName(String tagName);
+    Tag findByTagNameAndUserId(String tagName, Long userId);
     List<Tag> findByCountIsNot(Integer count);
 
     @Modifying

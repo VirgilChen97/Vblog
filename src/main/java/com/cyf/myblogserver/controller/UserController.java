@@ -3,7 +3,10 @@ package com.cyf.myblogserver.controller;
 import com.cyf.myblogserver.data.AuthenticationRequest;
 import com.cyf.myblogserver.data.AuthenticationResponse;
 import com.cyf.myblogserver.data.ResponseData;
+import com.cyf.myblogserver.data.UserInfoResponse;
+import com.cyf.myblogserver.entity.User;
 import com.cyf.myblogserver.exception.AuthenticationFailedException;
+import com.cyf.myblogserver.exception.CommonException;
 import com.cyf.myblogserver.service.BlogUserDetailsService;
 import com.cyf.myblogserver.service.TokenService;
 import com.cyf.myblogserver.util.JwtUtil;
@@ -11,24 +14,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api")
 public class UserController {
 
     AuthenticationManager authenticationManager;
     TokenService tokenService;
+    BlogUserDetailsService blogUserDetailsService;
 
-    @Autowired
-    public UserController(AuthenticationManager authenticationManager, TokenService tokenService) {
+    public UserController(AuthenticationManager authenticationManager, TokenService tokenService, BlogUserDetailsService blogUserDetailsService) {
         this.authenticationManager = authenticationManager;
         this.tokenService = tokenService;
+        this.blogUserDetailsService = blogUserDetailsService;
     }
 
-    @RequestMapping(value = "/api/token", method = RequestMethod.POST)
+    @RequestMapping(value = "/token", method = RequestMethod.POST)
     public ResponseData getToken(@RequestBody AuthenticationRequest request) throws AuthenticationFailedException {
         try {
             authenticationManager.authenticate(
@@ -36,10 +39,18 @@ public class UserController {
             );
         }catch (BadCredentialsException e){
             throw new AuthenticationFailedException();
+        }catch (Exception e){
+            e.printStackTrace();
         }
         String token = "bearer;" + tokenService.getToken(request);
         AuthenticationResponse response = new AuthenticationResponse();
         response.setJwt(token);
         return ResponseData.success(response);
+    }
+
+    @RequestMapping(value = "/user/{username}")
+    public ResponseData<UserInfoResponse> getUserInfoById (@PathVariable String username) throws CommonException {
+        User user = blogUserDetailsService.getUserInfoByUsername(username);
+        return ResponseData.success(new UserInfoResponse(user));
     }
 }

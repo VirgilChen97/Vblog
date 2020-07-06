@@ -30,18 +30,19 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         final String authHeader = httpServletRequest.getHeader("Authorization");
         Claims claims = null;
         String token = null;
-        if(authHeader != null && authHeader.startsWith("bearer;")){
+        if (authHeader != null && authHeader.startsWith("bearer;")) {
             token = authHeader.substring(7);
-            claims = JwtUtil.parseJWT(token,audience.getSecret());
+            claims = JwtUtil.parseJWT(token, audience.getSecret());
         }
-        if(claims != null && SecurityContextHolder.getContext().getAuthentication() == null){
+        if (claims != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = blogUserDetailsService.loadUserByUsername(claims.get("username", String.class));
-            if(JwtUtil.validateJWT(token, userDetails, audience.getSecret())){
+            if (JwtUtil.validateJWT(token, userDetails, audience.getSecret())) {
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
                         new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 usernamePasswordAuthenticationToken
                         .setDetails(new WebAuthenticationDetailsSource().buildDetails(httpServletRequest));
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+                httpServletRequest.setAttribute("userId", claims.get("id", Long.class));
             }
         }
         filterChain.doFilter(httpServletRequest, httpServletResponse);

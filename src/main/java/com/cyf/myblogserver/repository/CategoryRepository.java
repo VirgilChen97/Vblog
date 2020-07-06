@@ -10,7 +10,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 public interface CategoryRepository extends JpaRepository<Category, Long> {
-    Category findByCategoryName(String categoryName);
+    Category findByCategoryNameAndUserId(String categoryName, Long userId);
     List<Category> findByCountIsNot(Integer count);
 
     @Modifying

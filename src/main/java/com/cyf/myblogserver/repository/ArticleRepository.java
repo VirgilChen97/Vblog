@@ -10,5 +10,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ArticleRepository extends JpaRepository<Article, Long> {
-    Page<Article> findByState(Pageable pageable, Integer state);
+    Page<Article> findByStateAndUserId(Pageable pageable, Integer state, Long userId);
 }

@@ -17,5 +17,8 @@ public class User {
 
     String username;
     String password;
+    String displayName;
+    String title;
+    String location;
     String settings;
 }
