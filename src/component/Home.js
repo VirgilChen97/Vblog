@@ -1,12 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import BlogAppBar from './common/BlogAppBar';
-import { Container, Toolbar } from '@material-ui/core';
 import ArticleList from './article/ArticleList';
 import BlogDrawer from './common/sidebar/Drawer'
 import { makeStyles } from '@material-ui/core/styles';
 import BlogFab from "./common/Fab";
 import {
-  useParams
+  useParams,
+  Switch,
+  Redirect,
+  useRouteMatch,
+  Route
 } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
@@ -18,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 const Home = () => {
   const classes = useStyles();
   let {username} = useParams()
+  let match = useRouteMatch()
 
   const [owner, setOwner] = useState(null)
   const [error, setError] = useState(false)
@@ -45,7 +49,14 @@ const Home = () => {
       <div className={classes.root}>
         <BlogAppBar owner={owner}/>
         <BlogDrawer owner={owner}/>
-        <ArticleList owner={owner}/>
+        <Switch>
+          <Route path={`${match.path}/articles`}>
+            <ArticleList owner={owner}/>
+          </Route>
+          <Route path={`${match.path}/**`}>
+            <Redirect to={`${match.url}/articles`} />
+          </Route>
+        </Switch>
         <BlogFab/>
       </div>
     )

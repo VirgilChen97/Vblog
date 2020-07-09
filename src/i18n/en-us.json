@@ -1,0 +1,12 @@
+{
+  "loginPage":{
+    "username": "Username",
+    "password": "Password",
+    "rememberMe": "rememberMe",
+    "newUser": "New User?",
+    "register": "Register",
+    "login": "Login",
+    "wrongPassword": "Wrong username or password",
+    "serverError": "Something wrong on the server, please try again latter."
+  }
+}
