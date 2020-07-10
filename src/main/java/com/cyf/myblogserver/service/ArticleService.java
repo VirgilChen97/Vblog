@@ -115,7 +115,7 @@ public class ArticleService {
             Article article = articleRepository.findById(id).get();
             return article;
         }catch (NoSuchElementException e){
-            throw new CommonException(404,404,"Failed to find article with given id");
+            throw new CommonException(Error.ARTICLE_NOT_FOUND.getCode(),404,Error.ARTICLE_NOT_FOUND.getMsg());
         }
     }
 }

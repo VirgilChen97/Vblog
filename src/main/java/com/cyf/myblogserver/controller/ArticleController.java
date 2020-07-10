@@ -48,6 +48,8 @@ public class ArticleController {
     public ResponseData<PagedArticleResponse> getArticles(
             @RequestParam(defaultValue = "0") Integer page,
             @RequestParam(defaultValue = "10") Integer limit,
+            @RequestParam(required = false) Long categoryId,
+            @RequestParam(required = false) Long tagId,
             String username
     ) throws CommonException {
         Page<Article> articles = articleService.getArticlesByUserName(page, limit, username);

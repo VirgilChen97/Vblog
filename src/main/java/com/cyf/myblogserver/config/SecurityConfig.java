@@ -34,18 +34,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(BlogUserDetailsService);
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder(){
-        return NoOpPasswordEncoder.getInstance();
-    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST,"/api/token").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/articles", "/api/user/**","/api/tags/**","/api/categories/**").permitAll()
+                .antMatchers(HttpMethod.POST,"/api/token", "/api/users").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/articles/**",
+                        "/api/user/**",
+                        "/api/tags/**",
+                        "/api/categories/**").permitAll()
                 .anyRequest().authenticated().and().cors();
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         http.headers().cacheControl();

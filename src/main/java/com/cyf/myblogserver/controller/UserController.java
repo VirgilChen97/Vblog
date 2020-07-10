@@ -41,6 +41,7 @@ public class UserController {
             throw new AuthenticationFailedException();
         }catch (Exception e){
             e.printStackTrace();
+            throw new AuthenticationFailedException();
         }
         String token = "bearer;" + tokenService.getToken(request);
         AuthenticationResponse response = new AuthenticationResponse();
@@ -48,9 +49,15 @@ public class UserController {
         return ResponseData.success(response);
     }
 
-    @RequestMapping(value = "/user/{username}")
+    @RequestMapping(value = "/users/{username}")
     public ResponseData<UserInfoResponse> getUserInfoById (@PathVariable String username) throws CommonException {
         User user = blogUserDetailsService.getUserInfoByUsername(username);
         return ResponseData.success(new UserInfoResponse(user));
+    }
+
+    @RequestMapping(value = "/users", method = RequestMethod.POST)
+    public ResponseData register(@RequestBody User user) throws CommonException {
+        User registeredUser = blogUserDetailsService.addNewUser(user);
+        return ResponseData.success(registeredUser);
     }
 }

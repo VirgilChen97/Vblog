@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -29,10 +30,8 @@ public class BlogUserDetailsService implements UserDetailsService {
         if(StringUtils.isEmpty(username)){
             throw new UsernameNotFoundException("User doesn't exist");
         }
-        User user;
-        try {
-            user = userRepository.findByUsername(username);
-        }catch (NoSuchElementException e){
+        User user = userRepository.findByUsername(username);
+        if(user == null){
             throw new UsernameNotFoundException("User doesn't exist");
         }
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), new ArrayList<>());
@@ -45,5 +44,19 @@ public class BlogUserDetailsService implements UserDetailsService {
         }else{
             return user;
         }
+    }
+
+    public User addNewUser(User user) throws CommonException {
+        User existUser = userRepository.findByUsername(user.getUsername());
+        if(existUser != null){
+            throw new CommonException(Error.USERNAME_ALREADY_USED.getCode(), 409, Error.USERNAME_ALREADY_USED.getMsg());
+        }
+        existUser = userRepository.findByEmail(user.getEmail());
+        if(existUser != null){
+            throw new CommonException(Error.EMAIL_ALREADY_USED.getCode(), 409, Error.EMAIL_ALREADY_USED.getMsg());
+        }
+        user.setPassword("{bcrypt}" + new BCryptPasswordEncoder().encode(user.getPassword()));
+        User newUser = userRepository.save(user);
+        return newUser;
     }
 }
