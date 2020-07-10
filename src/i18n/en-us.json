@@ -2,11 +2,23 @@
   "loginPage":{
     "username": "Username",
     "password": "Password",
+    "repeatPassword": "Repeat Password",
     "rememberMe": "rememberMe",
     "newUser": "New User?",
     "register": "Register",
     "login": "Login",
     "wrongPassword": "Wrong username or password",
-    "serverError": "Something wrong on the server, please try again latter."
+    "serverError": "Something wrong on the server, please try again latter.",
+    "email": "Email",
+    "nickname": "Nickname",
+    "emailCanNotBeNull": "Email can not be empty",
+    "emailFormatNotCorrect": "Incorrect email format",
+    "usernameCanNotBeNull": "User name can not be empty",
+    "usernameNotValid": "User name must be 6 - 20 characters with - or _",
+    "passwordCanNotBeNull": "Password can not be empty",
+    "passwordTooShort": "Password must longer than 6 characters",
+    "passwordNotSame": "Password and confirm password are not same",
+    "emailAlreadyExist": "This email address has already been registered",
+    "usernameAlreadyExist": "This user name is already been used"
   }
 }

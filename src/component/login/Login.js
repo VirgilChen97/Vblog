@@ -1,11 +1,6 @@
 import React, { useRef, useState } from 'react';
-import Card from "@material-ui/core/Card";
 import TextField from "@material-ui/core/TextField";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
 import List from "@material-ui/core/List";
-import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import { useHistory, useLocation, Link } from "react-router-dom"
 import TokenUtil from "../../util/JwtUtil";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -42,6 +37,8 @@ const Login = () => {
 	}
 
 	const handleLogin = async () => {
+		setInvalid(false)
+		setError(false)
 		if(username === "" || password === ""){
 			setInvalid(true)
 			return
@@ -81,7 +78,7 @@ const Login = () => {
 	}
 
 	return (
-		<LoginFrame action={handleLogin} buttonText={t('loginPage.login')} buttonDisabled={loading}>
+		<LoginFrame action={handleLogin} buttonText={t('loginPage.login')} buttonDisabled={loading} inProgress={loading}>
 			<List justify="center">
 				<ListItem>
 					<TextField
@@ -89,6 +86,7 @@ const Login = () => {
 						id="outlined-username-input"
 						label={t('loginPage.username')}
 						variant="outlined"
+						color="primary"
 						onChange={handleUsernameChange}
 						required
 					/>
@@ -101,6 +99,7 @@ const Login = () => {
 						type="password"
 						autoComplete="current-password"
 						variant="outlined"
+						color="primary"
 						onChange={handlePasswordChange}
 						required
 					/>

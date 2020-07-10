@@ -1,12 +1,11 @@
 import React, { useRef, useState } from 'react';
 import Card from "@material-ui/core/Card";
-import TextField from "@material-ui/core/TextField";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import List from "@material-ui/core/List";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import { ListItem } from '@material-ui/core';
+import { ListItem, LinearProgress } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -19,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 	}
 }))
 
-const LoginFrame = ({children, action, buttonText, buttonDisabled}) => {
+const LoginFrame = ({children, action, buttonText, buttonDisabled, inProgress}) => {
 	const classes = useStyles()
   const buttonRef = useRef(null)
   
@@ -31,6 +30,7 @@ const LoginFrame = ({children, action, buttonText, buttonDisabled}) => {
 
 	return (
 		<Card className="login-card" className={classes.root}>
+			<LinearProgress style={{visibility:inProgress?"visible":"hidden"}} />
 			<CardContent onKeyDown={handleEnterPress}>
         <List justify="center">
 					<ListItem>

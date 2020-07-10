@@ -9,6 +9,7 @@ import {
 import EditArticle from "./component/EditArticle";
 import Login from "./component/login/Login";
 import AuthenticationRoute from "./component/common/AuthenticationRoute";
+import Register from './component/login/Register';
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
         </AuthenticationRoute>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/register">
+          <Register />
         </Route>
         <Route path="/page/:username">
           <Home />
