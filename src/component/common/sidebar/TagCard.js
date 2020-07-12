@@ -3,10 +3,10 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Avatar from "@material-ui/core/Avatar";
 import {makeStyles} from "@material-ui/core/styles";
-import PersonIcon from '@material-ui/icons/Person'
-import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Chip from "@material-ui/core/Chip";
+import { useTranslation } from 'react-i18next';
+import { Divider, LinearProgress } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
 	root:{
@@ -30,6 +30,7 @@ const useStyles = makeStyles(theme => ({
 
 const TagCard = ( {owner} ) => {
 	const classes = useStyles()
+	const {t, i18n} = useTranslation()
 	const [tags, setTags] = useState(null)
 	const [error, setError] = useState(false)
 	const [loading, setLoading] = useState(false)
@@ -52,12 +53,15 @@ const TagCard = ( {owner} ) => {
 	if(tags == null){
 		return null
 	}else {
-		console.log(tags)
 		return (
 			<Card className={classes.root}>
+				<LinearProgress style={{visibility:loading?"visible":"hidden"}} />
 				<CardContent>
 					<Typography variant="h6">标签</Typography>
-					{tags.map(tag => (
+				</CardContent>
+				<Divider />
+				<CardContent>
+					{tags.length !== 0 ? tags.map(tag => (
 						<Chip
 							className={classes.tag}
 							key={tag.id}
@@ -65,7 +69,8 @@ const TagCard = ( {owner} ) => {
 							label={tag.tagName}
 							size="small"
 						/>
-					))}
+					)): 
+					<Typography align="center">{t('tagCard.noTags')}</Typography>}
 				</CardContent>
 			</Card>
 		)

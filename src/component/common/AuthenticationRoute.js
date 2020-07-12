@@ -5,10 +5,9 @@ import {
 } from "react-router-dom";
 import JwtUtil from "../../util/JwtUtil";
 
-const AuthenticationRoute = ({ children, ...rest }) => {
+const AuthenticationRoute = ({ loginUser, children, ...rest }) => {
 	const handleRender = ({location}) => {
-		let hasValidToken = JwtUtil.verifyToken();
-		if(hasValidToken){
+		if(loginUser !== undefined){
 			return children
 		}else{
 			return (<Redirect

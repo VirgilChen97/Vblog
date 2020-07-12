@@ -20,5 +20,12 @@
     "passwordNotSame": "两次输入的密码不一致",
     "emailAlreadyExist": "邮箱已经被注册",
     "usernameAlreadyExist": "用户名已被注册"
+  },
+  "editArticle":{
+    "publish": "发布",
+    "SaveAsDraft": "存为草稿"
+  },
+  "tagCard":{
+    "noTags": "你现在没有标签"
   }
 }

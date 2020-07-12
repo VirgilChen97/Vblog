@@ -30,7 +30,6 @@ const UserCard = ( {owner} ) => {
 	if(owner == null){
 		return null
 	}else {
-		console.log(owner)
 		return (
 			<Card className={classes.root}>
 				<CardContent>

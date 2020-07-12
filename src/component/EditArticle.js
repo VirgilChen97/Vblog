@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 // Edit Article and new article page
-const EditArticle = () => {
+const EditArticle = ({loginUser}) => {
 	const history = useHistory();
 	const location = useLocation();
 	const classes = useStyles();
@@ -57,7 +57,6 @@ const EditArticle = () => {
 
 	const handleMdContentChange = (value, e) => {
 		setMdContent(value)
-		console.log(mdContent)
 	}
 
 	const handleSubmit = async (mode) =>{
@@ -77,7 +76,7 @@ const EditArticle = () => {
 		}
 		debugger
 		// construct request with proper authentication header
-		let request = JwtUtil.AuthenticateRequest(data, "/articles")
+		let request = JwtUtil.AuthenticateRequest(loginUser.token, data, "/articles")
 
 		// begin request
 		setUploading(true)

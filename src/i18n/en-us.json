@@ -20,5 +20,12 @@
     "passwordNotSame": "Password and confirm password are not same",
     "emailAlreadyExist": "This email address has already been registered",
     "usernameAlreadyExist": "This user name is already been used"
+  },
+  "editArticle":{
+    "publish": "Publish",
+    "SaveAsDraft": "Save as Draft"
+  },
+  "tagCard":{
+    "noTags": "You don't have any tags"
   }
 }

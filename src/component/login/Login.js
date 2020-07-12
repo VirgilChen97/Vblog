@@ -8,8 +8,9 @@ import Checkbox from "@material-ui/core/Checkbox";
 import { ListItem } from '@material-ui/core';
 import LoginFrame from './LoginFrame';
 import { useTranslation } from 'react-i18next';
+import JwtUtil from '../../util/JwtUtil';
 
-const Login = () => {
+const Login = ({loginUser, setLoginUser}) => {
 	const history = useHistory()
 	const location = useLocation()
 	const {t, i18n} = useTranslation()
@@ -17,7 +18,6 @@ const Login = () => {
 	const [username, setUsername] = useState("")
 	const [password, setPassword] = useState("")
 	const [invalid, setInvalid] = useState(false)
-	const [rememberMe, setRememberMe] = useState(false)
 
 	const [error, setError] = useState(false)
 	const [loading, setLoading] = useState(false)
@@ -30,10 +30,6 @@ const Login = () => {
 	const handlePasswordChange = event => {
 		setInvalid(false)
 		setPassword(event.target.value)
-	}
-
-	const handleChangeRememberMe = () => {
-		setRememberMe(!rememberMe)
 	}
 
 	const handleLogin = async () => {
@@ -67,6 +63,7 @@ const Login = () => {
 			} else {
 				debugger
 				let responseJson = await response.json()
+				setLoginUser(JwtUtil.getDetailFromToken(responseJson.data.jwt))
 				TokenUtil.saveToken(responseJson.data.jwt)
 				let { from } = location.state || { from: { pathname: `/page/${username}` } };
 				history.push(from)
@@ -107,19 +104,6 @@ const Login = () => {
 				<ListItem style={{color: "red"}}>
 					{invalid?t('loginPage.wrongPassword'):null}
 					{error?t('loginPage.serverError'):null}
-				</ListItem>
-				<ListItem>
-					<FormControlLabel
-						control={
-							<Checkbox
-								checked={rememberMe}
-								onChange={handleChangeRememberMe}
-								name="rememberMe"
-								color="primary"
-							/>
-						}
-						label={t('loginPage.rememberMe')}
-					/>
 				</ListItem>
 				<ListItem>
 					{t('loginPage.newUser')} <Link to="register">{t('loginPage.register')}</Link>

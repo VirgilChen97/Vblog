@@ -18,29 +18,31 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Home = () => {
+const Home = ({loginUser}) => {
   const classes = useStyles();
   let {username} = useParams()
   let match = useRouteMatch()
 
   const [owner, setOwner] = useState(null)
+  const [editable, setEditable] = useState(false)
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const fetchUserInfo = async () => {
       setLoading(true)
-      let response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/user/${username}`)
+      let response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/users/${username}`)
       if(response.status >= 400){
         setError(true)
       }else{
         let ownerInfo = await response.json();
         setOwner(ownerInfo.data);
+        setEditable(loginUser !== undefined && ownerInfo.data.id === loginUser.id)
+        console.log(editable)
       }
-      setLoading(false)
     }
     fetchUserInfo()
-  }, [username])
+  }, [loginUser])
 
   if(owner == null){
     return null
@@ -53,7 +55,7 @@ const Home = () => {
           <Route path={`${match.path}/articles`}>
             <ArticleList owner={owner}/>
           </Route>
-          <Route path={`${match.path}/**`}>
+          <Route path={`${match.path}**`}>
             <Redirect to={`${match.url}/articles`} />
           </Route>
         </Switch>

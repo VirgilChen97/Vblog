@@ -6,7 +6,6 @@ const Editor = props => {
 	const editorRef = useRef()
 
 	const handleEditorMount = (editor, monaco) => {
-		console.log("editor mounted")
 		editorRef.current = monaco
 	}
 
