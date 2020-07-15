@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ebfb25ce-3605-420e-a9c0-bb3cadae789a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/exception/Error.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/exception/Error.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/service/BlogUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/service/BlogUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/service/TokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/service/TokenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/util/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/util/JwtUtil.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1dnAU7BgNSpF0qzgv3vCEHvdHR9" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql&#10;mariadb" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/comp1110-final-exam-d" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.cyf.myblogserver.service" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.cyf.myblogserver.data" />
+      <recent name="com.cyf.myblogserver.service" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.MyBlogServerApplication">
+    <configuration name="TagCategoryServiceTest.getAllUserCategories" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="my-blog-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cyf.myblogserver.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.cyf.myblogserver.service" />
+      <option name="MAIN_CLASS_NAME" value="com.cyf.myblogserver.service.TagCategoryServiceTest" />
+      <option name="METHOD_NAME" value="getAllUserCategories" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TagCategoryServiceTest.getAllUserTags" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="my-blog-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cyf.myblogserver.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.cyf.myblogserver.service" />
+      <option name="MAIN_CLASS_NAME" value="com.cyf.myblogserver.service.TagCategoryServiceTest" />
+      <option name="METHOD_NAME" value="getAllUserTags" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TagServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="my-blog-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cyf.myblogserver.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.cyf.myblogserver.service" />
+      <option name="MAIN_CLASS_NAME" value="com.cyf.myblogserver.service.TagServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TagServiceTest.alterTagCount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="my-blog-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cyf.myblogserver.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.cyf.myblogserver.service" />
+      <option name="MAIN_CLASS_NAME" value="com.cyf.myblogserver.service.TagServiceTest" />
+      <option name="METHOD_NAME" value="alterTagCount" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TagServiceTest.getAllTags" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="my-blog-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.cyf.myblogserver.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.cyf.myblogserver.service" />
+      <option name="MAIN_CLASS_NAME" value="com.cyf.myblogserver.service.TagServiceTest" />
+      <option name="METHOD_NAME" value="getAllTags" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyBlogServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="my-blog-server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.cyf.myblogserver.MyBlogServerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TagCategoryServiceTest.getAllUserCategories" />
+        <item itemvalue="JUnit.TagCategoryServiceTest.getAllUserTags" />
+        <item itemvalue="JUnit.TagServiceTest.getAllTags" />
+        <item itemvalue="JUnit.TagServiceTest.alterTagCount" />
+        <item itemvalue="JUnit.TagServiceTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SQLScriptSettings">
+    <option name="matrix">
+      <map>
+        <entry key="MARIADB.CreateComplete" value="CreateIfNotExists=1" />
+      </map>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ebfb25ce-3605-420e-a9c0-bb3cadae789a" name="Default Changelist" comment="" />
+      <created>1593050495057</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1593050495057</updated>
+      <workItem from="1593050508872" duration="4917000" />
+      <workItem from="1593055823206" duration="3887000" />
+      <workItem from="1593117637938" duration="11891000" />
+      <workItem from="1593277655231" duration="16919000" />
+      <workItem from="1593401086023" duration="71000" />
+      <workItem from="1593401234459" duration="97000" />
+      <workItem from="1593401443123" duration="1645000" />
+      <workItem from="1593450147023" duration="24822000" />
+      <workItem from="1593804395092" duration="7333000" />
+      <workItem from="1593997155307" duration="5401000" />
+      <workItem from="1594069885751" duration="2299000" />
+      <workItem from="1594177487578" duration="2144000" />
+      <workItem from="1594263178700" duration="1242000" />
+      <workItem from="1594328003020" duration="5872000" />
+      <workItem from="1594360340405" duration="2011000" />
+      <workItem from="1594437313217" duration="4231000" />
+      <workItem from="1594444195573" duration="1463000" />
+      <workItem from="1594525629305" duration="3857000" />
+      <workItem from="1594765337381" duration="4513000" />
+    </task>
+    <task id="LOCAL-00001" summary="- Adding tag and category count&#10;- Add an article with existing tag and category will increase the count">
+      <created>1593399627001</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1593399627001</updated>
+    </task>
+    <task id="LOCAL-00002" summary="- add JWT based authentication">
+      <created>1593467716290</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1593467716290</updated>
+    </task>
+    <task id="LOCAL-00003" summary="- Add User Card in sidebar (display user information)">
+      <created>1593997419600</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1593997419600</updated>
+    </task>
+    <task id="LOCAL-00004" summary="- Add obtain all user tags/categories by user Id">
+      <created>1594003278246</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1594003278246</updated>
+    </task>
+    <task id="LOCAL-00005" summary="- Add user registration controller">
+      <created>1594363868090</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1594363868090</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="- Adding tag and category count&#10;- Add an article with existing tag and category will increase the count" />
+    <MESSAGE value="- add JWT based authentication" />
+    <MESSAGE value="- Add User Card in sidebar (display user information)" />
+    <MESSAGE value="- Add obtain all user tags/categories by user Id" />
+    <MESSAGE value="- Add user registration controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Add user registration controller" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="552" y="183" key="#Auto_Import" timestamp="1593387686908">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="552" y="183" key="#Auto_Import/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1593387686908" />
+    <state x="552" y="183" key="#SQL_Dialects" timestamp="1593379013155">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="552" y="183" key="#SQL_Dialects/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1593379013155" />
+    <state x="552" y="183" key="#Updates" timestamp="1593401148362">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="552" y="183" key="#Updates/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1593401148362" />
+    <state x="525" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593384423903">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="525" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1593384423903" />
+    <state x="765" y="234" width="592" height="590" key="#com.intellij.ide.util.MemberChooser" timestamp="1594000677916">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="765" y="234" width="592" height="590" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594000677916" />
+    <state x="640" y="259" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1593401274913">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="640" y="259" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1593401274913" />
+    <state x="673" y="140" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1593997491169">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="673" y="140" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1593997491169" />
+    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593123570896">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1593123570896" />
+    <state x="516" y="117" key="CommitChangelistDialog2" timestamp="1594363865134">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="516" y="117" key="CommitChangelistDialog2/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594363865134" />
+    <state x="181" y="87" key="DiffContextDialog" timestamp="1593381547940">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="181" y="87" key="DiffContextDialog/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1593381547940" />
+    <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1593133591517">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1593133591517" />
+    <state width="1921" height="368" key="GridCell.Tab.0.bottom" timestamp="1594781964852">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="368" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594781964852" />
+    <state width="1921" height="368" key="GridCell.Tab.0.center" timestamp="1594781964851">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="368" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594781964851" />
+    <state width="1921" height="368" key="GridCell.Tab.0.left" timestamp="1594781964851">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="368" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594781964851" />
+    <state width="1921" height="368" key="GridCell.Tab.0.right" timestamp="1594781964851">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="368" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594781964851" />
+    <state width="1921" height="368" key="GridCell.Tab.1.bottom" timestamp="1594781964853">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="368" key="GridCell.Tab.1.bottom/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594781964853" />
+    <state width="1921" height="368" key="GridCell.Tab.1.center" timestamp="1594781964852">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="368" key="GridCell.Tab.1.center/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594781964852" />
+    <state width="1921" height="368" key="GridCell.Tab.1.left" timestamp="1594781964852">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="368" key="GridCell.Tab.1.left/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594781964852" />
+    <state width="1921" height="368" key="GridCell.Tab.1.right" timestamp="1594781964852">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="368" key="GridCell.Tab.1.right/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594781964852" />
+    <state width="1921" height="368" key="GridCell.Tab.2.bottom" timestamp="1594781964854">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="368" key="GridCell.Tab.2.bottom/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594781964854" />
+    <state width="1921" height="368" key="GridCell.Tab.2.center" timestamp="1594781964853">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="368" key="GridCell.Tab.2.center/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594781964853" />
+    <state width="1921" height="368" key="GridCell.Tab.2.left" timestamp="1594781964853">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="368" key="GridCell.Tab.2.left/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594781964853" />
+    <state width="1921" height="368" key="GridCell.Tab.2.right" timestamp="1594781964854">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1921" height="368" key="GridCell.Tab.2.right/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594781964854" />
+    <state x="694" y="235" key="RollbackChangesDialog" timestamp="1593381549231">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="694" y="235" key="RollbackChangesDialog/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1593381549231" />
+    <state x="461" y="166" key="SettingsEditor" timestamp="1593118321254">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="461" y="166" key="SettingsEditor/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1593118321254" />
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1593117802422">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1593117802422" />
+    <state x="826" y="343" width="343" height="364" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1593456507550">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="826" y="343" width="343" height="364" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1593456507550" />
+    <state x="789" y="296" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1593812155059">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="789" y="296" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1593812155059" />
+    <state x="640" y="348" key="com.intellij.ide.util.TipDialog" timestamp="1593401253024">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="640" y="348" key="com.intellij.ide.util.TipDialog/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1593401253024" />
+    <state x="752" y="441" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1594363870729">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="752" y="441" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594363870729" />
+    <state x="721" y="242" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1593998063377">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="721" y="242" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1593998063377" />
+    <state x="504" y="253" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1593467031195">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="504" y="253" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1593467031195" />
+    <state x="616" y="243" key="run.anything.popup" timestamp="1594330239586">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="616" y="243" key="run.anything.popup/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594330239586" />
+    <state x="616" y="178" width="672" height="676" key="search.everywhere.popup" timestamp="1594330236756">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="616" y="178" width="672" height="676" key="search.everywhere.popup/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594330236756" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/service/BlogUserDetailsService.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/controller/ArticleController.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="httpServletRequest.getMethod()" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/my_blog_server$MyBlogServerApplication.ic" NAME="MyBlogServerApplication Coverage Results" MODIFIED="1593124509560" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>
