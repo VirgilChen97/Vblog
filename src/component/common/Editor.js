@@ -20,17 +20,14 @@ const Editor = props => {
 	}
 
 	return (
-		<Card>
-			<MonacoEditor
-				editorDidMount={handleEditorMount}
-				{...props}
-				name="mdContent"
-				height="600"
-				theme="vs-light"
-				language="markdown"
-				options={options}
-			/>
-		</Card>
+		<MonacoEditor
+			editorDidMount={handleEditorMount}
+			{...props}
+			name="mdContent"
+			theme="vs-light"
+			language="markdown"
+			options={options}
+		/>
 	)
 
 }

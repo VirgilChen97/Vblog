@@ -6,6 +6,7 @@ import {makeStyles} from "@material-ui/core/styles";
 import PersonIcon from '@material-ui/icons/Person'
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(theme => ({
 	root:{
@@ -24,8 +25,9 @@ const useStyles = makeStyles(theme => ({
 	}
 }))
 
-const UserCard = ( {owner} ) => {
+const UserCard = ( {owner, editable} ) => {
 	const classes = useStyles()
+	const {t} = useTranslation()
 
 	if(owner == null){
 		return null
@@ -40,9 +42,15 @@ const UserCard = ( {owner} ) => {
 							</Avatar>
 						</Grid>
 						<Grid item xs={12}>
-							<Typography align="center" variant="h6">{owner.displayName}</Typography>
-							<Typography align="center">{owner.title}</Typography>
-							<Typography align="center">{owner.location}</Typography>
+							<Typography align="center" variant="h6">
+								{owner.displayName == null ? t('userCard.noNickName'):owner.displayName}
+							</Typography>
+							<Typography align="center">
+								{owner.title == null ? t('userCard.noTitle'):owner.title}
+							</Typography>
+							<Typography align="center">
+								{owner.location == null ? t('userCard.noLocation'):owner.location}
+							</Typography>
 						</Grid>
 					</Grid>
 				</CardContent>

@@ -14,7 +14,7 @@ import Register from './component/login/Register';
 import JwtUtil from './util/JwtUtil';
 
 const App = () => {
-  const [loginUser, setLoginUser] = useState(undefined)
+  const [loginUser, setLoginUser] = useState(null)
 
   useEffect(() => {
     let user = JwtUtil.getDetailAndToken()
@@ -23,6 +23,10 @@ const App = () => {
 
   console.log(loginUser)
 
+  if(loginUser == null){
+    return null
+  }
+  
   return (
     <Router>
       {loginUser !== undefined ?

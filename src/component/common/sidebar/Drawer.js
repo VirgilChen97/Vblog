@@ -36,7 +36,7 @@ function HideOnScroll(props) {
   );
 }
 
-export default function ClippedDrawer ({ owner }) {
+export default function ClippedDrawer ({ owner, editable }) {
   const classes = useStyles();
 
   return (
@@ -53,7 +53,7 @@ export default function ClippedDrawer ({ owner }) {
       <div className={classes.drawerContainer}>
         <List>
           <ListItem>
-            <UserCard owner={owner}/>
+            <UserCard owner={owner} editable={editable}/>
           </ListItem>
           <ListItem>
             <TagCard owner={owner}/>

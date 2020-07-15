@@ -50,7 +50,7 @@ const Home = ({loginUser}) => {
     return (
       <div className={classes.root}>
         <BlogAppBar owner={owner}/>
-        <BlogDrawer owner={owner}/>
+        <BlogDrawer owner={owner} editable={editable}/>
         <Switch>
           <Route path={`${match.path}/articles`}>
             <ArticleList owner={owner}/>

@@ -23,9 +23,17 @@
   },
   "editArticle":{
     "publish": "发布",
-    "SaveAsDraft": "存为草稿"
+    "SaveAsDraft": "存为草稿",
+    "untitledArticle": "无标题文章",
+    "tags": "标签",
+    "categories": "分类"
   },
   "tagCard":{
     "noTags": "你现在没有标签"
+  },
+  "userCard":{
+    "noNickName": "未设置昵称",
+    "noTitle": "未设置头衔",
+    "noLocation": "未设置地点"
   }
 }

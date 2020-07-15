@@ -23,9 +23,17 @@
   },
   "editArticle":{
     "publish": "Publish",
-    "SaveAsDraft": "Save as Draft"
+    "SaveAsDraft": "Save as Draft",
+    "untitledArticle": "No Title",
+    "tags": "Tags",
+    "categories": "Categories"
   },
   "tagCard":{
     "noTags": "You don't have any tags"
+  },
+  "userCard":{
+    "noNickName": "No nickname",
+    "noTitle": "No Title",
+    "noLocation": "No location"
   }
 }
