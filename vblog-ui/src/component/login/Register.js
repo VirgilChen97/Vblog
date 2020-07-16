@@ -1,17 +1,14 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import TextField from "@material-ui/core/TextField";
 import List from "@material-ui/core/List";
-import { useHistory, useLocation, Link } from "react-router-dom"
-import TokenUtil from "../../util/JwtUtil";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
+import { useHistory } from "react-router-dom"
 import { ListItem } from '@material-ui/core';
 import LoginFrame from './LoginFrame';
 import { useTranslation } from 'react-i18next';
 
 const Register = () => {
 	const history = useHistory()
-	const {t, i18n} = useTranslation()
+	const {t} = useTranslation()
 
   const [email, setEmail] = useState("")
   const [username, setUsername] = useState("")
@@ -124,11 +121,11 @@ const Register = () => {
 			let response = await fetch(request)
 			let responseJson = await response.json()
 			setLoading(false)
-			if (response.status == 409) {
-				if(responseJson.code == 40901){
+			if (response.status === 409) {
+				if(responseJson.code === 40901){
 					setInvalid("email")
 					setInvalidReason(t('loginPage.emailAlreadyExist'))
-				}else if(responseJson.code == 40902){
+				}else if(responseJson.code === 40902){
 					setInvalid("username")
 					setInvalidReason(t('loginPage.usernameAlreadyExist'))
 				}

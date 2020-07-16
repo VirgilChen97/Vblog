@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
@@ -29,7 +29,7 @@ const LoginFrame = ({children, action, buttonText, buttonDisabled, inProgress}) 
 	}
 
 	return (
-		<Card className="login-card" className={classes.root}>
+		<Card className={classes.root}>
 			<LinearProgress style={{visibility:inProgress?"visible":"hidden"}} />
 			<CardContent onKeyDown={handleEnterPress}>
         <List justify="center">

@@ -1,38 +1,35 @@
-import React, { useEffect, useState } from 'react';
-import BlogAppBar from "./common/BlogAppBar";
-import { Container, Toolbar } from "@material-ui/core";
+import React, { useState } from 'react';
 import TextField from "@material-ui/core/TextField";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import ProgressButton from "./common/ProgressButton"
-import Divider from "@material-ui/core/Divider";
 import useCommonStyles from "./common/CommonStyle";
 import FormControl from "@material-ui/core/FormControl";
 import Input from "@material-ui/core/Input";
 import Grid from "@material-ui/core/Grid";
-import CardContent from "@material-ui/core/CardContent";
-import Editor from "./common/Editor";
-import { useHistory, useLocation } from 'react-router-dom'
+import Editor from "./common/editor/Editor";
+import { useHistory } from 'react-router-dom'
 import JwtUtil from "../util/JwtUtil";
 import { useTranslation } from 'react-i18next';
-import CodeBlock from "../util/CodeBlock";
-import ReactMarkdown from "react-markdown";
-
+import zIndex from '@material-ui/core/styles/zIndex';
 
 const PUBLISHED = 0;
 const DRAFT = 1;
 const DELETED = -1;
 
 const useStyles = makeStyles((theme) => ({
-	title:{
+	title: {
 		height: "64px",
 		paddingLeft: "10px",
-		padding: "4px"
+		padding: "4px",
+		position: "fixed",
+		width: "100vw",
+		top: 0,
+		zIndex: 999
 	},
-	mdPreview: {
-		overflow: "auto",
-		height: "calc(100vh - 64px)"
+	editor: {
+		height: "calc(100vh - 64px)",
+		overflow: "hidden"
 	}
 }));
 
@@ -46,7 +43,7 @@ const EditArticle = ({ loginUser }) => {
 	const [title, setTitle] = useState(t('editArticle.untitledArticle'))
 	const [tag, setTag] = useState([])
 	const [category, setCategory] = useState("")
-	const [mdContent, setMdContent] = useState("")
+	const [mdContent, setMdContent] = useState("# 在这里编写markdown内容")
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState(false)
 	const [success, setSuccess] = useState(false)
@@ -104,7 +101,7 @@ const EditArticle = ({ loginUser }) => {
 	return (
 		<div>
 			<Card className={classes.title}>
-				<Grid container spacing={1}>
+				<Grid container spacing={1} alignItems="flex-end">
 					<Grid item xs={6}>
 						<FormControl fullWidth className={classes.margin}>
 							<Input
@@ -142,26 +139,11 @@ const EditArticle = ({ loginUser }) => {
 					</Grid>
 				</Grid>
 			</Card>
-			<Card>
-				<Grid container>
-					<Grid item xs={6}>
-						<Editor
-							value={mdContent}
-							onChange={handleMdContentChange}
-						/>
-					</Grid>
-					<Grid item xs={6} className={classes.mdPreview}>
-						<CardContent>
-							<div className="markdown-body">
-								<ReactMarkdown
-									source={mdContent}
-									renderers={{ code: CodeBlock }}
-								/>
-							</div>
-						</CardContent>
-					</Grid>
-				</Grid>
-			</Card>
+			<div style={{height: "64px"}}></div>
+			<Editor
+				value={mdContent}
+				onChange={handleMdContentChange}
+			/>
 		</div>
 	);
 }

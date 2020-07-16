@@ -23,7 +23,7 @@ const App = () => {
 
   console.log(loginUser)
 
-  if(loginUser == null){
+  if(loginUser === null){
     return null
   }
   

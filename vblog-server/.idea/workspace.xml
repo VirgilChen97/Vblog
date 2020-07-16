@@ -20,11 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ebfb25ce-3605-420e-a9c0-bb3cadae789a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/exception/Error.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/exception/Error.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/service/BlogUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/service/BlogUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/service/TokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/service/TokenService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/util/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/util/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/my-blog-server.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/spring-configuration-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/spring-configuration-metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/META-INF/my-blog-server.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/component/EditArticle.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/src/component/EditArticle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/component/article/ArticleCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/src/component/article/ArticleCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/component/common/Editor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/component/common/sidebar/UserCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/src/component/common/sidebar/UserCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/component/login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/src/component/login/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/component/login/LoginFrame.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/src/component/login/LoginFrame.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/component/login/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/src/component/login/Register.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,10 +52,10 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1dnAU7BgNSpF0qzgv3vCEHvdHR9" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -62,7 +73,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/comp1110-final-exam-d" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -217,6 +228,8 @@
       <workItem from="1594444195573" duration="1463000" />
       <workItem from="1594525629305" duration="3857000" />
       <workItem from="1594765337381" duration="4513000" />
+      <workItem from="1594850686078" duration="652000" />
+      <workItem from="1594851741650" duration="3424000" />
     </task>
     <task id="LOCAL-00001" summary="- Adding tag and category count&#10;- Add an article with existing tag and category will increase the count">
       <created>1593399627001</created>
@@ -324,38 +337,38 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1593133591517" />
-    <state width="1921" height="368" key="GridCell.Tab.0.bottom" timestamp="1594781964852">
+    <state width="1565" height="322" key="GridCell.Tab.0.bottom" timestamp="1594851343640">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1921" height="368" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594781964852" />
-    <state width="1921" height="368" key="GridCell.Tab.0.center" timestamp="1594781964851">
+    <state width="1565" height="322" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594851343640" />
+    <state width="1565" height="322" key="GridCell.Tab.0.center" timestamp="1594851343639">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1921" height="368" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594781964851" />
-    <state width="1921" height="368" key="GridCell.Tab.0.left" timestamp="1594781964851">
+    <state width="1565" height="322" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594851343639" />
+    <state width="1565" height="322" key="GridCell.Tab.0.left" timestamp="1594851343638">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1921" height="368" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594781964851" />
-    <state width="1921" height="368" key="GridCell.Tab.0.right" timestamp="1594781964851">
+    <state width="1565" height="322" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594851343638" />
+    <state width="1565" height="322" key="GridCell.Tab.0.right" timestamp="1594851343640">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1921" height="368" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594781964851" />
-    <state width="1921" height="368" key="GridCell.Tab.1.bottom" timestamp="1594781964853">
+    <state width="1565" height="322" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594851343640" />
+    <state width="1565" height="322" key="GridCell.Tab.1.bottom" timestamp="1594851343641">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1921" height="368" key="GridCell.Tab.1.bottom/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594781964853" />
-    <state width="1921" height="368" key="GridCell.Tab.1.center" timestamp="1594781964852">
+    <state width="1565" height="322" key="GridCell.Tab.1.bottom/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594851343641" />
+    <state width="1565" height="322" key="GridCell.Tab.1.center" timestamp="1594851343641">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1921" height="368" key="GridCell.Tab.1.center/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594781964852" />
-    <state width="1921" height="368" key="GridCell.Tab.1.left" timestamp="1594781964852">
+    <state width="1565" height="322" key="GridCell.Tab.1.center/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594851343641" />
+    <state width="1565" height="322" key="GridCell.Tab.1.left" timestamp="1594851343640">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1921" height="368" key="GridCell.Tab.1.left/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594781964852" />
-    <state width="1921" height="368" key="GridCell.Tab.1.right" timestamp="1594781964852">
+    <state width="1565" height="322" key="GridCell.Tab.1.left/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594851343640" />
+    <state width="1565" height="322" key="GridCell.Tab.1.right" timestamp="1594851343641">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1921" height="368" key="GridCell.Tab.1.right/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594781964852" />
+    <state width="1565" height="322" key="GridCell.Tab.1.right/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1594851343641" />
     <state width="1921" height="368" key="GridCell.Tab.2.bottom" timestamp="1594781964854">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
