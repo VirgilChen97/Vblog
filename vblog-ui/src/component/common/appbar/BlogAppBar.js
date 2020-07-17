@@ -5,7 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Slide from '@material-ui/core/Slide';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, Grid } from '@material-ui/core';
+import LoginUserAvatar from './LoginUserAvatar';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -23,18 +24,27 @@ function HideOnScroll(props) {
   );
 }
 
-export default function BlogAppBar(props) {
+const BlogAppBar = ({owner, loginUser, setLoginUser}) => {
   const classes = useStyles()
   return (
     <React.Fragment>
       <CssBaseline />
-      <HideOnScroll {...props}>
+      <HideOnScroll>
         <AppBar className={classes.appBar}>
           <Toolbar>
-            <Typography variant="h6">Vblog</Typography>
+            <Grid container justify="space-between" alignItems="center">
+              <Grid item>
+                <Typography variant="h6">{owner.username}</Typography>
+              </Grid>
+              <Grid item>
+                <LoginUserAvatar loginUser={loginUser} setLoginUser={setLoginUser}/>
+              </Grid>
+            </Grid>
           </Toolbar>
         </AppBar>
       </HideOnScroll>
     </React.Fragment>
   );
 }
+
+export default BlogAppBar

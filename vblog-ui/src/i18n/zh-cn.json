@@ -35,5 +35,12 @@
     "noNickName": "未设置昵称",
     "noTitle": "未设置头衔",
     "noLocation": "未设置地点"
+  },
+  "userMenu":{
+    "logOut": "退出登录",
+    "settings": "设置"
+  },
+  "fab":{
+    "newPost": "新文章"
   }
 }

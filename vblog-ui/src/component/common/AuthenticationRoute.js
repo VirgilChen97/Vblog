@@ -3,7 +3,6 @@ import {
 	Redirect,
 	Route
 } from "react-router-dom";
-import JwtUtil from "../../util/JwtUtil";
 
 const AuthenticationRoute = ({ loginUser, children, ...rest }) => {
 	const handleRender = ({location}) => {

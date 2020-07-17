@@ -28,11 +28,7 @@ const App = () => {
   }
   
   return (
-    <Router>
-      {loginUser !== undefined ?
-        <Redirect to={`/page/${loginUser.username}`} /> :
-        <Redirect to="/login" />
-      }
+    <Router> 
       <Switch>
         <AuthenticationRoute loginUser={loginUser} path="/newpost">
           <EditArticle loginUser={loginUser} />
@@ -44,7 +40,13 @@ const App = () => {
           <Register />
         </Route>
         <Route path="/page/:username">
-          <Home loginUser={loginUser}/>
+          <Home loginUser={loginUser} setLoginUser={setLoginUser}/>
+        </Route>
+        <Route path="/">
+          {loginUser !== undefined ?
+            <Redirect to={`/page/${loginUser.username}`} /> :
+            <Redirect to="/login" />
+          }
         </Route>
       </Switch>
     </Router>

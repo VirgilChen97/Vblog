@@ -13,6 +13,11 @@ export default class JwtUtil {
 		cookies.set("token", token)
 	}
 
+	static removeToken = () => {
+		const cookies = new Cookies()
+		cookies.remove("token")
+	}
+
 	// Get token from cookie
 	static getToken = () => {
 		const cookies = new Cookies()

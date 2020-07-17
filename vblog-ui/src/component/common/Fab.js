@@ -3,6 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import {Link, useLocation} from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({
 	fabBase: {
@@ -19,14 +20,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const BlogFab = () => {
-	const classes = useStyles();
-	const location = useLocation();
+	const classes = useStyles()
+	const {t} = useTranslation()
 
 	return (
 		<div className={classes.fabBase}>
 				<Fab variant="extended" color="secondary" aria-label="add" component={Link} to={"/newpost"}>
-					<AddIcon/>
-					New Post
+					<AddIcon className={classes.extendedIcon}/>
+					{t('fab.newPost')}
 				</Fab>
 		</div>
 	);

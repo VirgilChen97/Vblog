@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import BlogAppBar from './common/BlogAppBar';
+import BlogAppBar from './common/appbar/BlogAppBar';
 import ArticleList from './article/ArticleList';
 import BlogDrawer from './common/sidebar/Drawer'
 import { makeStyles } from '@material-ui/core/styles';
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Home = ({loginUser}) => {
+const Home = ({loginUser, setLoginUser}) => {
   const classes = useStyles();
   let {username} = useParams()
   let match = useRouteMatch()
@@ -49,7 +49,7 @@ const Home = ({loginUser}) => {
   }else {
     return (
       <div className={classes.root}>
-        <BlogAppBar owner={owner}/>
+        <BlogAppBar owner={owner} loginUser={loginUser} setLoginUser={setLoginUser}/>
         <BlogDrawer owner={owner} editable={editable}/>
         <Switch>
           <Route path={`${match.path}/articles`}>
@@ -59,7 +59,7 @@ const Home = ({loginUser}) => {
             <Redirect to={`${match.url}/articles`} />
           </Route>
         </Switch>
-        <BlogFab/>
+        {loginUser !== undefined && owner.id === loginUser.id ? <BlogFab/> : null}
       </div>
     )
   }
