@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -9,15 +8,8 @@ import useCommonStyles from '../common/CommonStyle';
 import ReactMarkdown from "react-markdown";
 import 'github-markdown-css'
 import CodeBlock from "../../util/CodeBlock";
-
-const useStyles = makeStyles({
-  root: {
-    width: "100%"
-  },
-  pos: {
-    marginBottom: 12,
-  },
-});
+import { useTranslation } from 'react-i18next';
+import './ArticleCard.css'
 
 /**
  * id: Article id
@@ -26,13 +18,14 @@ const useStyles = makeStyles({
  * content: short version of article content
  */
 const ArticleCard = ({id, createDate, lastModifiedDate, title, mdContent}) => {
-  const classes = useStyles();
   const commonClasses = useCommonStyles();
+  const {t} = useTranslation()
+
   return (
-    <Card className={classes.root}>
+    <Card className={"article-card-root"}>
       <CardContent>
         <Typography variant="caption" component="h2">
-          发布于 {new Date(createDate).toDateString()}
+          {t('articleCard.postAt')} {new Date(createDate).toDateString()}
         </Typography>
         <Typography className={commonClasses.articleTitle}  color="textSecondary" gutterBottom>
           {title}
@@ -45,7 +38,7 @@ const ArticleCard = ({id, createDate, lastModifiedDate, title, mdContent}) => {
         </div>
       </CardContent>
       <CardActions>
-        <Button size="small">阅读更多</Button>
+        <Button size="small">{t('articleCard.readMore')}</Button>
       </CardActions>
     </Card>
   );

@@ -1,0 +1,16 @@
+.login-frame-root {
+  width: 350px;
+  margin: auto;
+}
+
+.login-button {
+  width: 100%
+}
+
+.login-frame-container {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: gray;
+}

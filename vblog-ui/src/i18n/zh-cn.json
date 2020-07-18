@@ -42,5 +42,16 @@
   },
   "fab":{
     "newPost": "新文章"
+  },
+  "articleCard":{
+    "postAt": "发布于",
+    "readMore": "阅读更多"
+  },
+  "settings":{
+    "nickName": "昵称",
+    "blogTitle": "博客名称",
+    "location": "地点",
+    "title": "职称",
+    "save": "保存"
   }
 }

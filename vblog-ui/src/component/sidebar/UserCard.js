@@ -43,7 +43,7 @@ const UserCard = ( {owner, editable} ) => {
 						</Grid>
 						<Grid item xs={12}>
 							<Typography align="center" variant="h6">
-								{owner.displayName == null ? t('userCard.noNickName'):owner.displayName}
+								{owner.nickName == null ? t('userCard.noNickName'):owner.nickName}
 							</Typography>
 							<Typography align="center">
 								{owner.title == null ? t('userCard.noTitle'):owner.title}

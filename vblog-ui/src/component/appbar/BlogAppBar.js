@@ -34,7 +34,7 @@ const BlogAppBar = ({owner, loginUser, setLoginUser}) => {
           <Toolbar>
             <Grid container justify="space-between" alignItems="center">
               <Grid item>
-                <Typography variant="h6">{owner.username}</Typography>
+                <Typography variant="h6">{owner.blogName}</Typography>
               </Grid>
               <Grid item>
                 <LoginUserAvatar loginUser={loginUser} setLoginUser={setLoginUser}/>

@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
 
 const TagCard = ( {owner} ) => {
 	const classes = useStyles()
-	const {t, i18n} = useTranslation()
+	const {t} = useTranslation()
 	const [tags, setTags] = useState(null)
 	const [error, setError] = useState(false)
 	const [loading, setLoading] = useState(false)

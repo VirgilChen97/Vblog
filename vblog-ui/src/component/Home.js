@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import BlogAppBar from './common/appbar/BlogAppBar';
+import BlogAppBar from './appbar/BlogAppBar';
 import ArticleList from './article/ArticleList';
-import BlogDrawer from './common/sidebar/Drawer'
+import BlogDrawer from './sidebar/Drawer'
 import { makeStyles } from '@material-ui/core/styles';
 import BlogFab from "./common/Fab";
 import {

@@ -7,7 +7,7 @@ import useCommonStyles from "./common/CommonStyle";
 import FormControl from "@material-ui/core/FormControl";
 import Input from "@material-ui/core/Input";
 import Grid from "@material-ui/core/Grid";
-import Editor from "./common/editor/Editor";
+import Editor from "./editor/Editor";
 import { useHistory } from 'react-router-dom'
 import JwtUtil from "../util/JwtUtil";
 import { useTranslation } from 'react-i18next';
@@ -95,7 +95,7 @@ const EditArticle = ({ loginUser }) => {
 		}
 		setLoading(false)
 		setSuccess(true)
-		setTimeout(() => { history.push(`/page/${loginUser.username}`) }, 5000)
+		setTimeout(() => { history.push(`/page/${loginUser.username}`) }, 3000)
 	}
 
 	return (

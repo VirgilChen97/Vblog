@@ -35,5 +35,16 @@
     "noNickName": "No nickname",
     "noTitle": "No Title",
     "noLocation": "No location"
+  },
+  "userMenu":{
+    "logOut": "Log out",
+    "settings": "Settings"
+  },
+  "fab":{
+    "newPost": "New post"
+  },
+  "articleCard":{
+    "postAt": "发布于",
+    "readMore": "阅读更多"
   }
 }

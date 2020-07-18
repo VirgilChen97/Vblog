@@ -1,22 +1,16 @@
 import React, { useState } from 'react';
-import { Avatar, Button, IconButton, MenuItem, Popover, ListItemIcon, ListItemText, Divider, ListItem, CardContent, Grid } from '@material-ui/core';
+import { Avatar, Button, IconButton, MenuItem, Popover, ListItemIcon, ListItemText } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import SettingsIcon from '@material-ui/icons/Settings';
-import JwtUtil from '../../../util/JwtUtil';
-import { makeStyles } from '@material-ui/core/styles';
+import JwtUtil from '../../util/JwtUtil';
 import { Link, useRouteMatch } from "react-router-dom";
-
-const useStyles = makeStyles((theme) => ({
-  loginButton:{
-    color: "white"
-  }
-}));
+import './LoginUserAvatar.css'
+import Settings from '../Settings';
 
 const LoginUserAvatar = ({ loginUser, setLoginUser }) => {
   const { t } = useTranslation()
   const [anchor, setAnchor] = useState(false)
-  const classes = useStyles()
   let match = useRouteMatch()
 
   const handleClick = (event) => {
@@ -36,7 +30,7 @@ const LoginUserAvatar = ({ loginUser, setLoginUser }) => {
   if (loginUser === undefined) {
     return (
       <Button 
-        className={classes.loginButton} 
+        className={"loginButton"}
         component={Link} 
         to={{
 					pathname: "/login",
@@ -67,10 +61,7 @@ const LoginUserAvatar = ({ loginUser, setLoginUser }) => {
           horizontal: 'right',
         }}
       >
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon><SettingsIcon /></ListItemIcon>
-          <ListItemText>{t('userMenu.settings')}</ListItemText>
-        </MenuItem>
+        <Settings loginUser={loginUser}/>
         <MenuItem onClick={handleLogOut}>
           <ListItemIcon><ExitToAppIcon /></ListItemIcon>
           <ListItemText>{t('userMenu.logOut')}</ListItemText>
