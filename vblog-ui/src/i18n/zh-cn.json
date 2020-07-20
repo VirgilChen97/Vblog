@@ -25,7 +25,7 @@
     "publish": "发布",
     "SaveAsDraft": "存为草稿",
     "untitledArticle": "无标题文章",
-    "tags": "标签",
+    "tags": "标签（用逗号分割）",
     "categories": "分类"
   },
   "tagCard":{

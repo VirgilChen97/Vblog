@@ -25,7 +25,7 @@
     "publish": "Publish",
     "SaveAsDraft": "Save as Draft",
     "untitledArticle": "No Title",
-    "tags": "Tags",
+    "tags": "Tags (Separate with comma)",
     "categories": "Categories"
   },
   "tagCard":{

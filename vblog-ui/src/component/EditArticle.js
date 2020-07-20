@@ -52,15 +52,16 @@ const EditArticle = ({ loginUser }) => {
 		let data = {
 			"title": title,
 			"state": mode,
-			"tags": [
-				{
-					"tagName": tag
-				}
-			],
-			"category": {
-				"categoryName": category
-			},
 			"mdContent": mdContent
+		}
+
+		if(tag !== ""){
+			let tags = tag.split(/，|,/)
+			data.tags = tags
+		}
+
+		if(category !== ""){
+			data.category = category
 		}
 
 		send(data, "/articles", loginUser.token, ()=>{
