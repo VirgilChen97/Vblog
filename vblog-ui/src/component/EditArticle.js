@@ -12,6 +12,7 @@ import { useHistory } from 'react-router-dom'
 import JwtUtil from "../util/JwtUtil";
 import { useTranslation } from 'react-i18next';
 import zIndex from '@material-ui/core/styles/zIndex';
+import { useAuthenticatedRequest } from './common/Hooks';
 
 const PUBLISHED = 0;
 const DRAFT = 1;
@@ -39,30 +40,12 @@ const EditArticle = ({ loginUser }) => {
 	const classes = useStyles()
 	const commonClasses = useCommonStyles()
 	const { t } = useTranslation()
+	const [send, jsonResponse, loading, success, error] = useAuthenticatedRequest()
 
 	const [title, setTitle] = useState(t('editArticle.untitledArticle'))
 	const [tag, setTag] = useState([])
 	const [category, setCategory] = useState("")
 	const [mdContent, setMdContent] = useState("# 在这里编写markdown内容")
-	const [loading, setLoading] = useState(false)
-	const [error, setError] = useState(false)
-	const [success, setSuccess] = useState(false)
-
-	const handleTitleChange = (event) => {
-		setTitle(event.target.value)
-	}
-
-	const handleTagChange = event => {
-		setTag(event.target.value)
-	}
-
-	const handleCategoryChange = event => {
-		setCategory(event.target.value)
-	}
-
-	const handleMdContentChange = (value, e) => {
-		setMdContent(value)
-	}
 
 	const handleSubmit = async (mode) => {
 		// article upload request body
@@ -79,23 +62,10 @@ const EditArticle = ({ loginUser }) => {
 			},
 			"mdContent": mdContent
 		}
-		debugger
-		// construct request with proper authentication header
-		let request = JwtUtil.AuthenticateRequest(loginUser.token, data, "/articles")
 
-		// begin request
-		setLoading(true)
-		try {
-			let response = await fetch(request)
-			if (response.status >= 400) {
-				setError(true)
-			}
-		} catch (e) {
-			setError(true)
-		}
-		setLoading(false)
-		setSuccess(true)
-		setTimeout(() => { history.push(`/page/${loginUser.username}`) }, 3000)
+		send(data, "/articles", loginUser.token, ()=>{
+			setTimeout(() => { history.push(`/page/${loginUser.username}`) }, 3000)
+		})		
 	}
 
 	return (
@@ -108,14 +78,14 @@ const EditArticle = ({ loginUser }) => {
 								className={commonClasses.articleTitle}
 								name="title"
 								value={title}
-								onChange={handleTitleChange}
+								onChange={e => setTitle(e.target.value)}
 							/>
 						</FormControl>
 					</Grid>
 					<Grid item>
 						<TextField
 							value={category}
-							onChange={handleCategoryChange}
+							onChange={e => setCategory(e.target.value)}
 							label={t('editArticle.categories')}
 							placeholder={t('editArticle.categories')}
 						/>
@@ -123,7 +93,7 @@ const EditArticle = ({ loginUser }) => {
 					<Grid item>
 						<TextField
 							value={tag}
-							onChange={handleTagChange}
+							onChange={e => setTag(e.target.value)}
 							label={t('editArticle.tags')}
 							placeholder={t('editArticle.tags')}
 						/>
@@ -142,7 +112,7 @@ const EditArticle = ({ loginUser }) => {
 			<div style={{height: "64px"}}></div>
 			<Editor
 				value={mdContent}
-				onChange={handleMdContentChange}
+				onChange={(value, e) => setMdContent(value)}
 			/>
 		</div>
 	);

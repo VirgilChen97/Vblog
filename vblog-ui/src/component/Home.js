@@ -11,6 +11,7 @@ import {
   useRouteMatch,
   Route
 } from 'react-router-dom'
+import { useUserInfo } from './common/Hooks';
 
 const useStyles = makeStyles((theme) => ({
   root:{
@@ -22,27 +23,7 @@ const Home = ({loginUser, setLoginUser}) => {
   const classes = useStyles();
   let {username} = useParams()
   let match = useRouteMatch()
-
-  const [owner, setOwner] = useState(null)
-  const [editable, setEditable] = useState(false)
-  const [error, setError] = useState(false)
-  const [loading, setLoading] = useState(false)
-
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      setLoading(true)
-      let response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/users/${username}`)
-      if(response.status >= 400){
-        setError(true)
-      }else{
-        let ownerInfo = await response.json();
-        setOwner(ownerInfo.data);
-        setEditable(loginUser !== undefined && ownerInfo.data.id === loginUser.id)
-        console.log(editable)
-      }
-    }
-    fetchUserInfo()
-  }, [loginUser])
+  const [owner,,loading, error] = useUserInfo(undefined, username)
 
   if(owner == null){
     return null
@@ -50,7 +31,7 @@ const Home = ({loginUser, setLoginUser}) => {
     return (
       <div className={classes.root}>
         <BlogAppBar owner={owner} loginUser={loginUser} setLoginUser={setLoginUser}/>
-        <BlogDrawer owner={owner} editable={editable}/>
+        <BlogDrawer owner={owner}/>
         <Switch>
           <Route path={`${match.path}/articles`}>
             <ArticleList owner={owner}/>
