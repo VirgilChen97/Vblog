@@ -33,22 +33,30 @@ const useUserInfo = (userId, username) => {
   return [userInfo, setUserInfo, loading, error]
 }
 
-const useAuthenticatedRequest = () => {
+const useRequest = () => {
   const [jsonResponse, setJsonResponse] = useState(null)
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState(false)
 
-  const send = async (jsonData, url, token, callBack) => {
-    let request = null
-    if (token !== undefined) {
-      request = JwtUtil.AuthenticateRequest(token, jsonData, url)
-    } else {
-      request = new Request(url, {
-        method: 'POST',
-        body: JSON.stringify(jsonData)
-      })
+
+  const send = async (jsonData, url, method, token, callBack) => {
+    let init = {
+      method: method,
     }
+
+    if(jsonData !== null){
+      init.body = JSON.stringify(jsonData)
+    }
+
+    if(token !== null){
+      init.headers = {
+        'Content-Type': "application/json",
+        "Authorization": token
+      }
+    }
+      
+    let request = new Request(`${process.env.REACT_APP_API_ENDPOINT}${url}`, init)
 
     setLoading(true)
     try {
@@ -72,4 +80,4 @@ const useAuthenticatedRequest = () => {
   return [send, jsonResponse, loading, success, error]
 }
 
-export { useAuthenticatedRequest, useUserInfo }
+export { useRequest, useUserInfo }

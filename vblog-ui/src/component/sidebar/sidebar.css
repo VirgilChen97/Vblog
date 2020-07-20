@@ -1,0 +1,22 @@
+.card-base{
+  width: 100%;
+}
+
+.card-title{
+  padding: 16px 16px 8px 16px;
+}
+
+.card-content{
+  padding: 8px 16px 16px 16px;
+}
+
+.badge{
+  display: inline;
+  margin-right: 5px;
+}
+
+.category-card-list{
+  list-style-type: none;
+  margin: 0px;
+  padding-inline-start: 0px;
+}

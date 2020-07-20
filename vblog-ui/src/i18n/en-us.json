@@ -29,9 +29,15 @@
     "categories": "Categories"
   },
   "tagCard":{
+    "tags": "Tags",
     "noTags": "You don't have any tags"
   },
+  "categoryCard":{
+    "categories": "Categories",
+    "noCategories": "You don't have any Categories"
+  },
   "userCard":{
+    "userInfo": "Personal Info",
     "noNickName": "No nickname",
     "noTitle": "No Title",
     "noLocation": "No location"

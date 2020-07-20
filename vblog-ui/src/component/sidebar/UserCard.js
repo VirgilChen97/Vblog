@@ -9,9 +9,6 @@ import Typography from "@material-ui/core/Typography";
 import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(theme => ({
-	root:{
-		width: "100%",
-	},
 	userAvatar: {
 		width: "150px",
 		height: "150px",
@@ -33,8 +30,11 @@ const UserCard = ( {owner, editable} ) => {
 		return null
 	}else {
 		return (
-			<Card className={classes.root}>
-				<CardContent>
+			<Card className="card-base">
+				<div className="card-title">
+					<Typography variant="caption">{t('userCard.userInfo')}</Typography>
+				</div>
+				<div className="card-content">
 					<Grid container justify="center">
 						<Grid item xs={12}>
 							<Avatar className={classes.userAvatar}>
@@ -53,7 +53,7 @@ const UserCard = ( {owner, editable} ) => {
 							</Typography>
 						</Grid>
 					</Grid>
-				</CardContent>
+				</div>
 			</Card>
 		)
 	}

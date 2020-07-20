@@ -5,13 +5,13 @@ import { useTranslation } from 'react-i18next';
 import SettingsIcon from '@material-ui/icons/Settings';
 
 import ProgressButton from './common/ProgressButton';
-import { useAuthenticatedRequest, useUserInfo } from './common/Hooks';
+import { useRequest, useUserInfo } from './common/Hooks';
 
 const Settings = ({ loginUser }) => {
   const [open, setOpen] = React.useState(false)
   const { t } = useTranslation()
   const history = useHistory()
-  const [send,, loading, success,] = useAuthenticatedRequest()
+  const [send,, loading, success,] = useRequest()
   const [userInfo, setUserInfo,,] = useUserInfo(loginUser.id)
 
   const handleClickOpen = () => {
@@ -31,7 +31,7 @@ const Settings = ({ loginUser }) => {
       "email": userInfo.email
     }
 
-    send(data, `/users/${loginUser.id}`, loginUser.token, () => {
+    send(data, `/users/${loginUser.id}`, "POST", loginUser.token, () => {
       handleClose()
       history.go(0)
     })

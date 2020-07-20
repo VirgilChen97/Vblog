@@ -10,6 +10,7 @@ import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Slide from '@material-ui/core/Slide';
 import UserCard from "./UserCard";
 import TagCard from "./TagCard";
+import CategoryCard from './CategoryCard';
 
 const drawerWidth = 300;
 
@@ -57,6 +58,9 @@ export default function ClippedDrawer ({ owner, editable }) {
           </ListItem>
           <ListItem>
             <TagCard owner={owner}/>
+          </ListItem>
+          <ListItem>
+            <CategoryCard owner={owner}/>
           </ListItem>
         </List>
       </div>

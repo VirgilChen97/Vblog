@@ -70,16 +70,4 @@ export default class JwtUtil {
 			return true;
 		}
 	}
-
-	static AuthenticateRequest = (token, requestBody, relativeUrl) => {
-		let request = new Request(`${process.env.REACT_APP_API_ENDPOINT}${relativeUrl}`, {
-			headers: {
-				'Content-Type': "application/json",
-				"Authorization": token
-			},
-			method: 'POST',
-			body: JSON.stringify(requestBody)
-		})
-		return request;
-	}
 }

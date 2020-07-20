@@ -12,7 +12,7 @@ import { useHistory } from 'react-router-dom'
 import JwtUtil from "../util/JwtUtil";
 import { useTranslation } from 'react-i18next';
 import zIndex from '@material-ui/core/styles/zIndex';
-import { useAuthenticatedRequest } from './common/Hooks';
+import { useRequest } from './common/Hooks';
 
 const PUBLISHED = 0;
 const DRAFT = 1;
@@ -40,7 +40,7 @@ const EditArticle = ({ loginUser }) => {
 	const classes = useStyles()
 	const commonClasses = useCommonStyles()
 	const { t } = useTranslation()
-	const [send, jsonResponse, loading, success, error] = useAuthenticatedRequest()
+	const [send, jsonResponse, loading, success, error] = useRequest()
 
 	const [title, setTitle] = useState(t('editArticle.untitledArticle'))
 	const [tag, setTag] = useState([])
@@ -64,7 +64,7 @@ const EditArticle = ({ loginUser }) => {
 			data.category = category
 		}
 
-		send(data, "/articles", loginUser.token, ()=>{
+		send(data, "/articles", "POST", loginUser.token, ()=>{
 			setTimeout(() => { history.push(`/page/${loginUser.username}`) }, 3000)
 		})		
 	}
