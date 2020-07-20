@@ -18,7 +18,8 @@ public class User {
     String username;
     String password;
     String email;
-    String displayName;
+    String nickName;
+    String blogName;
     String title;
     String location;
     String settings;

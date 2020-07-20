@@ -7,7 +7,8 @@ public enum Error{
     USERNAME_ALREADY_USED(40902, "This username has already been used"),
     USERNAME_INVALID(40000, "This username is not valid, username should be within 6-20 characters, - or _"),
     EMAIL_INVALID(40001, "This email is not valid"),
-    PASSWORD_TOO_SHORT(40002, "Password must be longer than 6 digit")
+    PASSWORD_TOO_SHORT(40002, "Password must be longer than 6 digit"),
+    PERMISSION_DENIED(40301, "You don't have proper permission for this operation")
     ;
 
     private String msg;

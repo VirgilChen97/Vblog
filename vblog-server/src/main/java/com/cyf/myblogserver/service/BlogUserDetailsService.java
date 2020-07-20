@@ -1,5 +1,6 @@
 package com.cyf.myblogserver.service;
 
+import com.cyf.myblogserver.data.ChangeUserSettingRequest;
 import com.cyf.myblogserver.entity.User;
 import com.cyf.myblogserver.exception.CommonException;
 import com.cyf.myblogserver.exception.Error;
@@ -45,12 +46,21 @@ public class BlogUserDetailsService implements UserDetailsService {
     }
 
     /**
-     * Get user info by username
-     * @param username
-     * @return User entity identified by the username
+     * Get user info by id
+     * @param userId
+     * @return User entity identified by id
      * @throws CommonException
      */
-    public User getUserInfoByUsername(String username) throws CommonException {
+    public User getUserInfo(Long userId) throws CommonException {
+        User user = userRepository.findById(userId).get();
+        if(user == null){
+            throw new CommonException(Error.USER_NOT_FOUNT.getCode(), 404, Error.USER_NOT_FOUNT.getMsg());
+        }else{
+            return user;
+        }
+    }
+
+    public User getUserIndoByUsername(String username) throws CommonException {
         User user = userRepository.findByUsername(username);
         if(user == null){
             throw new CommonException(Error.USER_NOT_FOUNT.getCode(), 404, Error.USER_NOT_FOUNT.getMsg());
@@ -96,5 +106,15 @@ public class BlogUserDetailsService implements UserDetailsService {
         user.setPassword("{bcrypt}" + new BCryptPasswordEncoder().encode(user.getPassword()));
         User newUser = userRepository.save(user);
         return newUser;
+    }
+
+    public void changeUserInfo(Long userId, ChangeUserSettingRequest changeUserSettingRequest){
+        User user = userRepository.findById(userId).get();
+        user.setNickName(changeUserSettingRequest.getNickName());
+        user.setLocation(changeUserSettingRequest.getLocation());
+        user.setEmail(changeUserSettingRequest.getEmail());
+        user.setBlogName(changeUserSettingRequest.getBlogName());
+        user.setTitle(changeUserSettingRequest.getTitle());
+        userRepository.save(user);
     }
 }

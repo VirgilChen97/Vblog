@@ -1,9 +1,6 @@
 package com.cyf.myblogserver.controller;
 
-import com.cyf.myblogserver.data.AuthenticationRequest;
-import com.cyf.myblogserver.data.AuthenticationResponse;
-import com.cyf.myblogserver.data.ResponseData;
-import com.cyf.myblogserver.data.UserInfoResponse;
+import com.cyf.myblogserver.data.*;
 import com.cyf.myblogserver.entity.User;
 import com.cyf.myblogserver.exception.AuthenticationFailedException;
 import com.cyf.myblogserver.exception.CommonException;
@@ -16,6 +13,8 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/api")
@@ -49,9 +48,15 @@ public class UserController {
         return ResponseData.success(response);
     }
 
-    @RequestMapping(value = "/users/{username}")
-    public ResponseData<UserInfoResponse> getUserInfoById (@PathVariable String username) throws CommonException {
-        User user = blogUserDetailsService.getUserInfoByUsername(username);
+    @RequestMapping(value = "/users/{userId}")
+    public ResponseData<UserInfoResponse> getUserInfoById (@PathVariable Long userId) throws CommonException {
+        User user = blogUserDetailsService.getUserInfo(userId);
+        return ResponseData.success(new UserInfoResponse(user));
+    }
+
+    @RequestMapping(value = "/users")
+    public ResponseData<UserInfoResponse> getUserInfoById (@RequestParam String username) throws CommonException {
+        User user = blogUserDetailsService.getUserIndoByUsername(username);
         return ResponseData.success(new UserInfoResponse(user));
     }
 
@@ -59,5 +64,19 @@ public class UserController {
     public ResponseData register(@RequestBody User user) throws CommonException {
         User registeredUser = blogUserDetailsService.addNewUser(user);
         return ResponseData.success(registeredUser);
+    }
+
+    @RequestMapping(value = "/users/{userId}", method = RequestMethod.POST)
+    public ResponseData changeUserSettings (
+            @PathVariable Long userId,
+            @RequestBody ChangeUserSettingRequest requestBody,
+            HttpServletRequest request
+    ) throws AuthenticationFailedException {
+        Long AuthenticatedUserId = (Long)request.getAttribute("userId");
+        if(userId != AuthenticatedUserId){
+            throw new AuthenticationFailedException();
+        }
+        blogUserDetailsService.changeUserInfo(userId, requestBody);
+        return ResponseData.success();
     }
 }
