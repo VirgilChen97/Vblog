@@ -51,7 +51,11 @@
   },
   "articleCard":{
     "postAt": "发布于",
-    "readMore": "阅读更多"
+    "readMore": "阅读更多",
+    "edit": "编辑",
+    "delete": "删除",
+    "confirmDelete": "你确定要删除这篇文章吗？",
+    "confirmDeleteInfo": "删除后的文章无法找回"
   },
   "settings":{
     "nickName": "昵称",
@@ -59,5 +63,9 @@
     "location": "地点",
     "title": "职称",
     "save": "保存"
+  },
+  "ConfirmButton":{
+    "yes": "确定",
+    "no": "取消"
   }
 }

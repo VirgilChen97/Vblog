@@ -7,7 +7,7 @@ import { useRequest } from '../common/Hooks';
 
 const CategoryCard = ({ owner }) => {
   const { t } = useTranslation()
-  const [send, jsonResponse, loading, success, error] = useRequest()
+  const [send, categories, loading, success, error] = useRequest()
 
   useEffect(() => {
     const fetchAllUserCategory = async () => {
@@ -16,10 +16,9 @@ const CategoryCard = ({ owner }) => {
     fetchAllUserCategory()
   }, [owner])
 
-  if (jsonResponse === null) {
+  if (categories === null) {
     return null
   } else {
-    let categories = jsonResponse.data
     return (
       <Card className="card-base">
         <div className="card-title">

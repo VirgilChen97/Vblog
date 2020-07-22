@@ -1,28 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import {List, ListItem, Toolbar} from '@material-ui/core';
 import ArticleCard from './ArticleCard';
+import { useRequest } from '../common/Hooks';
 
-const ArticleList = ({owner}) => {
-	const [articles, setArticles] = useState(null)
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState(false);
+const ArticleList = ({owner, editable}) => {
+	const [getArticles, articles, loading, success, error] = useRequest()
 
 	useEffect(() => {
 		const fetchArticles = async () => {
-			try {
-				setLoading(true)
-				const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/articles?username=${owner.username}`)
-				if (response.status >= 400) {
-					setError(true)
-				} else {
-					let json = await response.json()
-					let data = json.data
-					setArticles(data)
-				}
-				setLoading(false)
-			} catch (error) {
-				setError(true)
-			}
+			getArticles(null, `/articles?username=${owner.username}`, "GET", null)
 		}
 		fetchArticles()
 	}, [owner])
@@ -40,6 +26,7 @@ const ArticleList = ({owner}) => {
 								createDate={article.createDate}
 								lastModifiedDate={article.lastModifiedDate}
 								mdContent={article.mdContent}
+								editable={editable}
 							/>
 						</ListItem>
 					)}

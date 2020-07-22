@@ -10,7 +10,7 @@ import './sidebar.css';
 
 const TagCard = ({ owner }) => {
 	const { t } = useTranslation()
-	const [send, jsonResponse, loading, success, error] = useRequest()
+	const [send, tags, loading, success, error] = useRequest()
 
 	useEffect(() => {
 		const fetchAllUserTags = async () => {
@@ -19,10 +19,9 @@ const TagCard = ({ owner }) => {
 		fetchAllUserTags()
 	}, [owner])
 
-	if (jsonResponse === null) {
+	if (tags === null) {
 		return null
 	} else {
-		let tags = jsonResponse.data
 		return (
 			<Card className="card-base">
 				<div className="card-title">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useContext} from 'react';
 import TextField from "@material-ui/core/TextField";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Card from "@material-ui/core/Card";
@@ -9,10 +9,9 @@ import Input from "@material-ui/core/Input";
 import Grid from "@material-ui/core/Grid";
 import Editor from "./editor/Editor";
 import { useHistory } from 'react-router-dom'
-import JwtUtil from "../util/JwtUtil";
 import { useTranslation } from 'react-i18next';
-import zIndex from '@material-ui/core/styles/zIndex';
-import { useRequest } from './common/Hooks';
+import { useRequest, useArticle } from './common/Hooks';
+import { UserContext } from '../App'
 
 const PUBLISHED = 0;
 const DRAFT = 1;
@@ -35,17 +34,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 // Edit Article and new article page
-const EditArticle = ({ loginUser }) => {
+const EditArticle = () => {
+	const {loginUser} = useContext(UserContext)
 	const history = useHistory()
 	const classes = useStyles()
 	const commonClasses = useCommonStyles()
 	const { t } = useTranslation()
-	const [send, jsonResponse, loading, success, error] = useRequest()
-
-	const [title, setTitle] = useState(t('editArticle.untitledArticle'))
-	const [tag, setTag] = useState([])
-	const [category, setCategory] = useState("")
-	const [mdContent, setMdContent] = useState("# 在这里编写markdown内容")
+	const [saveArticle, jsonResponse, saveArticleLoading, saveArticleSuccess, saveArticleError] = useRequest()
+	const [title, tag, category, mdContent, setTitle, setTag, setCategory, setMdContent, loading, error] = useArticle()
 
 	const handleSubmit = async (mode) => {
 		// article upload request body
@@ -56,7 +52,12 @@ const EditArticle = ({ loginUser }) => {
 		}
 
 		if(tag !== ""){
-			let tags = tag.split(/，|,/)
+			debugger
+			let tagStrs = tag.split(/，|,/)
+			let tags = []
+			for(let tagStr of tagStrs){
+				tags.push({"tagName": tagStr.trim()})
+			}
 			data.tags = tags
 		}
 
@@ -64,7 +65,7 @@ const EditArticle = ({ loginUser }) => {
 			data.category = category
 		}
 
-		send(data, "/articles", "POST", loginUser.token, ()=>{
+		saveArticle(data, "/articles", "POST", loginUser.token, ()=>{
 			setTimeout(() => { history.push(`/page/${loginUser.username}`) }, 3000)
 		})		
 	}
@@ -102,8 +103,8 @@ const EditArticle = ({ loginUser }) => {
 					<Grid item>
 						<ProgressButton
 							onClick={() => handleSubmit(PUBLISHED)}
-							loading={loading}
-							success={success}
+							loading={saveArticleLoading}
+							success={saveArticleSuccess}
 						>
 							{t('editArticle.publish')}
 						</ProgressButton>

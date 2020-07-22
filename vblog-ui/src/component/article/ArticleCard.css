@@ -1,3 +1,17 @@
 .article-card-root {
     width: 100%
 }
+
+.authenticated-area-container{
+    display: none;
+}
+
+.article-card-root:hover .authenticated-area-container{
+    display: inline;
+}
+
+.action-area-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}

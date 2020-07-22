@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext} from 'react';
 import BlogAppBar from './appbar/BlogAppBar';
 import ArticleList from './article/ArticleList';
 import BlogDrawer from './sidebar/Drawer'
@@ -12,6 +12,7 @@ import {
   Route
 } from 'react-router-dom'
 import { useUserInfo } from './common/Hooks';
+import { UserContext } from '../App'
 
 const useStyles = makeStyles((theme) => ({
   root:{
@@ -19,8 +20,9 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Home = ({loginUser, setLoginUser}) => {
+const Home = () => {
   const classes = useStyles();
+  const {loginUser, setLoginUser} = useContext(UserContext)
   let {username} = useParams()
   let match = useRouteMatch()
   const [owner,,loading, error] = useUserInfo(undefined, username)
@@ -34,7 +36,7 @@ const Home = ({loginUser, setLoginUser}) => {
         <BlogDrawer owner={owner}/>
         <Switch>
           <Route path={`${match.path}/articles`}>
-            <ArticleList owner={owner}/>
+            <ArticleList owner={owner} editable={loginUser && owner.id === loginUser.id}/>
           </Route>
           <Route path={`${match.path}**`}>
             <Redirect to={`${match.url}/articles`} />

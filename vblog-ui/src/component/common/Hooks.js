@@ -1,5 +1,29 @@
 import { useState, useEffect } from 'react'
 import JwtUtil from '../../util/JwtUtil'
+import { useTranslation } from 'react-i18next'
+
+const useArticle = (articleId) => {
+  const {t} = useTranslation()
+
+  const [title, setTitle] = useState(t('editArticle.untitledArticle'))
+	const [tag, setTag] = useState("")
+	const [category, setCategory] = useState("")
+  const [mdContent, setMdContent] = useState("# 在这里编写markdown内容")
+  const [send, article, loading, success, error] = useRequest()
+
+  useEffect(() => {
+    if(articleId !== undefined){
+      send(null, `/articles/${articleId}`, "GET", null, ()=>{
+        setTag(article.tags)
+        setCategory(article.category)
+        setMdContent(article.mdContent)
+        setTitle(article.title)
+      })
+    }
+  }, [articleId])
+  
+  return [title, tag, category, mdContent, setTitle, setTag, setCategory, setMdContent, loading, error]
+}
 
 const useUserInfo = (userId, username) => {
   const [userInfo, setUserInfo] = useState(null)
@@ -39,7 +63,6 @@ const useRequest = () => {
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState(false)
 
-
   const send = async (jsonData, url, method, token, callBack) => {
     let init = {
       method: method,
@@ -64,7 +87,8 @@ const useRequest = () => {
       if (response.status >= 400) {
         setError(response.status)
       }
-      setJsonResponse(await response.json())
+      let responseBody = await response.json()
+      setJsonResponse(responseBody.data)
     } catch (e) {
       setError(true)
     }
@@ -80,4 +104,4 @@ const useRequest = () => {
   return [send, jsonResponse, loading, success, error]
 }
 
-export { useRequest, useUserInfo }
+export { useRequest, useUserInfo, useArticle }

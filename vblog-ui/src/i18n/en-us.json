@@ -50,7 +50,22 @@
     "newPost": "New post"
   },
   "articleCard":{
-    "postAt": "发布于",
-    "readMore": "阅读更多"
+    "postAt": "Post at",
+    "readMore": "Read more",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirmDelete": "Are you sure you want to delete this article？",
+    "confirmDeleteInfo": "Deleted article can't be restored"
+  },
+  "settings":{
+    "nickName": "Nick name",
+    "blogTitle": "Blog name",
+    "location": "Location",
+    "title": "Title",
+    "save": "Save"
+  },
+  "ConfirmButton":{
+    "yes": "Yes",
+    "no": "No"
   }
 }

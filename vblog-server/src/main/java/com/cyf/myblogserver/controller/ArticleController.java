@@ -37,10 +37,18 @@ public class ArticleController {
         return ResponseData.success();
     }
 
+    // Modify an article
     @PutMapping("/articles/{id}")
     public ResponseData editArticle(@PathVariable Long id, @RequestBody Article article){
         article.setId(id);
         articleService.saveArticle(article);
+        return ResponseData.success();
+    }
+
+    @DeleteMapping("/articles/{id}")
+    public ResponseData deleteArticle(@PathVariable Long id, HttpServletRequest request) throws CommonException {
+        Long AuthenticatedUserId = (Long)request.getAttribute("userId");
+        articleService.deleteArticle(id, AuthenticatedUserId);
         return ResponseData.success();
     }
 

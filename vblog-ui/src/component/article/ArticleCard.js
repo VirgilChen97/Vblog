@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -10,6 +10,11 @@ import 'github-markdown-css'
 import CodeBlock from "../../util/CodeBlock";
 import { useTranslation } from 'react-i18next';
 import './ArticleCard.css'
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import ConfirmButton from '../common/ConfirmButton';
+import { useRequest } from '../common/Hooks';
+import { UserContext } from '../../App';
 
 /**
  * id: Article id
@@ -17,10 +22,20 @@ import './ArticleCard.css'
  * title: Article title
  * content: short version of article content
  */
-const ArticleCard = ({id, createDate, lastModifiedDate, title, mdContent}) => {
+const ArticleCard = ({id, createDate, lastModifiedDate, title, mdContent, editable}) => {
+  const {loginUser} = useContext(UserContext)
   const commonClasses = useCommonStyles();
   const {t} = useTranslation()
+  const [deleteArticle,,loading, success, error] = useRequest()
 
+  const handleDelete = () => {
+    deleteArticle(null, `/articles/${id}`, "DELETE", loginUser.token)
+  }
+
+  if(success){
+    return null
+  }
+  
   return (
     <Card className={"article-card-root"}>
       <CardContent>
@@ -38,7 +53,23 @@ const ArticleCard = ({id, createDate, lastModifiedDate, title, mdContent}) => {
         </div>
       </CardContent>
       <CardActions>
-        <Button size="small">{t('articleCard.readMore')}</Button>
+        <div className="action-area-container">
+          <Button size="small">{t('articleCard.readMore')}</Button>
+          {editable?
+            <div className="authenticated-area-container">
+              <Button size="small" startIcon={<EditIcon/>}>{t('articleCard.edit')}</Button>
+              <ConfirmButton 
+                size="small" 
+                startIcon={<DeleteIcon/>} 
+                style={{color: "red"}}
+                alertTitle={t('articleCard.confirmDelete')}
+                alertText={t('articleCard.confirmDeleteInfo')}
+                action={handleDelete}
+              >
+                {t('articleCard.delete')}
+              </ConfirmButton>
+            </div>:null}
+        </div>
       </CardActions>
     </Card>
   );

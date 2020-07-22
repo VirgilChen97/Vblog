@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import TextField from "@material-ui/core/TextField";
 import List from "@material-ui/core/List";
 import { useHistory, useLocation, Link } from "react-router-dom"
@@ -7,11 +7,13 @@ import { ListItem } from '@material-ui/core';
 import LoginFrame from './LoginFrame';
 import { useTranslation } from 'react-i18next';
 import JwtUtil from '../../util/JwtUtil';
+import { UserContext } from '../../App'
 
-const Login = ({loginUser, setLoginUser}) => {
+const Login = () => {
 	const history = useHistory()
 	const location = useLocation()
 	const {t} = useTranslation()
+	const {loginUser, setLoginUser} = useContext(UserContext)
 
 	const [username, setUsername] = useState("")
 	const [password, setPassword] = useState("")

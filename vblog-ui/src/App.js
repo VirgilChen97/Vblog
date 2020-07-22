@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import './App.css';
 import Home from './component/Home'
 import {
@@ -13,6 +13,8 @@ import AuthenticationRoute from "./component/common/AuthenticationRoute";
 import Register from './component/login/Register';
 import JwtUtil from './util/JwtUtil';
 
+export const UserContext = React.createContext(null)
+
 const App = () => {
   const [loginUser, setLoginUser] = useState(null)
 
@@ -23,32 +25,34 @@ const App = () => {
 
   console.log(loginUser)
 
-  if(loginUser === null){
+  if (loginUser === null) {
     return null
   }
-  
+
   return (
-    <Router> 
-      <Switch>
-        <AuthenticationRoute loginUser={loginUser} path="/newpost">
-          <EditArticle loginUser={loginUser} />
-        </AuthenticationRoute>
-        <Route path="/login">
-          <Login loginUser={loginUser} setLoginUser={setLoginUser} />
-        </Route>
-        <Route path="/register">
-          <Register />
-        </Route>
-        <Route path="/page/:username">
-          <Home loginUser={loginUser} setLoginUser={setLoginUser}/>
-        </Route>
-        <Route path="/">
-          {loginUser !== undefined ?
-            <Redirect to={`/page/${loginUser.username}`} /> :
-            <Redirect to="/login" />
-          }
-        </Route>
-      </Switch>
+    <Router>
+      <UserContext.Provider value={{ loginUser, setLoginUser }}>
+        <Switch>
+          <AuthenticationRoute path="/newpost">
+            <EditArticle />
+          </AuthenticationRoute>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
+          <Route path="/page/:username">
+            <Home />
+          </Route>
+          <Route path="/">
+            {loginUser !== undefined ?
+              <Redirect to={`/page/${loginUser.username}`} /> :
+              <Redirect to="/login" />
+            }
+          </Route>
+        </Switch>
+      </UserContext.Provider>
     </Router>
   );
 }
