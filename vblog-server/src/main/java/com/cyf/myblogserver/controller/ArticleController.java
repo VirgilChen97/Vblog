@@ -25,19 +25,17 @@ public class ArticleController {
     public ArticleController(ArticleService articleService) {
         this.articleService = articleService;
     }
-
-    // Upload an article
+    
     @PostMapping("/articles")
-    public ResponseData addArticle(@RequestBody Article article, HttpServletRequest request) throws AuthenticationFailedException {
+    public ResponseData addArticle(@RequestBody Article article, HttpServletRequest request) {
         Long AuthenticatedUserId = (Long)request.getAttribute("userId");
         User user = new User();
         user.setId(AuthenticatedUserId);
         article.setUser(user);
-        Long articleId = articleService.saveArticle(article);
+        articleService.saveArticle(article);
         return ResponseData.success();
     }
 
-    // Modify an article
     @PutMapping("/articles/{id}")
     public ResponseData editArticle(@PathVariable Long id, @RequestBody Article article){
         article.setId(id);

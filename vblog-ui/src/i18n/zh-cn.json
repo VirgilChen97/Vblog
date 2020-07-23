@@ -26,7 +26,8 @@
     "SaveAsDraft": "存为草稿",
     "untitledArticle": "无标题文章",
     "tags": "标签（用逗号分割）",
-    "categories": "分类"
+    "categories": "分类",
+    "placeholder": "在这里用 Markdown 撰写博客"
   },
   "tagCard":{
     "tags": "标签",

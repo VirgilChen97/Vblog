@@ -3,7 +3,7 @@ import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 import { useTranslation } from 'react-i18next';
 import { Divider, Grid } from '@material-ui/core';
-import { useRequest } from '../common/Hooks';
+import { useRequest } from '../Common/Hooks';
 
 const CategoryCard = ({ owner }) => {
   const { t } = useTranslation()

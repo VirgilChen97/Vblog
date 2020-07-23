@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 const useArticle = (articleId) => {
   const {t} = useTranslation()
 
-  const [title, setTitle] = useState(t('editArticle.untitledArticle'))
+  const [title, setTitle] = useState(t('ArticleEditor.untitledArticle'))
 	const [tag, setTag] = useState("")
 	const [category, setCategory] = useState("")
   const [mdContent, setMdContent] = useState("# 在这里编写markdown内容")

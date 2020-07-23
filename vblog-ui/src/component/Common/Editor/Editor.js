@@ -1,6 +1,6 @@
 import MonacoEditor from "react-monaco-editor";
 import React, { useRef } from "react";
-import CodeBlock from "../../util/CodeBlock";
+import CodeBlock from "../../../util/CodeBlock";
 import ReactMarkdown from "react-markdown";
 import SplitterLayout from 'react-splitter-layout';
 import makeStyles from "@material-ui/core/styles/makeStyles";

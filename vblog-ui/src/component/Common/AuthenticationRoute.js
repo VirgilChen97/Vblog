@@ -14,7 +14,7 @@ const AuthenticationRoute = ({ children, ...rest }) => {
 		}else{
 			return (<Redirect
 				to={{
-					pathname: "/login",
+					pathname: "/LoginPage",
 					state: { from: location }
 				}}
 			/>)

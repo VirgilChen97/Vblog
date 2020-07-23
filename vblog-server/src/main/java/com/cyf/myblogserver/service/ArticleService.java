@@ -46,7 +46,6 @@ public class ArticleService {
     public Long saveArticle(Article article){
 
         // Go through all tags in the article
-
         User user = article.getUser();
 
         if(article.getTags() != null) {

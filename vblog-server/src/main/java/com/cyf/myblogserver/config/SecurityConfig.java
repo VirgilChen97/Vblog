@@ -19,30 +19,51 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
 
+/**
+ * The security config of Vblog
+ */
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private BlogUserDetailsService BlogUserDetailsService;
     @Autowired
     JwtRequestFilter jwtRequestFilter;
 
+    /**
+     * Config method, Set BlogUserDetailService as Spring Security's default UserDetail Service
+     * @param auth
+     * @throws Exception
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(BlogUserDetailsService);
     }
 
+    /**
+     * Config the security policy of Vblog
+     * @param http
+     * @throws Exception
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
+                // Disable session because the blog use JWT as authentication method
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST,"/api/token", "/api/users").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/articles/**",
+                .antMatchers(HttpMethod.POST,
+                        "/api/token",
+                        "/api/users").permitAll()
+                .antMatchers(HttpMethod.GET,
+                        "/api/articles/**",
                         "/api/users/**",
                         "/api/tags/**",
                         "/api/categories/**").permitAll()
                 .anyRequest().authenticated().and().cors();
+
+        // Add JWT filter to filter authenticated user
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         http.headers().cacheControl();
     }
@@ -52,6 +73,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return authenticationManager();
     }
 
+    /**
+     * Configure to allow cross origin access
+     * @return
+     */
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();

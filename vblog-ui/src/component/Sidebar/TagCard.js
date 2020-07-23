@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Chip from "@material-ui/core/Chip";
 import { useTranslation } from 'react-i18next';
 import { Divider, LinearProgress } from '@material-ui/core';
-import { useRequest } from '../common/Hooks';
+import { useRequest } from '../Common/Hooks';
 import './sidebar.css';
 
 const TagCard = ({ owner }) => {

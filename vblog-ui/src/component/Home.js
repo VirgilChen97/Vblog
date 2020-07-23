@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
-import BlogAppBar from './appbar/BlogAppBar';
-import ArticleList from './article/ArticleList';
-import BlogDrawer from './sidebar/Drawer'
+import BlogAppBar from './Appbar/BlogAppBar';
+import ArticleList from './Article/ArticleList';
+import BlogDrawer from './Sidebar/Drawer'
 import { makeStyles } from '@material-ui/core/styles';
-import BlogFab from "./common/Fab";
+import BlogFab from "./Common/Fab";
 import {
   useParams,
   Switch,
@@ -11,7 +11,7 @@ import {
   useRouteMatch,
   Route
 } from 'react-router-dom'
-import { useUserInfo } from './common/Hooks';
+import { useUserInfo } from './Common/Hooks';
 import { UserContext } from '../App'
 
 const useStyles = makeStyles((theme) => ({

@@ -132,7 +132,7 @@ const Register = () => {
 			} else if (response.status > 400) {
 				setError(true)
 			} else {
-				history.push("/login")
+				history.push("/LoginPage")
 			}
 		} catch (error) {
 			setLoading(false)

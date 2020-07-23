@@ -17,8 +17,8 @@ const LoginFrame = ({children, action, buttonText, buttonDisabled, inProgress}) 
 	}
 
 	return (
-		<div className={"login-frame-container"}>
-			<Card elevation={3} className={"login-frame-root"}>
+		<div className={"LoginPage-frame-container"}>
+			<Card elevation={3} className={"LoginPage-frame-root"}>
 				<LinearProgress style={{visibility:inProgress?"visible":"hidden"}} />
 				<CardContent onKeyDown={handleEnterPress}>
 					<List justify="center">
@@ -31,7 +31,7 @@ const LoginFrame = ({children, action, buttonText, buttonDisabled, inProgress}) 
 					{children}
 				</CardContent>
 				<Button
-					className={"login-button"}
+					className={"LoginPage-button"}
 					variant="contained"
 					onClick={action}
 					ref={buttonRef}

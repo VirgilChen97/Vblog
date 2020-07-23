@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {List, ListItem, Toolbar} from '@material-ui/core';
 import ArticleCard from './ArticleCard';
-import { useRequest } from '../common/Hooks';
+import { useRequest } from '../Common/Hooks';
 
 const ArticleList = ({owner, editable}) => {
 	const [getArticles, articles, loading, success, error] = useRequest()

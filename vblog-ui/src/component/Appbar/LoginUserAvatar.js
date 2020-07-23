@@ -32,11 +32,11 @@ const LoginUserAvatar = ({ loginUser, setLoginUser }) => {
         className="login-button"
         component={Link} 
         to={{
-					pathname: "/login",
+					pathname: "/LoginPage",
 					state: { from: match.url }
 				}}
       >
-        {t('loginPage.login')}
+        {t('loginPage.LoginPage')}
       </Button>
     )
   }

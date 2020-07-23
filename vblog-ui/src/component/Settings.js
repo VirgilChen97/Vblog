@@ -4,8 +4,8 @@ import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import SettingsIcon from '@material-ui/icons/Settings';
 
-import ProgressButton from './common/ProgressButton';
-import { useRequest, useUserInfo } from './common/Hooks';
+import ProgressButton from './Common/ProgressButton';
+import { useRequest, useUserInfo } from './Common/Hooks';
 
 const Settings = ({ loginUser }) => {
   const [open, setOpen] = React.useState(false)

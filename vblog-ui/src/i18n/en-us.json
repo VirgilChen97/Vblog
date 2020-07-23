@@ -26,7 +26,8 @@
     "SaveAsDraft": "Save as Draft",
     "untitledArticle": "No Title",
     "tags": "Tags (Separate with comma)",
-    "categories": "Categories"
+    "categories": "Categories",
+    "placeholder": "Type your MD article here"
   },
   "tagCard":{
     "tags": "Tags",

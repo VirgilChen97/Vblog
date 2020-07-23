@@ -4,7 +4,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import useCommonStyles from '../common/CommonStyle';
+import useCommonStyles from '../Common/CommonStyle';
 import ReactMarkdown from "react-markdown";
 import 'github-markdown-css'
 import CodeBlock from "../../util/CodeBlock";
@@ -12,15 +12,15 @@ import { useTranslation } from 'react-i18next';
 import './ArticleCard.css'
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-import ConfirmButton from '../common/ConfirmButton';
-import { useRequest } from '../common/Hooks';
+import ConfirmButton from '../Common/ConfirmButton';
+import { useRequest } from '../Common/Hooks';
 import { UserContext } from '../../App';
 
 /**
  * id: Article id
  * date: Article create datetime
  * title: Article title
- * content: short version of article content
+ * content: short version of Article content
  */
 const ArticleCard = ({id, createDate, lastModifiedDate, title, mdContent, editable}) => {
   const {loginUser} = useContext(UserContext)

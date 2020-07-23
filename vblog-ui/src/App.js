@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Home from './component/Home'
 import {
@@ -7,10 +7,10 @@ import {
   Route,
   Redirect
 } from 'react-router-dom'
-import EditArticle from "./component/EditArticle";
-import Login from "./component/login/Login";
-import AuthenticationRoute from "./component/common/AuthenticationRoute";
-import Register from './component/login/Register';
+import ArticleEditor from "./component/ArticleEditor/ArticleEditor";
+import Login from "./component/LoginPage/Login";
+import AuthenticationRoute from "./component/Common/AuthenticationRoute";
+import Register from './component/LoginPage/Register';
 import JwtUtil from './util/JwtUtil';
 
 export const UserContext = React.createContext(null)
@@ -34,7 +34,7 @@ const App = () => {
       <UserContext.Provider value={{ loginUser, setLoginUser }}>
         <Switch>
           <AuthenticationRoute path="/newpost">
-            <EditArticle />
+            <ArticleEditor />
           </AuthenticationRoute>
           <Route path="/login">
             <Login />
