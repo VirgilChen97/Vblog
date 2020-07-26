@@ -25,19 +25,33 @@ public class TagCategoryController {
         this.tagCategoryService = tagCategoryService;
     }
 
+    /**
+     * Get all tags of an user identified by user id
+     * @param userId
+     * @return TagInfoResponse wrapped by response data
+     */
     @RequestMapping("/tags")
     public ResponseData<List<TagInfoResponse>> getAllUserTags(@RequestParam Long userId){
+        // Get all the user tags (no count)
         List<Tag> tags = tagCategoryService.getAllUserTags(userId);
         List<TagInfoResponse> tagResponses = new ArrayList<>();
+
         for(Tag tag:tags){
+            // Iterate all the tags and their count
             Integer count = tagCategoryService.getTagCount(tag.getId());
             if(count > 0) {
+                // only return the tags that has count more than 0
                 tagResponses.add(new TagInfoResponse(tag, count));
             }
         }
         return ResponseData.success(tagResponses);
     }
 
+    /**
+     * Get all categories of an user identified by user id
+     * @param userId
+     * @return CategoryInfoResponse wrapped by response data
+     */
     @RequestMapping("/categories")
     public ResponseData<List<CategoryInfoResponse>> getAllUserCategories(@RequestParam Long userId){
         List<Category> categories = tagCategoryService.getAllUserCategories(userId);

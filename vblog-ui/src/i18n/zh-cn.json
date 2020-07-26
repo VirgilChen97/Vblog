@@ -30,6 +30,9 @@
     "categories": "分类",
     "placeholder": "在这里用 Markdown 撰写博客"
   },
+  "articleList":{
+    "noArticle": "现在还没有文章哦"
+  },
   "tagCard":{
     "tags": "标签",
     "noTags": "没有标签"

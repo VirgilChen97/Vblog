@@ -11,7 +11,7 @@ const Settings = ({ loginUser }) => {
   const [open, setOpen] = React.useState(false)
   const { t } = useTranslation()
   const history = useHistory()
-  const [send,, loading, success,] = useRequest()
+  const [send,, loading, success, error] = useRequest()
   const [userInfo, setUserInfo,,] = useUserInfo(loginUser.id)
 
   const handleClickOpen = () => {
@@ -88,6 +88,7 @@ const Settings = ({ loginUser }) => {
             onClick={handleSubmit}
             loading={loading}
             success={success}
+            error={error}
           >
             {t('settings.save')}
           </ProgressButton>

@@ -51,14 +51,13 @@ const ArticleEditor = () => {
 		if (article.category !== "") {
 			data.category = { "categoryName": article.category }
 		}
-		debugger
-		saveArticle(data, articleId?`/articles/${articleId}`:"/articles", articleId?"PUT":"POST", loginUser.token, () => {
-			setTimeout(() => { history.push(`/page/${loginUser.username}`) }, 3000)
-		})
+		saveArticle(data, articleId ? `/articles/${articleId}` : "/articles", articleId ? "PUT" : "POST", loginUser.token, () => {
+				setTimeout(() => { history.push(`/page/${loginUser.username}`) }, 3000)
+		}, null)
 	}
 
-	if(article.user !== null && article.user.id !== loginUser.id ){
-		return(
+	if (article.user !== null && article.user.id !== loginUser.id) {
+		return (
 			// TODO: replace with proper placeholder
 			<div>没有编辑权限</div>
 		)
@@ -99,16 +98,17 @@ const ArticleEditor = () => {
 					onClick={() => handleSubmit(PUBLISHED)}
 					loading={saveArticleLoading}
 					success={saveArticleSuccess}
+					error={saveArticleError}
 				>
 					{t('articleEditor.publish')}
 				</ProgressButton>
 			</div>
 			<div className="article-editor">
-				{article.mdContent !== null? 
-				<BlogEditor 
-					onChange={(value,) => { setArticle.setMdContent(value) }}
-					value={article.mdContent}
-				/> : null} 
+				{article.mdContent !== null ?
+					<BlogEditor
+						onChange={(value,) => { setArticle.setMdContent(value) }}
+						value={article.mdContent}
+					/> : null}
 			</div>
 		</div >
 	);

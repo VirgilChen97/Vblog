@@ -30,6 +30,9 @@
     "categories": "Categories",
     "placeholder": "Type your MD article here"
   },
+  "articleList":{
+    "noArticle": "There is no article now"
+  },
   "tagCard":{
     "tags": "Tags",
     "noTags": "You don't have any tags"

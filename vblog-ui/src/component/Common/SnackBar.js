@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const MessageSnackbars = ({level}) => {
+const Snackbar = ({level}) => {
 	const classes = useStyles();
 	const [open, setOpen] = React.useState(false);
 
@@ -38,7 +38,7 @@ const MessageSnackbars = ({level}) => {
 			<Button variant="outlined" onClick={handleClick}>
 				Open success snackbar
 			</Button>
-			<Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+			<Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
 				<Alert onClose={handleClose} severity="success">
 					This is a success message!
 				</Alert>
@@ -48,4 +48,4 @@ const MessageSnackbars = ({level}) => {
 	);
 }
 
-export default MessageSnackbars
+export default Snackbar

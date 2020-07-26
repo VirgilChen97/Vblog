@@ -60,7 +60,13 @@ public class BlogUserDetailsService implements UserDetailsService {
         }
     }
 
-    public User getUserIndoByUsername(String username) throws CommonException {
+    /**
+     * Get user info by username
+     * @param username
+     * @return User entity identified by username
+     * @throws CommonException
+     */
+    public User getUserInfoByUsername(String username) throws CommonException {
         User user = userRepository.findByUsername(username);
         if(user == null){
             throw new CommonException(Error.USER_NOT_FOUNT.getCode(), 404, Error.USER_NOT_FOUNT.getMsg());

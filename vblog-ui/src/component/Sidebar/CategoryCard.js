@@ -25,18 +25,19 @@ const CategoryCard = ({ owner }) => {
           <Typography variant="caption">{t('categoryCard.categories')}</Typography>
         </div>
         <div className="card-content">
-          <Grid container spacing={1}>
-            {categories.length !== 0 ? categories.map(category => (
-              <Grid item container key={category.id} xs={12} justify="space-between">
-                <Grid item>
-                  {category.categoryName}
+          {categories.length !== 0 ?
+            <Grid container spacing={1}>
+              {categories.map(category => (
+                <Grid item container key={category.id} xs={12} justify="space-between">
+                  <Grid item>
+                    {category.categoryName}
+                  </Grid>
+                  <Grid item>
+                    {category.count}
+                  </Grid>
                 </Grid>
-                <Grid item>
-                  {category.count}
-                </Grid>
-              </Grid>
-            )) : <Typography align="center">{t('categoryCard.noCategories')}</Typography>}
-          </Grid>
+              ))}
+            </Grid> : <Typography align="center">{t('categoryCard.noCategories')}</Typography>}
         </div>
       </Card>
     )

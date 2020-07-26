@@ -77,10 +77,17 @@ public class ArticleService {
         articleRepository.save(oldArticle);
     }
 
+    /**
+     * Delete the given article
+     * @param id
+     * @param userId
+     * @throws CommonException
+     */
     public void deleteArticle(Long id, Long userId) throws CommonException {
         try {
             Article article = articleRepository.findById(id).get();
             if(article.getUser().getId() != userId){
+                // if the article is not belongs to authenticated user
                 throw new CommonException(Error.PERMISSION_DENIED.getCode(), 403, Error.PERMISSION_DENIED.getMsg());
             }
             articleRepository.deleteById(id);
@@ -123,6 +130,14 @@ public class ArticleService {
         }
     }
 
+    /**
+     * Process the tag and category when edit or add article,
+     * if the tag or category doesn't exist, create them,
+     * if already exist, then fill the tag or category id
+     * @param article
+     * @return processed article
+     * @throws CommonException
+     */
     private Article processTagAndCategory(Article article) throws CommonException {
         User user;
         try {
@@ -142,8 +157,7 @@ public class ArticleService {
                         // If the tag doesn't exist, create the tag
                         tagRepository.save(tag);
                     } else {
-
-                        // If exist, replace the id and increase the tag count int the db
+                        // If exist, fill the id
                         tag.setId(existingTag.getId());
                     }
                     map.put(tag.getTagName(), tag);

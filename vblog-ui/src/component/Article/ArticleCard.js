@@ -15,7 +15,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import ConfirmButton from '../Common/ConfirmButton';
 import { useRequest } from '../Common/Hooks';
 import { UserContext } from '../../App';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 /**
  * id: Article id
@@ -27,10 +27,12 @@ const ArticleCard = ({ id, createDate, lastModifiedDate, title, mdContent, edita
   const { loginUser } = useContext(UserContext)
   const commonClasses = useCommonStyles();
   const { t } = useTranslation()
+  const history = useHistory()
   const [deleteArticle, ,loading, success, error] = useRequest()
 
   const handleDelete = () => {
     deleteArticle(null, `/articles/${id}`, "DELETE", loginUser.token)
+    history.go(0)
   }
 
   if (success) {

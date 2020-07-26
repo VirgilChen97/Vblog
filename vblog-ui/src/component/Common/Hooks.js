@@ -101,7 +101,7 @@ const useRequest = () => {
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState(false)
 
-  const send = async (jsonData, url, method, token, callBack) => {
+  const send = async (jsonData, url, method, token, successCallback, errorCallback) => {
     let init = {
       method: method,
     }
@@ -125,19 +125,20 @@ const useRequest = () => {
       let response = await fetch(request)
       if (response.status >= 400) {
         setError(response.status)
+        if(errorCallback !== undefined){
+          errorCallback(error)
+        }
       }
       responseBody = await response.json()
       setJsonResponse(responseBody.data)
+      setSuccess(true)
+      if (successCallback !== undefined) {
+        successCallback(responseBody.data)
+      }
     } catch (e) {
       setError(true)
     }
-
     setLoading(false)
-    setSuccess(true)
-
-    if (callBack !== undefined) {
-      callBack(responseBody.data)
-    }
   }
 
   return [send, jsonResponse, loading, success, error]

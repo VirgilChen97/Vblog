@@ -26,17 +26,61 @@ public class ArticleController {
     public ArticleController(ArticleService articleService) {
         this.articleService = articleService;
     }
-    
+
+    /**
+     * Post an new article with authenticated user
+     * @param article article entity from request
+     * @param request HttpServletRequest with authenticated user id
+     * @return success message
+     * @throws CommonException
+     */
     @PostMapping("/articles")
     public ResponseData addArticle(@RequestBody Article article, HttpServletRequest request) throws CommonException {
+
+        // User's id has been put in HttpServletRequest in JwtRequestFilter, non authenticated user will
+        // be blocked by filter
         Long authenticatedUserId = (Long)request.getAttribute("userId");
+
+        // put user id in article entity
         User user = new User();
         user.setId(authenticatedUserId);
         article.setUser(user);
+
         articleService.saveArticle(article);
         return ResponseData.success();
     }
 
+    /**
+     * Get a user's article by username, filtered by given parameters
+     * @param page
+     * @param limit
+     * @param categoryId return only the article with given category id
+     * @param tagId return only the article with given tag id
+     * @param username
+     * @return result
+     * @throws CommonException
+     */
+    @GetMapping("/articles")
+    public ResponseData<PagedArticleResponse> getArticles(
+            @RequestParam(defaultValue = "0") Integer page,
+            @RequestParam(defaultValue = "10") Integer limit,
+            @RequestParam(required = false) Long categoryId,
+            @RequestParam(required = false) Long tagId,
+            String username
+    ) throws CommonException {
+        Page<Article> articles = articleService.getArticlesByUserName(page, limit, username);
+        PagedArticleResponse response = new PagedArticleResponse(articles);
+        return ResponseData.success(response);
+    }
+
+    /**
+     * Edit an article identified by articleId
+     * @param id The id of the article that need to be edited
+     * @param article Edited article entity from request body
+     * @param request HttpServletRequest with authenticated user id
+     * @return success message
+     * @throws CommonException
+     */
     @PutMapping("/articles/{id}")
     public ResponseData editArticle(@PathVariable Long id, @RequestBody Article article, HttpServletRequest request) throws CommonException {
         Long authenticatedUserId = (Long)request.getAttribute("userId");
@@ -48,6 +92,13 @@ public class ArticleController {
         return ResponseData.success();
     }
 
+    /**
+     * Delete an article identified by articleId
+     * @param id The id of the article that need to be deleted
+     * @param request HttpServletRequest with authenticated user id
+     * @return success message
+     * @throws CommonException
+     */
     @DeleteMapping("/articles/{id}")
     public ResponseData deleteArticle(@PathVariable Long id, HttpServletRequest request) throws CommonException {
         Long AuthenticatedUserId = (Long)request.getAttribute("userId");
@@ -55,26 +106,12 @@ public class ArticleController {
         return ResponseData.success();
     }
 
-    @GetMapping("/articles")
-    public ResponseData<PagedArticleResponse> getArticles(
-            @RequestParam(defaultValue = "0") Integer page,
-            @RequestParam(defaultValue = "10") Integer limit,
-            @RequestParam(required = false) Long categoryId,
-            @RequestParam(required = false) Long tagId,
-            String username
-    ) throws CommonException {
-        Page<Article> articles = articleService.getArticlesByUserName(page, limit, username);
-        PagedArticleResponse response = new PagedArticleResponse(
-                articles.getContent(),
-                articles.getPageable().getPageNumber(),
-                articles.getPageable().getPageSize(),
-                articles.getNumberOfElements(),
-                articles.getTotalPages(),
-                articles.getTotalElements()
-        );
-        return ResponseData.success(response);
-    }
-
+    /**
+     * Get an article identified by articleId
+     * @param id
+     * @return article data wrapped by response data
+     * @throws CommonException
+     */
     @GetMapping("/articles/{id}")
     public ResponseData<ArticleResponse> getArticle(@PathVariable Long id) throws CommonException {
         Article article = articleService.getArticle(id);
