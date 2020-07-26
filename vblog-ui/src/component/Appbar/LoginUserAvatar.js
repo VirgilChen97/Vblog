@@ -5,7 +5,6 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import JwtUtil from '../../util/JwtUtil';
 import { Link, useRouteMatch } from "react-router-dom";
 import Settings from '../Settings';
-import './LoginUserAvatar.css'
 
 const LoginUserAvatar = ({ loginUser, setLoginUser }) => {
   const { t } = useTranslation()
@@ -29,14 +28,17 @@ const LoginUserAvatar = ({ loginUser, setLoginUser }) => {
   if (loginUser === undefined) {
     return (
       <Button 
-        className="login-button"
+        style={{
+          color: 'white',
+          border: '1px solid white'
+        }}
         component={Link} 
         to={{
 					pathname: "/LoginPage",
 					state: { from: match.url }
 				}}
       >
-        {t('loginPage.LoginPage')}
+        {t('loginPage.login')}
       </Button>
     )
   }

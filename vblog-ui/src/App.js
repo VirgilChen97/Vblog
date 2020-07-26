@@ -28,33 +28,35 @@ const App = () => {
   }
 
   return (
-    <Router>
-      <UserContext.Provider value={{ loginUser, setLoginUser }}>
-        <Switch>
-          <AuthenticationRoute path="/newpost">
-            <ArticleEditor />
-          </AuthenticationRoute>
-          <AuthenticationRoute path="/editArticle/:articleId">
-            <ArticleEditor />
-          </AuthenticationRoute>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/register">
-            <Register />
-          </Route>
-          <Route path="/page/:username">
-            <Home />
-          </Route>
-          <Route path="/">
-            {loginUser !== undefined ?
-              <Redirect to={`/page/${loginUser.username}`} /> :
-              <Redirect to="/login" />
-            }
-          </Route>
-        </Switch>
-      </UserContext.Provider>
-    </Router>
+    <div className="root">
+      <Router>
+        <UserContext.Provider value={{ loginUser, setLoginUser }}>
+          <Switch>
+            <AuthenticationRoute path="/newpost">
+              <ArticleEditor />
+            </AuthenticationRoute>
+            <AuthenticationRoute path="/editArticle/:articleId">
+              <ArticleEditor />
+            </AuthenticationRoute>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/register">
+              <Register />
+            </Route>
+            <Route path="/page/:username">
+              <Home />
+            </Route>
+            <Route path="/">
+              {loginUser !== undefined ?
+                <Redirect to={`/page/${loginUser.username}`} /> :
+                <Redirect to="/login" />
+              }
+            </Route>
+          </Switch>
+        </UserContext.Provider>
+      </Router>
+    </div>
   );
 }
 
