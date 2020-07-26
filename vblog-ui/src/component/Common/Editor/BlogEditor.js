@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 
 const e = React.createElement
 
-const BlogEditor = ({onChange, className}) => {
+const BlogEditor = ({onChange, value, className}) => {
   const {t, i18n} = useTranslation()
   let lang = 'zh_CN'
   if(i18n.language.startsWith("en")){
@@ -22,8 +22,9 @@ const BlogEditor = ({onChange, className}) => {
         enable: false,
       },
       input: onChange,
-      placeholder: t('ArticleEditor.placeholder'),
-      lang: lang
+      placeholder: t('articleEditor.placeholder'),
+      lang: lang,
+      value: value
     })
     return () => {
       vditor.destroy()

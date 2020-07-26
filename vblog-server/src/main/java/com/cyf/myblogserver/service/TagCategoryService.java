@@ -27,4 +27,12 @@ public class TagCategoryService {
     public List<Category> getAllUserCategories(Long userId){
         return categoryRepository.findByUserId(userId);
     }
+
+    public Integer getTagCount(Long id){
+        return tagRepository.getTagCount(id);
+    }
+
+    public Integer getCategoryCount(Long id){
+        return categoryRepository.getCategoryCount(id);
+    }
 }

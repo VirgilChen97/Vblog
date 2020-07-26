@@ -75,7 +75,7 @@ const Login = () => {
 	}
 
 	return (
-		<LoginFrame action={handleLogin} buttonText={t('loginPage.LoginPage')} buttonDisabled={loading} inProgress={loading}>
+		<LoginFrame action={handleLogin} buttonText={t('loginPage.login')} buttonDisabled={loading} inProgress={loading}>
 			<List justify="center">
 				<ListItem>
 					<TextField

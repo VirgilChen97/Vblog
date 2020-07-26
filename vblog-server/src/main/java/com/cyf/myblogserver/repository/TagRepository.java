@@ -12,13 +12,6 @@ public interface TagRepository extends JpaRepository<Tag, Long> {
     Tag findByTagNameAndUserId(String tagName, Long userId);
     List<Tag> findByUserId(Long userId);
 
-    @Modifying
-    @Transactional
-    @Query(value = "update Tag t set t.count = t.count+1 where t.id = :id")
-    int increaseTagCount(Long id);
-
-    @Modifying
-    @Transactional
-    @Query(value = "update Tag t set t.count = t.count-1 where t.id = :id")
-    int decreaseTagCount(Long id);
+    @Query(value="select count(article.id) from article join article_tags a on article.id = a.article_id where a.tags_id = ?1", nativeQuery=true)
+    Integer getTagCount(Long id);
 }

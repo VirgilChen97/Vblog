@@ -1,28 +1,66 @@
 import { useState, useEffect } from 'react'
-import JwtUtil from '../../util/JwtUtil'
 import { useTranslation } from 'react-i18next'
 
 const useArticle = (articleId) => {
+  // i18n support
   const {t} = useTranslation()
 
-  const [title, setTitle] = useState(t('ArticleEditor.untitledArticle'))
+  /** Response Data structures
+    private Long id;
+    private String title;
+    private int state;
+    UserInfoResponse user;
+    private List<Tag> tags;
+    private Category category;
+    private String mdContent;
+    private Date createDate;
+    private Date lastModifiedDate;
+   */
+  const [id, setId] = useState(null)
+  const [title, setTitle] = useState(t('articleEditor.untitledArticle'))
+  const [state, setState] = useState(0)
+  const [user, setUser] = useState(null)
 	const [tag, setTag] = useState("")
 	const [category, setCategory] = useState("")
-  const [mdContent, setMdContent] = useState("# 在这里编写markdown内容")
-  const [send, article, loading, success, error] = useRequest()
+  const [mdContent, setMdContent] = useState(null)
+  const [createDate, setCreateDate] = useState(new Date())
+  const [lastModifiedDate, setLastModifiedDate] = useState(new Date())
+
+  const [send, , loading, success, error] = useRequest()
 
   useEffect(() => {
     if(articleId !== undefined){
-      send(null, `/articles/${articleId}`, "GET", null, ()=>{
-        setTag(article.tags)
-        setCategory(article.category)
-        setMdContent(article.mdContent)
+      send(null, `/articles/${articleId}`, "GET", null, (article)=>{
+        setId(article.id)
         setTitle(article.title)
+        setState(article.state)
+        setUser(article.user)
+        let tagNames = []
+        for(let tag of article.tags){
+          tagNames.push(tag.tagName)
+        }
+        setTag(tagNames.join(', '))
+
+        if (article.category){
+          setCategory(article.category.categoryName)
+        }
+        setMdContent(article.mdContent)
+        setCreateDate(article.createDate)
+        setLastModifiedDate(article.lastModifiedDate)
       })
+    }else{
+      setMdContent("")
     }
   }, [articleId])
   
-  return [title, tag, category, mdContent, setTitle, setTag, setCategory, setMdContent, loading, error]
+  return [
+    // article entity
+    {id, title, state, user, tag, category,mdContent, createDate, lastModifiedDate},
+    // id, user, create date, modified date is not allowed to be modified by user
+    {setTitle, setState, setTag, setCategory, setMdContent},
+    loading, 
+    error
+  ]
 }
 
 const useUserInfo = (userId, username) => {
@@ -80,6 +118,7 @@ const useRequest = () => {
     }
       
     let request = new Request(`${process.env.REACT_APP_API_ENDPOINT}${url}`, init)
+    let responseBody = null
 
     setLoading(true)
     try {
@@ -87,7 +126,7 @@ const useRequest = () => {
       if (response.status >= 400) {
         setError(response.status)
       }
-      let responseBody = await response.json()
+      responseBody = await response.json()
       setJsonResponse(responseBody.data)
     } catch (e) {
       setError(true)
@@ -97,7 +136,7 @@ const useRequest = () => {
     setSuccess(true)
 
     if (callBack !== undefined) {
-      callBack()
+      callBack(responseBody.data)
     }
   }
 

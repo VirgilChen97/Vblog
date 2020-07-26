@@ -1136,112 +1136,105 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="353" parent="329" name="count">
+    <column id="353" parent="329" name="user_id">
       <Position>3</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="354" parent="329" name="user_id">
-      <Position>4</Position>
       <DataType>bigint(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="355" parent="329" name="FKpfk8djhv5natgshmxiav6xkpu">
+    <index id="354" parent="329" name="FKpfk8djhv5natgshmxiav6xkpu">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="356" parent="329" name="PRIMARY">
+    <key id="355" parent="329" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="357" parent="329" name="FKpfk8djhv5natgshmxiav6xkpu">
+    <foreign-key id="356" parent="329" name="FKpfk8djhv5natgshmxiav6xkpu">
       <ColNames>user_id</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="358" parent="330" name="id">
+    <column id="357" parent="330" name="id">
       <Position>1</Position>
       <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="359" parent="330" name="count">
+    <column id="358" parent="330" name="tag_name">
       <Position>2</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="360" parent="330" name="tag_name">
-      <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="361" parent="330" name="user_id">
-      <Position>4</Position>
+    <column id="359" parent="330" name="user_id">
+      <Position>3</Position>
       <DataType>bigint(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="362" parent="330" name="FKld85w5kr7ky5w4wda3nrdo0p8">
+    <index id="360" parent="330" name="FKld85w5kr7ky5w4wda3nrdo0p8">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="363" parent="330" name="PRIMARY">
+    <key id="361" parent="330" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="364" parent="330" name="FKld85w5kr7ky5w4wda3nrdo0p8">
+    <foreign-key id="362" parent="330" name="FKld85w5kr7ky5w4wda3nrdo0p8">
       <ColNames>user_id</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="365" parent="331" name="id">
+    <column id="363" parent="331" name="id">
       <Position>1</Position>
       <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="366" parent="331" name="password">
+    <column id="364" parent="331" name="blog_name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="367" parent="331" name="settings">
+    <column id="365" parent="331" name="email">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="368" parent="331" name="username">
+    <column id="366" parent="331" name="location">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="369" parent="331" name="nick_name">
+    <column id="367" parent="331" name="nick_name">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="370" parent="331" name="location">
+    <column id="368" parent="331" name="password">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="371" parent="331" name="title">
+    <column id="369" parent="331" name="settings">
       <Position>7</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="372" parent="331" name="email">
+    <column id="370" parent="331" name="title">
       <Position>8</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="373" parent="331" name="PRIMARY">
+    <column id="371" parent="331" name="username">
+      <Position>9</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="372" parent="331" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

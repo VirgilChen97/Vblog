@@ -23,8 +23,6 @@ const App = () => {
     setLoginUser(user)
   }, [])
 
-  console.log(loginUser)
-
   if (loginUser === null) {
     return null
   }
@@ -34,6 +32,9 @@ const App = () => {
       <UserContext.Provider value={{ loginUser, setLoginUser }}>
         <Switch>
           <AuthenticationRoute path="/newpost">
+            <ArticleEditor />
+          </AuthenticationRoute>
+          <AuthenticationRoute path="/editArticle/:articleId">
             <ArticleEditor />
           </AuthenticationRoute>
           <Route path="/login">

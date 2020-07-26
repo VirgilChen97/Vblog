@@ -21,7 +21,8 @@
     "emailAlreadyExist": "This email address has already been registered",
     "usernameAlreadyExist": "This user name is already been used"
   },
-  "editArticle":{
+  "articleEditor":{
+    "title": "Title",
     "publish": "Publish",
     "SaveAsDraft": "Save as Draft",
     "untitledArticle": "No Title",

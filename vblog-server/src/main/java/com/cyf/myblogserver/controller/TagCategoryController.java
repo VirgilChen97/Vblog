@@ -1,8 +1,8 @@
 package com.cyf.myblogserver.controller;
 
-import com.cyf.myblogserver.data.CategoryResponse;
+import com.cyf.myblogserver.data.CategoryInfoResponse;
 import com.cyf.myblogserver.data.ResponseData;
-import com.cyf.myblogserver.data.TagResponse;
+import com.cyf.myblogserver.data.TagInfoResponse;
 import com.cyf.myblogserver.entity.Category;
 import com.cyf.myblogserver.entity.Tag;
 import com.cyf.myblogserver.service.TagCategoryService;
@@ -26,21 +26,27 @@ public class TagCategoryController {
     }
 
     @RequestMapping("/tags")
-    public ResponseData<List<TagResponse>> getAllUserTags(@RequestParam Long userId){
+    public ResponseData<List<TagInfoResponse>> getAllUserTags(@RequestParam Long userId){
         List<Tag> tags = tagCategoryService.getAllUserTags(userId);
-        List<TagResponse> tagResponses = new ArrayList<>();
+        List<TagInfoResponse> tagResponses = new ArrayList<>();
         for(Tag tag:tags){
-            tagResponses.add(new TagResponse(tag));
+            Integer count = tagCategoryService.getTagCount(tag.getId());
+            if(count > 0) {
+                tagResponses.add(new TagInfoResponse(tag, count));
+            }
         }
         return ResponseData.success(tagResponses);
     }
 
     @RequestMapping("/categories")
-    public ResponseData<List<CategoryResponse>> getAllUserCategories(@RequestParam Long userId){
+    public ResponseData<List<CategoryInfoResponse>> getAllUserCategories(@RequestParam Long userId){
         List<Category> categories = tagCategoryService.getAllUserCategories(userId);
-        List<CategoryResponse> categoryResponses = new ArrayList<>();
+        List<CategoryInfoResponse> categoryResponses = new ArrayList<>();
         for(Category category:categories){
-            categoryResponses.add(new CategoryResponse(category));
+            Integer count = tagCategoryService.getCategoryCount(category.getId());
+            if(count > 0) {
+                categoryResponses.add(new CategoryInfoResponse(category, count));
+            }
         }
         return ResponseData.success(categoryResponses);
     }

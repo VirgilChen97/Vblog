@@ -13,13 +13,6 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     Category findByCategoryNameAndUserId(String categoryName, Long userId);
     List<Category> findByUserId(Long userId);
 
-    @Modifying
-    @Transactional
-    @Query(value = "update Category t set t.count = t.count+1 where t.id = :id")
-    int increaseCategoryCount(Long id);
-
-    @Modifying
-    @Transactional
-    @Query(value = "update Category t set t.count = t.count-1 where t.id = :id")
-    int decreaseCategoryCount(Long id);
+    @Query(value="select count(article.id) from article where category_id = ?1", nativeQuery=true)
+    Integer getCategoryCount(Long id);
 }

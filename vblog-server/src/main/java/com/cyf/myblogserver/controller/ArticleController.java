@@ -1,5 +1,6 @@
 package com.cyf.myblogserver.controller;
 
+import com.cyf.myblogserver.data.ArticleResponse;
 import com.cyf.myblogserver.data.PagedArticleResponse;
 import com.cyf.myblogserver.entity.User;
 import com.cyf.myblogserver.exception.AuthenticationFailedException;
@@ -27,19 +28,23 @@ public class ArticleController {
     }
     
     @PostMapping("/articles")
-    public ResponseData addArticle(@RequestBody Article article, HttpServletRequest request) {
-        Long AuthenticatedUserId = (Long)request.getAttribute("userId");
+    public ResponseData addArticle(@RequestBody Article article, HttpServletRequest request) throws CommonException {
+        Long authenticatedUserId = (Long)request.getAttribute("userId");
         User user = new User();
-        user.setId(AuthenticatedUserId);
+        user.setId(authenticatedUserId);
         article.setUser(user);
         articleService.saveArticle(article);
         return ResponseData.success();
     }
 
     @PutMapping("/articles/{id}")
-    public ResponseData editArticle(@PathVariable Long id, @RequestBody Article article){
+    public ResponseData editArticle(@PathVariable Long id, @RequestBody Article article, HttpServletRequest request) throws CommonException {
+        Long authenticatedUserId = (Long)request.getAttribute("userId");
+        User user = new User();
+        user.setId(authenticatedUserId);
+        article.setUser(user);
         article.setId(id);
-        articleService.saveArticle(article);
+        articleService.editArticle(article);
         return ResponseData.success();
     }
 
@@ -71,8 +76,9 @@ public class ArticleController {
     }
 
     @GetMapping("/articles/{id}")
-    public ResponseData<Article> getArticle(@PathVariable Long id) throws CommonException {
+    public ResponseData<ArticleResponse> getArticle(@PathVariable Long id) throws CommonException {
         Article article = articleService.getArticle(id);
-        return ResponseData.success(article);
+        ArticleResponse response = new ArticleResponse(article);
+        return ResponseData.success(response);
     }
 }

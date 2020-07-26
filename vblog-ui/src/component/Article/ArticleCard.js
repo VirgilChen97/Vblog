@@ -15,6 +15,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import ConfirmButton from '../Common/ConfirmButton';
 import { useRequest } from '../Common/Hooks';
 import { UserContext } from '../../App';
+import { Link } from 'react-router-dom';
 
 /**
  * id: Article id
@@ -22,53 +23,55 @@ import { UserContext } from '../../App';
  * title: Article title
  * content: short version of Article content
  */
-const ArticleCard = ({id, createDate, lastModifiedDate, title, mdContent, editable}) => {
-  const {loginUser} = useContext(UserContext)
+const ArticleCard = ({ id, createDate, lastModifiedDate, title, mdContent, editable }) => {
+  const { loginUser } = useContext(UserContext)
   const commonClasses = useCommonStyles();
-  const {t} = useTranslation()
-  const [deleteArticle,,loading, success, error] = useRequest()
+  const { t } = useTranslation()
+  const [deleteArticle, ,loading, success, error] = useRequest()
 
   const handleDelete = () => {
     deleteArticle(null, `/articles/${id}`, "DELETE", loginUser.token)
   }
 
-  if(success){
+  if (success) {
     return null
   }
-  
+
   return (
     <Card className={"article-card-root"}>
       <CardContent>
         <Typography variant="caption" component="h2">
           {t('articleCard.postAt')} {new Date(createDate).toDateString()}
         </Typography>
-        <Typography className={commonClasses.articleTitle}  color="textSecondary" gutterBottom>
+        <Typography className={commonClasses.articleTitle} color="textSecondary" gutterBottom>
           {title}
         </Typography>
         <div className="markdown-body">
           <ReactMarkdown
             source={mdContent}
-            renderers={{code: CodeBlock}}
+            renderers={{ code: CodeBlock }}
           />
         </div>
       </CardContent>
       <CardActions>
         <div className="action-area-container">
           <Button size="small">{t('articleCard.readMore')}</Button>
-          {editable?
+          {editable ?
             <div className="authenticated-area-container">
-              <Button size="small" startIcon={<EditIcon/>}>{t('articleCard.edit')}</Button>
-              <ConfirmButton 
-                size="small" 
-                startIcon={<DeleteIcon/>} 
-                style={{color: "red"}}
+              <Button size="small" startIcon={<EditIcon />} component={Link} to={{pathname:`/editArticle/${id}`}}>
+                {t('articleCard.edit')}
+              </Button>
+              <ConfirmButton
+                size="small"
+                startIcon={<DeleteIcon />}
+                style={{ color: "red" }}
                 alertTitle={t('articleCard.confirmDelete')}
                 alertText={t('articleCard.confirmDeleteInfo')}
                 action={handleDelete}
               >
                 {t('articleCard.delete')}
               </ConfirmButton>
-            </div>:null}
+            </div> : null}
         </div>
       </CardActions>
     </Card>

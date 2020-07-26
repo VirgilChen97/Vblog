@@ -21,7 +21,8 @@
     "emailAlreadyExist": "邮箱已经被注册",
     "usernameAlreadyExist": "用户名已被注册"
   },
-  "editArticle":{
+  "articleEditor":{
+    "title": "标题",
     "publish": "发布",
     "SaveAsDraft": "存为草稿",
     "untitledArticle": "无标题文章",

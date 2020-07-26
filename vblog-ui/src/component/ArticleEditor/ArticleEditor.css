@@ -1,0 +1,29 @@
+.article-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  width: 100vw;
+}
+
+.article-editor {
+  height: calc(100vh - 64px);
+  overflow: hidden;
+}
+
+.article-info{
+  display: flex;
+}
+
+.title{
+  margin: 5px 5px 5px 10px;
+}
+
+.info{
+  margin: 5px;
+}
+
+.submit-button{
+  color: white;
+}

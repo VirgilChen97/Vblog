@@ -4,14 +4,16 @@ import com.cyf.myblogserver.entity.Category;
 import lombok.Data;
 
 @Data
-public class CategoryResponse {
+public class CategoryInfoResponse {
     private Long id;
+    private Long userId;
     private String categoryName;
     private Integer count;
 
-    public CategoryResponse(Category category){
+    public CategoryInfoResponse(Category category, Integer count){
         this.id = category.getId();
+        this.userId = category.getUser().getId();
         this.categoryName = category.getCategoryName();
-        this.count = category.getCount();
+        this.count = count;
     }
 }

@@ -20,7 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.NoSuchElementException;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -43,51 +43,38 @@ public class ArticleService {
      * @param article The article need to be saved
      * @return Id if saved article
      */
-    public Long saveArticle(Article article){
-
-        // Go through all tags in the article
-        User user = article.getUser();
-
-        if(article.getTags() != null) {
-            log.info("Article with tags {}", article.getTags());
-            for (Tag tag : article.getTags()) {
-                Tag existingTag = tagRepository.findByTagNameAndUserId(tag.getTagName(), user.getId());
-
-                if (existingTag == null) {
-                    tag.setUser(user);
-                    // If the tag doesn't exist, create the tag
-                    tagRepository.save(tag);
-                } else {
-
-                    // If exist, replace the id and increase the tag count int the db
-                    tag.setId(existingTag.getId());
-                    tagRepository.increaseTagCount(tag.getId());
-                }
-            }
-        }
-
-        if(article.getCategory()!=null) {
-            // Check the article's category
-            log.info("Article with category {}", article.getCategory());
-
-            // Check whether the category exist
-            Category existingCategory = categoryRepository.findByCategoryNameAndUserId(article.getCategory().getCategoryName(), user.getId());
-            if (existingCategory == null) {
-                article.getCategory().setUser(user);
-                // If not, then create the tag;
-                categoryRepository.save(article.getCategory());
-            } else {
-
-                // If exist, replace the id and increase the category count int the db
-                article.getCategory().setId(existingCategory.getId());
-                categoryRepository.increaseCategoryCount(article.getCategory().getId());
-            }
-        }
-
+    public Long saveArticle(Article article) throws CommonException {
+        article = processTagAndCategory(article);
         // save the article and return its id;
         Article article1 = articleRepository.save(article);
         log.info("Article saved with id {}", article1.getId());
         return article1.getId();
+    }
+
+    /**
+     * Edit given article
+     * @param article Edited version of article
+     * @throws CommonException
+     */
+    public void editArticle(Article article) throws CommonException {
+        Article oldArticle;
+        try {
+            oldArticle = articleRepository.findById(article.getId()).get();
+        } catch (NoSuchElementException e){
+            throw new CommonException(Error.ARTICLE_NOT_FOUND.getCode(), 404, Error.ARTICLE_NOT_FOUND.getMsg());
+        }
+
+        if(oldArticle.getUser().getId()!=article.getUser().getId()){
+            throw new CommonException(Error.PERMISSION_DENIED.getCode(), 404, Error.PERMISSION_DENIED.getMsg());
+        }
+
+        article = processTagAndCategory(article);
+        oldArticle.setTags(article.getTags());
+        oldArticle.setCategory(article.getCategory());
+        oldArticle.setMdContent(article.getMdContent());
+        oldArticle.setTitle(article.getTitle());
+        oldArticle.setState(article.getState());
+        articleRepository.save(oldArticle);
     }
 
     public void deleteArticle(Long id, Long userId) throws CommonException {
@@ -134,5 +121,53 @@ public class ArticleService {
         }catch (NoSuchElementException e){
             throw new CommonException(Error.ARTICLE_NOT_FOUND.getCode(),404,Error.ARTICLE_NOT_FOUND.getMsg());
         }
+    }
+
+    private Article processTagAndCategory(Article article) throws CommonException {
+        User user;
+        try {
+             user = userRepository.findById(article.getUser().getId()).get();
+        }catch (NoSuchElementException e){
+            throw new CommonException(Error.USER_NOT_FOUNT.getCode(), 404, Error.USER_NOT_FOUNT.getMsg());
+        }
+        if(article.getTags() != null) {
+            log.info("Article with tags {}", article.getTags());
+            Map<String, Tag> map = new HashMap<>();
+            for (Tag tag : article.getTags()) {
+                if (!map.containsKey(tag.getTagName())) {
+                    Tag existingTag = tagRepository.findByTagNameAndUserId(tag.getTagName(), user.getId());
+
+                    if (existingTag == null) {
+                        tag.setUser(user);
+                        // If the tag doesn't exist, create the tag
+                        tagRepository.save(tag);
+                    } else {
+
+                        // If exist, replace the id and increase the tag count int the db
+                        tag.setId(existingTag.getId());
+                    }
+                    map.put(tag.getTagName(), tag);
+                }
+            }
+            article.setTags(new ArrayList<>(map.values()));
+        }
+
+        if(article.getCategory()!=null) {
+            // Check the article's category
+            log.info("Article with category {}", article.getCategory());
+
+            // Check whether the category exist
+            Category existingCategory = categoryRepository.findByCategoryNameAndUserId(article.getCategory().getCategoryName(), user.getId());
+            if (existingCategory == null) {
+                article.getCategory().setUser(user);
+                // If not, then create the tag;
+                categoryRepository.save(article.getCategory());
+            } else {
+
+                // If exist, replace the id and increase the category count int the db
+                article.getCategory().setId(existingCategory.getId());
+            }
+        }
+        return article;
     }
 }
