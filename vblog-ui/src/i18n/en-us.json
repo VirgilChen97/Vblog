@@ -31,7 +31,9 @@
     "placeholder": "Type your MD article here"
   },
   "articleList":{
-    "noArticle": "There is no article now"
+    "noArticle": "There is no article now",
+    "nextPage": "Next",
+    "prevPage": "Prev"
   },
   "tagCard":{
     "tags": "Tags",
@@ -63,6 +65,7 @@
     "confirmDeleteInfo": "Deleted article can't be restored"
   },
   "settings":{
+    "selectAvatar": "Choose Avatar",
     "nickName": "Nick name",
     "blogTitle": "Blog name",
     "location": "Location",

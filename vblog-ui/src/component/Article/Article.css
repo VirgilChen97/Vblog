@@ -1,0 +1,16 @@
+.user-info{
+  display: flex;
+  align-items: center;
+  margin: 10px 0px 10px 0px;
+}
+
+.username-date{
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.article-root{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

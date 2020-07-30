@@ -7,6 +7,7 @@ import PersonIcon from '@material-ui/icons/Person'
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { useTranslation } from 'react-i18next';
+import UserAvatar from '../Common/UserAvatar';
 
 const useStyles = makeStyles(theme => ({
 	userAvatar: {
@@ -15,10 +16,6 @@ const useStyles = makeStyles(theme => ({
 		fontSize: "50px",
 		margin: "auto",
 		marginBottom: "10px"
-	},
-	userIcon:{
-		width: "80%",
-		height: "80%",
 	}
 }))
 
@@ -37,13 +34,11 @@ const UserCard = ( {owner, editable} ) => {
 				<div className="card-content">
 					<Grid container justify="center">
 						<Grid item xs={12}>
-							<Avatar className={classes.userAvatar}>
-								<PersonIcon className={classes.userIcon}/>
-							</Avatar>
+							<UserAvatar userId={owner.id} avatarClassName={classes.userAvatar}/>
 						</Grid>
 						<Grid item xs={12}>
 							<Typography align="center" variant="h6">
-								{owner.nickName == null ? t('userCard.noNickName'):owner.nickName}
+								{owner.nickName === null || owner.nickName === "" ? t('userCard.noNickName'):owner.nickName}
 							</Typography>
 							<Typography align="center">
 								{owner.title == null ? t('userCard.noTitle'):owner.title}

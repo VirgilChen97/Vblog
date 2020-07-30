@@ -16,6 +16,7 @@ public class UserInfoResponse {
         this.location = user.getLocation();
         this.blogName = user.getBlogName();
         this.email = user.getEmail();
+        this.imageUrl = user.getImageUrl();
     }
 
     Long id;
@@ -25,4 +26,5 @@ public class UserInfoResponse {
     String title;
     String location;
     String email;
+    String imageUrl;
 }

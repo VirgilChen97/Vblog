@@ -15,7 +15,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import ConfirmButton from '../Common/ConfirmButton';
 import { useRequest } from '../Common/Hooks';
 import { UserContext } from '../../App';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useRouteMatch } from 'react-router-dom';
 
 /**
  * id: Article id
@@ -28,7 +28,9 @@ const ArticleCard = ({ id, createDate, lastModifiedDate, title, mdContent, edita
   const commonClasses = useCommonStyles();
   const { t } = useTranslation()
   const history = useHistory()
-  const [deleteArticle, ,loading, success, error] = useRequest()
+  const match = useRouteMatch()
+
+  const [deleteArticle, , loading, success, error] = useRequest()
 
   const handleDelete = () => {
     deleteArticle(null, `/articles/${id}`, "DELETE", loginUser.token)
@@ -48,19 +50,28 @@ const ArticleCard = ({ id, createDate, lastModifiedDate, title, mdContent, edita
         <Typography className={commonClasses.articleTitle} color="textSecondary" gutterBottom>
           {title}
         </Typography>
-        <div className="markdown-body">
-          <ReactMarkdown
-            source={mdContent}
-            renderers={{ code: CodeBlock }}
-          />
+        <div className="article-card-content">
+          <div className="markdown-body">
+            <ReactMarkdown
+              source={mdContent}
+              renderers={{ code: CodeBlock }}
+            />
+            <div className="content-mask" />
+          </div>
         </div>
       </CardContent>
       <CardActions>
         <div className="action-area-container">
-          <Button size="small">{t('articleCard.readMore')}</Button>
+          <Button
+            size="small"
+            component={Link}
+            to={{ pathname: `/articles/${id}` }}
+          >
+            {t('articleCard.readMore')}
+          </Button>
           {editable ?
             <div className="authenticated-area-container">
-              <Button size="small" startIcon={<EditIcon />} component={Link} to={{pathname:`/editArticle/${id}`}}>
+              <Button size="small" startIcon={<EditIcon />} component={Link} to={{ pathname: `/editArticle/${id}` }}>
                 {t('articleCard.edit')}
               </Button>
               <ConfirmButton

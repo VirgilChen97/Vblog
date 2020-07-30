@@ -26,7 +26,7 @@ const useArticle = (articleId) => {
   const [createDate, setCreateDate] = useState(new Date())
   const [lastModifiedDate, setLastModifiedDate] = useState(new Date())
 
-  const [send, , loading, success, error] = useRequest()
+  const [send, ,loading, success, error] = useRequest()
 
   useEffect(() => {
     if(articleId !== undefined){
@@ -112,7 +112,7 @@ const useRequest = () => {
 
     if(token !== null){
       init.headers = {
-        'Content-Type': "application/json",
+        "Content-Type": "application/json",
         "Authorization": token
       }
     }

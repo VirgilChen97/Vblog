@@ -9,4 +9,5 @@ public class ChangeUserSettingRequest {
     String location;
     String title;
     String email;
+    String imageUrl;
 }

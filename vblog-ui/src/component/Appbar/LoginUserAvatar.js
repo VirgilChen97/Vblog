@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Avatar, Button, IconButton, MenuItem, Popover, ListItemIcon, ListItemText } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import JwtUtil from '../../util/JwtUtil';
 import { Link, useRouteMatch } from "react-router-dom";
 import Settings from '../Settings';
+import UserAvatar from '../Common/UserAvatar';
+import { UserContext } from '../../App';
 
-const LoginUserAvatar = ({ loginUser, setLoginUser }) => {
+const LoginUserAvatar = () => {
   const { t } = useTranslation()
   const [anchor, setAnchor] = useState(false)
   let match = useRouteMatch()
+  const { loginUser, setLoginUser } = useContext(UserContext)
 
   const handleClick = (event) => {
     setAnchor(event.currentTarget);
@@ -45,7 +48,7 @@ const LoginUserAvatar = ({ loginUser, setLoginUser }) => {
   return (
     <div>
       <IconButton size="small" onClick={handleClick}>
-        <Avatar>A</Avatar>
+        <UserAvatar userId={loginUser.id}/>
       </IconButton>
       <Popover
         id="simple-menu"

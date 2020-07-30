@@ -31,7 +31,9 @@
     "placeholder": "在这里用 Markdown 撰写博客"
   },
   "articleList":{
-    "noArticle": "现在还没有文章哦"
+    "noArticle": "现在还没有文章哦",
+    "nextPage": "下一页",
+    "prevPage": "上一页"
   },
   "tagCard":{
     "tags": "标签",
@@ -63,6 +65,7 @@
     "confirmDeleteInfo": "删除后的文章无法找回"
   },
   "settings":{
+    "selectAvatar": "选择头像",
     "nickName": "昵称",
     "blogTitle": "博客名称",
     "location": "地点",

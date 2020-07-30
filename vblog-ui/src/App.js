@@ -12,6 +12,7 @@ import Login from "./component/LoginPage/Login";
 import AuthenticationRoute from "./component/Common/AuthenticationRoute";
 import Register from './component/LoginPage/Register';
 import JwtUtil from './util/JwtUtil';
+import Article from './component/Article/Article';
 
 export const UserContext = React.createContext(null)
 
@@ -38,6 +39,9 @@ const App = () => {
             <AuthenticationRoute path="/editArticle/:articleId">
               <ArticleEditor />
             </AuthenticationRoute>
+            <Route path={"/articles/:articleId"}>
+              <Article />
+            </Route>
             <Route path="/login">
               <Login />
             </Route>

@@ -32,7 +32,7 @@ const Home = () => {
   }else {
     return (
       <div className={classes.root}>
-        <BlogAppBar owner={owner} loginUser={loginUser} setLoginUser={setLoginUser}/>
+        <BlogAppBar owner={owner}/>
         <BlogDrawer owner={owner}/>
         <Switch>
           <Route path={`${match.path}/articles`}>

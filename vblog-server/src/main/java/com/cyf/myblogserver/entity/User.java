@@ -22,5 +22,6 @@ public class User {
     String blogName;
     String title;
     String location;
+    String imageUrl;
     String settings;
 }

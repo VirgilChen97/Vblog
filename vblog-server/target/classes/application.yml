@@ -16,3 +16,6 @@ audience:
 logging:
   level:
     com: trace
+
+imagePath: "C:/Users/ChenJ/Desktop/"
+serverAddr: "http://localhost:8081"

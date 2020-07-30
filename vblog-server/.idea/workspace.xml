@@ -20,14 +20,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ebfb25ce-3605-420e-a9c0-bb3cadae789a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/controller/ImageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/data/ImageUploadResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/controller/TagCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/controller/TagCategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/data/PagedArticleResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/data/PagedArticleResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/data/ChangeUserSettingRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/data/ChangeUserSettingRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/data/UserInfoResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/data/UserInfoResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/exception/Error.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/exception/Error.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/service/BlogUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/service/BlogUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/component/ArticleEditor/ArticleEditor.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/src/component/ArticleEditor/ArticleEditor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cyf/myblogserver/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cyf/myblogserver/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cyf/myblogserver/data/UserInfoResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cyf/myblogserver/data/UserInfoResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cyf/myblogserver/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cyf/myblogserver/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cyf/myblogserver/exception/Error.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cyf/myblogserver/exception/Error.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/cyf/myblogserver/service/BlogUserDetailsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/cyf/myblogserver/service/BlogUserDetailsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/component/Appbar/LoginUserAvatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/src/component/Appbar/LoginUserAvatar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/component/Article/ArticleCard.css" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/src/component/Article/ArticleCard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/component/Article/ArticleCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/src/component/Article/ArticleCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/component/Article/ArticleList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/src/component/Article/ArticleList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/component/Common/Editor/Editor.css" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/src/component/Common/Editor/Editor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/component/Common/Hooks.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/src/component/Common/Hooks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/component/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/src/component/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/component/Settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/src/component/Settings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/component/Sidebar/UserCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/src/component/Sidebar/UserCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/i18n/en-us.json" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/src/i18n/en-us.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vblog-ui/src/i18n/zh-cn.json" beforeDir="false" afterPath="$PROJECT_DIR$/../vblog-ui/src/i18n/zh-cn.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,7 +253,8 @@
       <workItem from="1595459610716" duration="2437000" />
       <workItem from="1595561048109" duration="1416000" />
       <workItem from="1595626207855" duration="6601000" />
-      <workItem from="1595741078075" duration="10126000" />
+      <workItem from="1595741078075" duration="26519000" />
+      <workItem from="1596074728549" duration="2367000" />
     </task>
     <task id="LOCAL-00001" summary="- Adding tag and category count&#10;- Add an article with existing tag and category will increase the count">
       <created>1593399627001</created>
@@ -312,10 +334,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="525" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1593384423903" />
-    <state x="765" y="234" width="592" height="590" key="#com.intellij.ide.util.MemberChooser" timestamp="1595745792179">
+    <state x="765" y="234" width="592" height="590" key="#com.intellij.ide.util.MemberChooser" timestamp="1595914209463">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="765" y="234" width="592" height="590" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1595745792179" />
+    <state x="765" y="234" width="592" height="590" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1595914209463" />
     <state x="640" y="259" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1593401274913">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -340,65 +362,65 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1595024878702" />
-    <state width="1877" height="288" key="GridCell.Tab.0.bottom" timestamp="1595793455676">
+    <state width="1877" height="288" key="GridCell.Tab.0.bottom" timestamp="1596075490190">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="288" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1595793455676" />
+    <state width="1877" height="288" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1596075490190" />
     <state width="1537" height="292" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.0.1536.864@1920.0.1536.864" timestamp="1595367076552" />
-    <state width="1877" height="288" key="GridCell.Tab.0.center" timestamp="1595793455675">
+    <state width="1877" height="288" key="GridCell.Tab.0.center" timestamp="1596075490190">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="288" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1595793455675" />
+    <state width="1877" height="288" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1596075490190" />
     <state width="1537" height="292" key="GridCell.Tab.0.center/0.0.1920.1050/1920.0.1536.864@1920.0.1536.864" timestamp="1595367076552" />
-    <state width="1877" height="288" key="GridCell.Tab.0.left" timestamp="1595793455675">
+    <state width="1877" height="288" key="GridCell.Tab.0.left" timestamp="1596075490190">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="288" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1595793455675" />
+    <state width="1877" height="288" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1596075490190" />
     <state width="1537" height="292" key="GridCell.Tab.0.left/0.0.1920.1050/1920.0.1536.864@1920.0.1536.864" timestamp="1595367076552" />
-    <state width="1877" height="288" key="GridCell.Tab.0.right" timestamp="1595793455676">
+    <state width="1877" height="288" key="GridCell.Tab.0.right" timestamp="1596075490190">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="288" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1595793455676" />
+    <state width="1877" height="288" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1596075490190" />
     <state width="1537" height="292" key="GridCell.Tab.0.right/0.0.1920.1050/1920.0.1536.864@1920.0.1536.864" timestamp="1595367076552" />
-    <state width="1877" height="288" key="GridCell.Tab.1.bottom" timestamp="1595793455676">
+    <state width="1877" height="288" key="GridCell.Tab.1.bottom" timestamp="1596075490191">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="288" key="GridCell.Tab.1.bottom/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1595793455676" />
+    <state width="1877" height="288" key="GridCell.Tab.1.bottom/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1596075490191" />
     <state width="1537" height="292" key="GridCell.Tab.1.bottom/0.0.1920.1050/1920.0.1536.864@1920.0.1536.864" timestamp="1595367076553" />
-    <state width="1877" height="288" key="GridCell.Tab.1.center" timestamp="1595793455676">
+    <state width="1877" height="288" key="GridCell.Tab.1.center" timestamp="1596075490191">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="288" key="GridCell.Tab.1.center/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1595793455676" />
+    <state width="1877" height="288" key="GridCell.Tab.1.center/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1596075490191" />
     <state width="1537" height="292" key="GridCell.Tab.1.center/0.0.1920.1050/1920.0.1536.864@1920.0.1536.864" timestamp="1595367076552" />
-    <state width="1877" height="288" key="GridCell.Tab.1.left" timestamp="1595793455676">
+    <state width="1877" height="288" key="GridCell.Tab.1.left" timestamp="1596075490191">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="288" key="GridCell.Tab.1.left/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1595793455676" />
+    <state width="1877" height="288" key="GridCell.Tab.1.left/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1596075490191" />
     <state width="1537" height="292" key="GridCell.Tab.1.left/0.0.1920.1050/1920.0.1536.864@1920.0.1536.864" timestamp="1595367076552" />
-    <state width="1877" height="288" key="GridCell.Tab.1.right" timestamp="1595793455676">
+    <state width="1877" height="288" key="GridCell.Tab.1.right" timestamp="1596075490191">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="288" key="GridCell.Tab.1.right/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1595793455676" />
+    <state width="1877" height="288" key="GridCell.Tab.1.right/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1596075490191" />
     <state width="1537" height="292" key="GridCell.Tab.1.right/0.0.1920.1050/1920.0.1536.864@1920.0.1536.864" timestamp="1595367076553" />
-    <state width="1877" height="285" key="GridCell.Tab.2.bottom" timestamp="1595793297347">
+    <state width="1877" height="285" key="GridCell.Tab.2.bottom" timestamp="1596000726594">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.2.bottom/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1595793297347" />
+    <state width="1877" height="285" key="GridCell.Tab.2.bottom/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1596000726594" />
     <state width="1537" height="292" key="GridCell.Tab.2.bottom/0.0.1920.1050/1920.0.1536.864@1920.0.1536.864" timestamp="1595367076553" />
-    <state width="1877" height="285" key="GridCell.Tab.2.center" timestamp="1595793297346">
+    <state width="1877" height="285" key="GridCell.Tab.2.center" timestamp="1596000726594">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.2.center/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1595793297346" />
+    <state width="1877" height="285" key="GridCell.Tab.2.center/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1596000726594" />
     <state width="1537" height="292" key="GridCell.Tab.2.center/0.0.1920.1050/1920.0.1536.864@1920.0.1536.864" timestamp="1595367076553" />
-    <state width="1877" height="285" key="GridCell.Tab.2.left" timestamp="1595793297346">
+    <state width="1877" height="285" key="GridCell.Tab.2.left" timestamp="1596000726594">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.2.left/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1595793297346" />
+    <state width="1877" height="285" key="GridCell.Tab.2.left/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1596000726594" />
     <state width="1537" height="292" key="GridCell.Tab.2.left/0.0.1920.1050/1920.0.1536.864@1920.0.1536.864" timestamp="1595367076553" />
-    <state width="1877" height="285" key="GridCell.Tab.2.right" timestamp="1595793297346">
+    <state width="1877" height="285" key="GridCell.Tab.2.right" timestamp="1596000726594">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.2.right/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1595793297346" />
+    <state width="1877" height="285" key="GridCell.Tab.2.right/0.0.1920.1050/1920.0.1536.864@0.0.1920.1050" timestamp="1596000726594" />
     <state width="1537" height="292" key="GridCell.Tab.2.right/0.0.1920.1050/1920.0.1536.864@1920.0.1536.864" timestamp="1595367076553" />
     <state x="694" y="235" key="RollbackChangesDialog" timestamp="1593381549231">
       <screen x="0" y="0" width="1920" height="1050" />
@@ -456,6 +478,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/controller/UserController.java</url>
           <line>108</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/cyf/myblogserver/controller/ImageController.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

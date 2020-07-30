@@ -1,19 +1,30 @@
 import React, {useState, useEffect} from 'react';
-import {List, ListItem, Toolbar, Typography} from '@material-ui/core';
+import {List, ListItem, Toolbar, Typography, Button} from '@material-ui/core';
 import ArticleCard from './ArticleCard';
 import { useRequest } from '../Common/Hooks';
 import { useTranslation } from 'react-i18next';
+import './ArticleList.css'
 
 const ArticleList = ({owner, editable}) => {
 	const {t} = useTranslation()
 	const [getArticles, articles, loading, success, error] = useRequest()
+	const [page, setPage] = useState(0)
 
 	useEffect(() => {
-		const fetchArticles = async () => {
-			getArticles(null, `/articles?username=${owner.username}`, "GET", null)
-		}
 		fetchArticles()
-	}, [owner])
+	}, [owner, page])
+
+	const fetchArticles = async () => {
+		getArticles(null, `/articles?username=${owner.username}&page=${page}`, "GET", null, ()=>{window.scrollTo(0,0)})
+	}
+
+	const handleNextPage = () => {
+		setPage(page + 1)
+	}
+
+	const handlePrevPage = () => {
+		setPage(page - 1)
+	}
 
 	if (articles !== null) {
 		if(articles.totalElements === 0){
@@ -41,6 +52,11 @@ const ArticleList = ({owner, editable}) => {
 						</ListItem>
 					)}
 				</List>
+				<div className="page-action">
+					<Button disabled={page === 0} onClick={handlePrevPage}>{t('articleList.prevPage')}</Button>
+					<Typography> {page + 1} / {articles.totalPages} </Typography>
+					<Button disabled={page === articles.totalPages - 1} onClick={handleNextPage}>{t('articleList.nextPage')}</Button>
+				</div>
 			</div>
 		)
 	} else {

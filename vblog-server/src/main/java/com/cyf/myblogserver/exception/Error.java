@@ -3,6 +3,7 @@ package com.cyf.myblogserver.exception;
 public enum Error{
     USER_NOT_FOUNT(40401, "User does not exist"),
     ARTICLE_NOT_FOUND(40402, "Article does not exist"),
+    IMAGE_NOT_FOUNT(40403, "Image does not exist"),
     EMAIL_ALREADY_USED(40901, "This email address has already been used"),
     USERNAME_ALREADY_USED(40902, "This username has already been used"),
     USERNAME_INVALID(40000, "This username is not valid, username should be within 6-20 characters, - or _"),

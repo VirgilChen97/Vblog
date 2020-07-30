@@ -60,7 +60,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/api/articles/**",
                         "/api/users/**",
                         "/api/tags/**",
-                        "/api/categories/**").permitAll()
+                        "/api/categories/**",
+                        "/api/images/**").permitAll()
                 .anyRequest().authenticated().and().cors();
 
         // Add JWT filter to filter authenticated user

@@ -121,6 +121,7 @@ public class BlogUserDetailsService implements UserDetailsService {
         user.setEmail(changeUserSettingRequest.getEmail());
         user.setBlogName(changeUserSettingRequest.getBlogName());
         user.setTitle(changeUserSettingRequest.getTitle());
+        user.setImageUrl(changeUserSettingRequest.getImageUrl());
         userRepository.save(user);
     }
 }
