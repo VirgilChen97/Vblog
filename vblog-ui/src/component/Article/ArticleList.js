@@ -29,14 +29,14 @@ const ArticleList = ({owner, editable}) => {
 	if (articles !== null) {
 		if(articles.totalElements === 0){
 			return (
-				<div style={{width: "100%"}}>
+				<div className="article-list">
 					<Toolbar />
 					<Typography align="center" style={{color: "grey", marginTop: "20px"}}>{t('articleList.noArticle')}</Typography>
 				</div>
 			)
 		}
 		return (
-			<div style={{width: "100%"}}>
+			<div className="article-list">
 				<Toolbar />
 				<List>
 					{articles.content.map(article =>
