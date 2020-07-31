@@ -24,7 +24,31 @@ jobs:
       with:
         java-version: 11 
 
+    - name: Cache Maven packages
+      uses: actions/cache@v2.1.0
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+  
     # Runs a single command using the runners shell
     - name: Build server
       working-directory: vblog-server
       run: mvn -B package --file pom.xml
+      
+    - name: Upload server build artifact
+      uses: actions/upload-artifact@v2
+      with: 
+        path: vblog-server/target/*.jar 
+  
+  server-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: copy file via ssh password
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        source: "vblog-server/target/*.jar"
+        target: "/root/vblog"
