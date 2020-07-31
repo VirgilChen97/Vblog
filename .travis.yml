@@ -1,0 +1,5 @@
+language: java
+jdk:
+  - openjdk11
+install: cd vblog-server && mvn install -DskipTests=true -Dmaven.javadoc.skip=true
+script: mvn test
