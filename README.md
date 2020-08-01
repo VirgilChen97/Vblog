@@ -1,38 +1,55 @@
 # Vblog
 
+![logo](imgs/logo.png)
+
+![badge](https://img.shields.io/github/workflow/status/VirgilChen97/Vblog/Vblog%20build,%20test%20and%20deploy)
+
 A modern, multi-user Markdown blog System.
 
 Built with React JS, Spring Boot and Spring Security. This blog system is under development, it still contains many bugs and missing features.
 
+Online demo: [Demo](http://blog.virgilchen.top)
+
+![main](imgs/main.png)
+
 # Features
 
-## Register
+- Modern SPA design
+- Multi-user
+- User individual blog home page
+- Real time markdown editing
+- Tag and Category support
+- i18n support
 
-![](./imgs/register.gif)
+# Run
 
-## Login
+### Clone the project
 
-![](./imgs/login.gif)
+```
+git clone git@github.com:VirgilChen97/Vblog.git
+```
 
-## Markdown editing
+### Run backend service
 
-![](./imgs/edit.gif)
+```
+cd vblog-server
+mvn spring-boot:run
+```
 
+### Run frontend service
 
-## Content Reading
-
-![](./imgs/view.gif)
+```
+cd ../vblog-ui
+npm start
+```
 
 # Todo
 
-- Log out
-  - The authorization is based on JWT, logout is simply delete the token
+- Image uploading
 - User Setting
-  - Currently registered user can't change any of their settings
+  - Allow user to change App bar color, code highlighting theme, etc
 - User Feedback
   - Many element in UI is lacking proper user feedback
-- Multiple tag support
-  - Now you can only add 1 tag to an article
-- Image and Avatar Uploading
+- User friendly tag editor
 
 
