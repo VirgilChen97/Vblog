@@ -54,7 +54,7 @@ jobs:
           # The remote user
           remote_user: ${{ secrets.USERNAME }}
           # The remote key
-          remote_key: ${{ secrets.KEY }}
+          remote_key: ${{ secrets.KEY_NORMAL }}
         
   # Build Vblog server and deploy
   server-build-deploy:
