@@ -1,4 +1,4 @@
-name: Vblog build, test and deploy
+name: vblog-build-test-deploy
 
 on:
   push:

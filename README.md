@@ -2,7 +2,7 @@
 
 ![logo](imgs/logo.png)
 
-![badge](https://img.shields.io/github/workflow/status/VirgilChen97/Vblog/Vblog%20build,%20test%20and%20deploy)
+![badge](https://github.com/VirgilChen97/Vblog/workflows/Vblog%20build,%20test%20and%20deploy/badge.svg)
 
 A modern, multi-user Markdown blog System.
 
