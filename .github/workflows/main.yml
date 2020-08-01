@@ -1,18 +1,14 @@
-# This is a basic workflow to help you get started with Actions
+name: Vblog build, test and deploy
 
-name: Build, test and deploy
-
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs: 
-  ui-build:
+  # Build frontend assets and deploy to server
+  ui-build-deploy:
     runs-on: ubuntu-latest 
     steps:
       - uses: actions/checkout@v2
@@ -42,8 +38,24 @@ jobs:
         uses: actions/upload-artifact@v2
         with: 
           path: vblog-ui/build/** 
-      
-      
+          name: vblog-ui
+
+      - name: Deploy to server with rsync
+        uses: Burnett01/rsync-deployments@4.1
+        with:
+          # The switches
+          switches: -avzr --delete
+          # The local path
+          path: /vblog-ui/build/
+          # The remote path
+          remote_path: /root/vblog/build
+          # The remote host
+          remote_host: ${{ secrets.HOST }}
+          # The remote user
+          remote_user: ${{ secrets.USERNAME }}
+          # The remote key
+          remote_key: ${{ secrets.KEY }}
+        
   # Build Vblog server and deploy
   server-build-deploy:
     runs-on: ubuntu-latest
