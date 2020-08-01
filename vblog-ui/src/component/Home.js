@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import BlogAppBar from './Appbar/BlogAppBar';
 import ArticleList from './Article/ArticleList';
 import BlogDrawer from './Sidebar/Drawer'
@@ -13,36 +13,43 @@ import {
 } from 'react-router-dom'
 import { useUserInfo } from './Common/Hooks';
 import { UserContext } from '../App'
+import { Container, Toolbar } from '@material-ui/core';
+import './Home.css'
 
 const useStyles = makeStyles((theme) => ({
-  root:{
+  root: {
     display: "flex",
   }
 }));
 
 const Home = () => {
   const classes = useStyles();
-  const {loginUser, setLoginUser} = useContext(UserContext)
-  let {username} = useParams()
+  const { loginUser, setLoginUser } = useContext(UserContext)
+  let { username } = useParams()
   let match = useRouteMatch()
-  const [owner,,loading, error] = useUserInfo(undefined, username)
+  const [owner, , loading, error] = useUserInfo(undefined, username)
 
-  if(owner == null){
+  if (owner == null) {
     return null
-  }else {
+  } else {
     return (
       <div className={classes.root}>
-        <BlogAppBar owner={owner}/>
-        <BlogDrawer owner={owner}/>
-        <Switch>
-          <Route path={`${match.path}/articles`}>
-            <ArticleList owner={owner} editable={loginUser && owner.id === loginUser.id}/>
-          </Route>
-          <Route path={`${match.path}**`}>
-            <Redirect to={`${match.url}/articles`} />
-          </Route>
-        </Switch>
-        {loginUser !== undefined && owner.id === loginUser.id ? <BlogFab/> : null}
+        <BlogAppBar owner={owner} />
+        <Container>
+          <Toolbar/>
+          <div className="home-container">
+            <BlogDrawer owner={owner} />
+            <Switch>
+              <Route path={`${match.path}/articles`}>
+                <ArticleList owner={owner} editable={loginUser && owner.id === loginUser.id} />
+              </Route>
+              <Route path={`${match.path}**`}>
+                <Redirect to={`${match.url}/articles`} />
+              </Route>
+            </Switch>
+          </div>
+        </Container>
+        {loginUser !== undefined && owner.id === loginUser.id ? <BlogFab /> : null}
       </div>
     )
   }

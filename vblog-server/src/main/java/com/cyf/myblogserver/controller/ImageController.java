@@ -1,6 +1,7 @@
 package com.cyf.myblogserver.controller;
 
 import com.cyf.myblogserver.data.ImageUploadResponse;
+import com.cyf.myblogserver.data.ResponseData;
 import com.cyf.myblogserver.exception.CommonException;
 import com.cyf.myblogserver.exception.Error;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,11 +23,11 @@ public class ImageController {
     String serverAddr;
 
     @PostMapping("/api/images")
-    public ImageUploadResponse imageUpload(@RequestParam("image") MultipartFile image) throws IOException {
+    public ResponseData<ImageUploadResponse> imageUpload(@RequestParam("image") MultipartFile image) throws IOException {
         String filename = UUID.randomUUID().toString();
         File file = new File(imagePath + filename + ".png");
         image.transferTo(file);
-        return new ImageUploadResponse("/images/" + filename + ".png");
+        return ResponseData.success(new ImageUploadResponse("/images/" + filename + ".png"));
     }
 
     @GetMapping(value = "/api/images/{imageName}", produces = MediaType.IMAGE_PNG_VALUE)

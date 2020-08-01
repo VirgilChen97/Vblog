@@ -21,3 +21,12 @@
   margin: 0px;
   padding-inline-start: 0px;
 }
+
+.sidebar-container{
+  position: sticky;
+  top: 0;
+}
+
+.sidebar-container .MuiList-root .MuiListItem-root{
+  padding-right: 0px;
+}

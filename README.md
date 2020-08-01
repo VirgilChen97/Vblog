@@ -2,13 +2,13 @@
 
 ![logo](imgs/logo.png)
 
-![badge](https://github.com/VirgilChen97/Vblog/workflows/Vblog%20build,%20test%20and%20deploy/badge.svg)
+![badge](https://github.com/VirgilChen97/Vblog/workflows/vblog-build-test-deploy/badge.svg)
 
 A modern, multi-user Markdown blog System.
 
 Built with React JS, Spring Boot and Spring Security. This blog system is under development, it still contains many bugs and missing features.
 
-Online demo: [Demo](http://blog.virgilchen.top)
+Online demo: [Login](http://blog.virgilchen.top), [Personal Page](http://blog.virgilchen.top/page/frankchen/articles)
 
 ![main](imgs/main.png)
 

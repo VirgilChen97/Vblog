@@ -4,7 +4,3 @@
   justify-content: center;
   margin-bottom: 40px;
 }
-
-.article-list{
-  max-width: calc(100vw - 320px);
-}

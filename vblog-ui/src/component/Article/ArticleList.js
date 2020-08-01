@@ -37,7 +37,6 @@ const ArticleList = ({owner, editable}) => {
 		}
 		return (
 			<div className="article-list">
-				<Toolbar />
 				<List>
 					{articles.content.map(article =>
 						<ListItem key={article.id}>

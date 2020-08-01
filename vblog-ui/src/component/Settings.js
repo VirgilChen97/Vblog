@@ -40,7 +40,7 @@ const Settings = ({ loginUser }) => {
         let responseBody = await response.json()
         setUserInfo({
           ...userInfo,
-          'imageUrl': responseBody.imageUrl
+          'imageUrl': responseBody.data.imageUrl
         })
       }
     } catch (e) {
