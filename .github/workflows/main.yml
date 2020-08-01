@@ -74,10 +74,10 @@ jobs:
         path: vblog-server/target/*.jar 
   
     - name: copy file via ssh password
-      uses: appleboy/scp-action@master
+      uses: horochx/deploy-via-scp@v1.0.1
       with:
         host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        source: "vblog-server/target/*.jar"
-        target: "/root/vblog"
+        user: ${{ secrets.USERNAME }}
+        local: "vblog-server/target/*.jar"
+        remote: "/root/vblog"
+        key: ${{ secrets.KEY }}
