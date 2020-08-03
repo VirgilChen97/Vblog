@@ -7,7 +7,7 @@ import './ArticleList.css'
 
 const ArticleList = ({owner, editable}) => {
 	const {t} = useTranslation()
-	const [getArticles, articles, loading, success, error] = useRequest()
+	const [getArticles, articles] = useRequest()
 	const [page, setPage] = useState(0)
 
 	useEffect(() => {

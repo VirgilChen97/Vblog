@@ -50,6 +50,7 @@
     "noLocation": "No location"
   },
   "userMenu":{
+    "homepage": "My Home",
     "logOut": "Log out",
     "settings": "Settings"
   },

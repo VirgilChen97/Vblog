@@ -50,6 +50,7 @@
     "noLocation": "未设置地点"
   },
   "userMenu":{
+    "homepage": "我的主页",
     "logOut": "退出登录",
     "settings": "设置"
   },

@@ -1,0 +1,10 @@
+.login-user-avatar-user{
+    width: 250px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+
+.login-user-avatar-user-info{
+    margin-left: 10px;
+}
