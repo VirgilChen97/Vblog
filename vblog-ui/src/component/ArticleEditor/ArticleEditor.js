@@ -29,7 +29,7 @@ const ArticleEditor = () => {
 	const [saveArticle, , saveArticleLoading, saveArticleSuccess, saveArticleError] = useRequest()
 
 	// Article hook
-	const [article, setArticle, loading, error] = useArticle(articleId)
+	const [article, setArticle] = useArticle(articleId)
 
 	const handleSubmit = async (mode) => {
 		// Article upload request body

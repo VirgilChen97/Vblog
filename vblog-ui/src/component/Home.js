@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import BlogAppBar from './Appbar/BlogAppBar';
 import ArticleList from './Article/ArticleList';
 import BlogDrawer from './Sidebar/Drawer'
@@ -24,24 +24,37 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
   const classes = useStyles();
-  const { loginUser, setLoginUser } = useContext(UserContext)
+
+  // Logged in user from context
+  const { loginUser } = useContext(UserContext)
+
+  // username param from URL path
   let { username } = useParams()
   let match = useRouteMatch()
-  const [owner, , loading, error] = useUserInfo(undefined, username)
+
+  // Obtain userInfo from according to username in path
+  const [get,owner] = useUserInfo(undefined, username)
+
+  useEffect(() => {
+    get(undefined, username)
+  }, [username])
 
   if (owner == null) {
+    // Wait until we obtained the userInfo
+    // Because sub component depend on userInfo
     return null
   } else {
     return (
       <div className={classes.root}>
         <BlogAppBar owner={owner} />
         <Container>
-          <Toolbar/>
+          <Toolbar />
           <div className="home-container">
             <BlogDrawer owner={owner} />
             <Switch>
               <Route path={`${match.path}/articles`}>
-                <ArticleList owner={owner} editable={loginUser && owner.id === loginUser.id} />
+                {/* the article is editable if a user logged in and equal's to the blog owner */}
+                <ArticleList owner={owner} editable={loginUser !== null && owner.id === loginUser.id} />
               </Route>
               <Route path={`${match.path}**`}>
                 <Redirect to={`${match.url}/articles`} />
@@ -49,7 +62,8 @@ const Home = () => {
             </Switch>
           </div>
         </Container>
-        {loginUser !== undefined && owner.id === loginUser.id ? <BlogFab /> : null}
+        {/* Show new article button if a user logged in and equal's to the blog owner */}
+        {loginUser !== null && owner.id === loginUser.id ? <BlogFab /> : null}
       </div>
     )
   }

@@ -6,10 +6,10 @@ import {
 } from "react-router-dom";
 
 const AuthenticationRoute = ({ children, ...rest }) => {
-	const {loginUser, setLoginUser} = useContext(UserContext)
+	const { loginUser } = useContext(UserContext)
 
 	const handleRender = ({location}) => {
-		if(loginUser !== undefined){
+		if(loginUser !== null){
 			return children
 		}else{
 			return (<Redirect

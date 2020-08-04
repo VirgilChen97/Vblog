@@ -17,14 +17,17 @@ import Article from './component/Article/Article';
 export const UserContext = React.createContext(null)
 
 const App = () => {
-  const [loginUser, setLoginUser] = useState(null)
+  // null: Not logged in, undefined: trying to load logged in user
+  const [loginUser, setLoginUser] = useState(undefined)
+  console.log(loginUser)
 
   useEffect(() => {
+    // Put userId, userName and token into loginUser
     let user = JwtUtil.getDetailAndToken()
     setLoginUser(user)
   }, [])
 
-  if (loginUser === null) {
+  if (loginUser === undefined) {
     return null
   }
 
@@ -52,7 +55,7 @@ const App = () => {
               <Home />
             </Route>
             <Route path="/">
-              {loginUser !== undefined ?
+              {loginUser !== null ?
                 <Redirect to={`/page/${loginUser.username}`} /> :
                 <Redirect to="/login" />
               }

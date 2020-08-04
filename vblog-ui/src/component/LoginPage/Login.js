@@ -13,7 +13,7 @@ const Login = () => {
 	const history = useHistory()
 	const location = useLocation()
 	const {t} = useTranslation()
-	const {loginUser, setLoginUser} = useContext(UserContext)
+	const {setLoginUser} = useContext(UserContext)
 
 	const [username, setUsername] = useState("")
 	const [password, setPassword] = useState("")
@@ -61,7 +61,6 @@ const Login = () => {
 				setLoading(false)
 				setError(true)
 			} else {
-				debugger
 				let responseJson = await response.json()
 				setLoginUser(JwtUtil.getDetailFromToken(responseJson.data.jwt))
 				TokenUtil.saveToken(responseJson.data.jwt)

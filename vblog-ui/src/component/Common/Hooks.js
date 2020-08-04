@@ -63,36 +63,32 @@ const useArticle = (articleId) => {
   ]
 }
 
-const useUserInfo = (userId, username) => {
+const useUserInfo = () => {
   const [userInfo, setUserInfo] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
 
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      setLoading(true)
-      try {
-        let response = null
-        if (userId !== undefined) {
-          response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/users/${userId}`)
-        } else {
-          response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/users?username=${username}`)
-        }
-        if (response.status >= 400) {
-          setError(response.status)
-        } else {
-          let ownerInfo = await response.json()
-          setUserInfo(ownerInfo.data)
-        }
-      } catch (e) {
-        setError(true)
+  const get = async (userId, username) => {
+    setLoading(true)
+    try {
+      let response = null
+      if (userId !== undefined) {
+        response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/users/${userId}`)
+      } else {
+        response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/users?username=${username}`)
       }
-      setLoading(false)
+      if (response.status >= 400) {
+        setError(response.status)
+      } else {
+        let ownerInfo = await response.json()
+        setUserInfo(ownerInfo.data)
+      }
+    } catch (e) {
+      setError(true)
     }
-    fetchUserInfo()
-  }, [userId])
-
-  return [userInfo, setUserInfo, loading, error]
+    setLoading(false)
+  }
+  return [get, userInfo, setUserInfo, loading, error]
 }
 
 const useRequest = () => {

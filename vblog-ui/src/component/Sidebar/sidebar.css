@@ -22,9 +22,16 @@
   padding-inline-start: 0px;
 }
 
-.sidebar-container{
+.sidebar-content{
   position: sticky;
   top: 0;
+  height: 100vh;
+  overflow: auto;
+}
+
+::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
+  background: rgba(0, 0, 0, 0);  /* Optional: just make scrollbar invisible */
 }
 
 .sidebar-container .MuiList-root .MuiListItem-root{

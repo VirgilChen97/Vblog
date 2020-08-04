@@ -28,9 +28,8 @@ const ArticleCard = ({ id, createDate, lastModifiedDate, title, mdContent, edita
   const commonClasses = useCommonStyles();
   const { t } = useTranslation()
   const history = useHistory()
-  const match = useRouteMatch()
 
-  const [deleteArticle, , loading, success, error] = useRequest()
+  const [deleteArticle, , , success] = useRequest()
 
   const handleDelete = () => {
     deleteArticle(null, `/articles/${id}`, "DELETE", loginUser.token)

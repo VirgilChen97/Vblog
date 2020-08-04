@@ -17,5 +17,5 @@ logging:
   level:
     com: trace
 
-imagePath: "C:/Users/ChenJ/Desktop/"
+imagePath: "C:/Users/ChenJ/Documents/MyProjects/images/"
 serverAddr: "http://localhost:8081"

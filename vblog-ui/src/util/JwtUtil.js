@@ -10,7 +10,7 @@ export default class JwtUtil {
 	// Save token to cookie
 	static saveToken = (token) => {
 		const cookies = new Cookies()
-		cookies.set("token", token)
+		cookies.set("token", token, { path: '/'})
 	}
 
 	static removeToken = () => {
@@ -48,6 +48,8 @@ export default class JwtUtil {
 				id: claim.id,
 				token: token
 			}
+		}else{
+			return null;
 		}
 	}
 
