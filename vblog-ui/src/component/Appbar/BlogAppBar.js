@@ -24,7 +24,7 @@ function HideOnScroll(props) {
   );
 }
 
-const BlogAppBar = ({owner, loginUser, setLoginUser}) => {
+const BlogAppBar = ({owner}) => {
   const classes = useStyles()
   return (
     <React.Fragment>
@@ -37,7 +37,7 @@ const BlogAppBar = ({owner, loginUser, setLoginUser}) => {
                 <Typography variant="h6">{owner.blogName}</Typography>
               </Grid>
               <Grid item>
-                <LoginUserAvatar loginUser={loginUser} setLoginUser={setLoginUser}/>
+                <LoginUserAvatar />
               </Grid>
             </Grid>
           </Toolbar>

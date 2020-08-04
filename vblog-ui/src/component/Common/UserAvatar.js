@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useUserInfo } from './Hooks';
 import { Avatar, makeStyles } from '@material-ui/core';
 import PersonIcon from '@material-ui/icons/Person'
@@ -12,7 +12,11 @@ const useStyles = makeStyles(theme => ({
 
 const UserAvatar = ({ userId, avatarClassName, ...props }) => {
   const classes = useStyles()
-  const [userInfo, , loading, error] = useUserInfo(userId, null)
+  const [get, userInfo, , loading, error] = useUserInfo(userId, null)
+
+  useEffect(() => {
+    get(userId)
+  }, [userId])
 
   if (loading || error || userInfo === null || userInfo.imageUrl === null) {
     return (

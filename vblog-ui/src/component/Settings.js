@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useContext, useEffect} from 'react';
 import { Button, MenuItem, ListItemIcon, ListItemText, ListItem, List, TextField, Dialog, DialogActions, DialogContent, DialogTitle, Avatar } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -6,13 +6,30 @@ import SettingsIcon from '@material-ui/icons/Settings';
 
 import ProgressButton from './Common/ProgressButton';
 import { useRequest, useUserInfo } from './Common/Hooks';
+import { UserContext } from '../App'
 
-const Settings = ({ loginUser }) => {
+const Settings = () => {
+
+  const { loginUser } = useContext(UserContext)
+
+  // Settings Model open state
   const [open, setOpen] = React.useState(false)
+
+  // i18n
   const { t } = useTranslation()
   const history = useHistory()
+
+  // Save settings request hook
   const [send, , loading, success, error] = useRequest()
-  const [userInfo, setUserInfo, ,] = useUserInfo(loginUser.id)
+
+  // UserInfo Hook
+  const [get, userInfo, setUserInfo] = useUserInfo(loginUser.id)
+
+  useEffect(() => {
+    if(loginUser !== null){
+      get(loginUser.id)
+    }
+  }, [loginUser])
 
   const handleClickOpen = () => {
     setOpen(true);

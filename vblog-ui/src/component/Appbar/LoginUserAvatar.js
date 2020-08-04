@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Button, IconButton, MenuItem, Popover, ListItemIcon, ListItemText, Typography, Divider } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -8,14 +8,21 @@ import { Link, useRouteMatch } from "react-router-dom";
 import Settings from '../Settings';
 import UserAvatar from '../Common/UserAvatar';
 import { UserContext } from '../../App';
-import { useUserInfo } from '../Common/Hooks';
 import './LoginUserAvatar.css';
+import { useUserInfo } from '../Common/Hooks';
 
 const LoginUserAvatar = () => {
   const { t } = useTranslation()
   const [anchor, setAnchor] = useState(false)
   let match = useRouteMatch()
   const { loginUser, setLoginUser } = useContext(UserContext)
+  const [get, userInfo] = useUserInfo()
+
+  useEffect(() => {
+    if(loginUser!==null){
+      get(loginUser.id)
+    }
+  }, [loginUser])
 
   const handleClick = (event) => {
     setAnchor(event.currentTarget);
@@ -27,11 +34,11 @@ const LoginUserAvatar = () => {
 
   const handleLogOut = () => {
     JwtUtil.removeToken()
-    setLoginUser(undefined)
+    setLoginUser(null)
     handleClose()
   }
 
-  if (loginUser === undefined) {
+  if (loginUser === null) {
     return (
       <Button
         style={{
@@ -71,7 +78,8 @@ const LoginUserAvatar = () => {
         <div className="login-user-avatar-user">
           <UserAvatar userId={loginUser.id} />
           <div className="login-user-avatar-user-info">
-            <Typography>{loginUser.username}</Typography>
+            {userInfo === null ? null : <Typography>{userInfo.nickName}</Typography>}
+            {userInfo === null ? null : <Typography variant="caption">{userInfo.email}</Typography>}
           </div>
         </div>
         <Divider />
