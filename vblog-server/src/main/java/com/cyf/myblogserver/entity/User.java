@@ -24,4 +24,5 @@ public class User {
     String location;
     String imageUrl;
     String settings;
+    Boolean emailVerified = false;
 }

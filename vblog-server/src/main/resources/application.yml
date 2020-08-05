@@ -5,6 +5,24 @@ spring:
     url: jdbc:mysql://10.0.0.100:3306/myblog?serverTimezone=UTC&characterEncoding=UTF-8
   jpa:
     generate-ddl: true
+  redis:
+    host: 10.0.0.100
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: example@gmail.com
+    password: password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+          starttls:
+            enable: true
+
 server:
   port: 8081
 
