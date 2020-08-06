@@ -13,13 +13,13 @@ import AuthenticationRoute from "./component/Common/AuthenticationRoute";
 import Register from './component/LoginPage/Register';
 import JwtUtil from './util/JwtUtil';
 import Article from './component/Article/Article';
+import Settings from './component/Settings';
 
 export const UserContext = React.createContext(null)
 
 const App = () => {
   // null: Not logged in, undefined: trying to load logged in user
   const [loginUser, setLoginUser] = useState(undefined)
-  console.log(loginUser)
 
   useEffect(() => {
     // Put userId, userName and token into loginUser
@@ -41,6 +41,9 @@ const App = () => {
             </AuthenticationRoute>
             <AuthenticationRoute path="/editArticle/:articleId">
               <ArticleEditor />
+            </AuthenticationRoute>
+            <AuthenticationRoute path="/settings">
+              <Settings />
             </AuthenticationRoute>
             <Route path={"/articles/:articleId"}>
               <Article />

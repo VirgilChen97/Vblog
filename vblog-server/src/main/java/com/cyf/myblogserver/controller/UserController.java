@@ -113,4 +113,17 @@ public class UserController {
         blogUserDetailsService.changeUserInfo(userId, requestBody);
         return ResponseData.success();
     }
+
+    @RequestMapping("/verify/{uuid}")
+    public ResponseData verifyUserEmail(@PathVariable String uuid) throws CommonException {
+        blogUserDetailsService.verifyUserEmail(uuid);
+        return ResponseData.success();
+    }
+
+    @RequestMapping(value = "/verify", method = RequestMethod.POST)
+    public ResponseData sendVerificationEmail(HttpServletRequest request) throws CommonException {
+        Long AuthenticatedUserId = (Long)request.getAttribute("userId");
+        blogUserDetailsService.sendVerificationEmail(AuthenticatedUserId);
+        return ResponseData.success();
+    }
 }

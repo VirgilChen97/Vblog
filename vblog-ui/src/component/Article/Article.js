@@ -27,7 +27,7 @@ const Article = () => {
 
   return (
     <div>
-      <BlogAppBar owner={article.user} />
+      <BlogAppBar title={article.user.blogName} />
       <Container>
         <Toolbar />
         <Card className={"article-root"}>

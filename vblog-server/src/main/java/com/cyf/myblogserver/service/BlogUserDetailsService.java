@@ -6,6 +6,7 @@ import com.cyf.myblogserver.exception.CommonException;
 import com.cyf.myblogserver.exception.Error;
 import com.cyf.myblogserver.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,10 +22,14 @@ import java.util.regex.Pattern;
 public class BlogUserDetailsService implements UserDetailsService {
 
     UserRepository userRepository;
+    StringRedisTemplate redisTemplate;
+    MailService mailService;
 
     @Autowired
-    public BlogUserDetailsService(UserRepository userRepository) {
+    public BlogUserDetailsService(UserRepository userRepository, StringRedisTemplate redisTemplate, MailService mailService) {
         this.userRepository = userRepository;
+        this.redisTemplate = redisTemplate;
+        this.mailService = mailService;
     }
 
     /**
@@ -123,5 +128,39 @@ public class BlogUserDetailsService implements UserDetailsService {
         user.setTitle(changeUserSettingRequest.getTitle());
         user.setImageUrl(changeUserSettingRequest.getImageUrl());
         userRepository.save(user);
+    }
+
+    /**
+     * verify a user's email address
+     * @param uuid
+     */
+    public void verifyUserEmail(String uuid) throws CommonException {
+        String email = redisTemplate.opsForValue().get(uuid);
+        if(email == null){
+            throw new CommonException(Error.CODE_EXPIRED.getCode(), 404, Error.CODE_EXPIRED.getMsg());
+        }
+
+        User user = userRepository.findByEmail(email);
+        if(user == null){
+            throw new CommonException(Error.CODE_EXPIRED.getCode(), 404, Error.CODE_EXPIRED.getMsg());
+        }
+
+        user.setEmailVerified(true);
+        userRepository.save(user);
+        redisTemplate.delete(uuid);
+        redisTemplate.delete(email);
+
+    }
+
+    /**
+     * send verification email to given user
+     * @param userId
+     */
+    public void sendVerificationEmail(Long userId) throws CommonException {
+        User user = userRepository.findById(userId).get();
+        if(user.getEmailVerified()){
+            throw new CommonException(Error.ALREADY_VERIFIED.getCode(), 409, Error.ALREADY_VERIFIED.getMsg());
+        }
+        mailService.sendVerificationEmail(user);
     }
 }

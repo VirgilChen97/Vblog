@@ -1,18 +1,18 @@
 spring:
   datasource:
-    username: virgil
-    password: 1A2S3D4F
-    url: jdbc:mysql://10.0.0.100:3306/myblog?serverTimezone=UTC&characterEncoding=UTF-8
+    username: your_database_username
+    password: your_database_password
+    url: jdbc url
   jpa:
     generate-ddl: true
   redis:
-    host: 10.0.0.100
+    host: your redis host
 
   mail:
     host: smtp.gmail.com
     port: 587
-    username: vblogservice@gmail.com
-    password: LML8c^NiNAG#yt
+    username: example@gmail.com
+    password: password
     properties:
       mail:
         smtp:
@@ -31,9 +31,5 @@ audience:
   secret: VGhpcyBpcyBhIHRlc3Qgb2YgbXkgYnJhbmQgbmV3IGxvZ2luIG1lY2hhbmlzbQ==
   expireSecond: 172800
 
-logging:
-  level:
-    com: trace
-
-imagePath: "C:/Users/ChenJ/Documents/MyProjects/images/"
-serverAddr: "http://localhost:8081"
+imagePath: where should localImageService store image
+serverAddr: "http://localhost:8081" The url of your server
