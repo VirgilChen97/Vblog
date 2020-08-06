@@ -54,8 +54,8 @@ public class ArticleController {
      * Get a user's article by username, filtered by given parameters
      * @param page
      * @param limit
-     * @param categoryId return only the article with given category id
-     * @param tagId return only the article with given tag id
+     * @param category return only the article with given category id
+     * @param tag return only the article with given tag id
      * @param username
      * @return result
      * @throws CommonException
@@ -64,11 +64,11 @@ public class ArticleController {
     public ResponseData<PagedArticleResponse> getArticles(
             @RequestParam(defaultValue = "0") Integer page,
             @RequestParam(defaultValue = "10") Integer limit,
-            @RequestParam(required = false) Long categoryId,
-            @RequestParam(required = false) Long tagId,
+            @RequestParam(required = false) Long category,
+            @RequestParam(required = false) Long tag,
             String username
     ) throws CommonException {
-        Page<Article> articles = articleService.getArticlesByUserName(page, limit, username);
+        Page<Article> articles = articleService.getArticlesByUserName(page, limit, username, category, tag);
         PagedArticleResponse response = new PagedArticleResponse(articles);
         return ResponseData.success(response);
     }

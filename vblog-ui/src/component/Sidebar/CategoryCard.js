@@ -4,6 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import { useTranslation } from 'react-i18next';
 import { Divider, Grid } from '@material-ui/core';
 import { useRequest } from '../Common/Hooks';
+import { Link } from 'react-router-dom';
 
 const CategoryCard = ({ owner }) => {
   const { t } = useTranslation()
@@ -30,7 +31,7 @@ const CategoryCard = ({ owner }) => {
               {categories.map(category => (
                 <Grid item container key={category.id} xs={12} justify="space-between">
                   <Grid item>
-                    {category.categoryName}
+                    <Link to={`/page/${owner.username}/articles?category=${category.id}`}>{category.categoryName}</Link>
                   </Grid>
                   <Grid item>
                     {category.count}

@@ -4,3 +4,7 @@
   justify-content: center;
   margin-bottom: 40px;
 }
+
+.article-list-breadcrumb{
+  padding: 16px;
+}

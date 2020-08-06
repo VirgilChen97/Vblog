@@ -87,7 +87,6 @@ const BlogEditor = ({onChange, value}) => {
     }
     data.succMap[files[0].name] = `${process.env.REACT_APP_API_ENDPOINT}${jsonResponse.data.imageUrl}`
     jsonResponse.data = data
-    console.log(jsonResponse)
     return JSON.stringify(jsonResponse)
   }
 

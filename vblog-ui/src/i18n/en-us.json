@@ -31,6 +31,7 @@
     "placeholder": "Type your MD article here"
   },
   "articleList":{
+    "allArticles": "All articles",
     "noArticle": "There is no article now",
     "nextPage": "Next",
     "prevPage": "Prev"

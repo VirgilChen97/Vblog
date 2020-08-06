@@ -103,14 +103,21 @@ public class ArticleService {
      * @param username The name of the user that the article belongs to
      * @return  The data containing all the article
      */
-    public Page<Article> getArticlesByUserName(Integer page, Integer limit, String username) throws CommonException {
-        Sort sort = Sort.by(Sort.Direction.DESC, "createDate");
+    public Page<Article> getArticlesByUserName(Integer page, Integer limit, String username, Long categoryId, Long tagId) throws CommonException {
+                Sort sort = Sort.by(Sort.Direction.DESC, "createDate");
         User user = userRepository.findByUsername(username);
         if(user == null){
             throw new CommonException(Error.USER_NOT_FOUNT.getCode(), 404, Error.USER_NOT_FOUNT.getMsg());
         }
 
         Pageable pageable = PageRequest.of(page, limit, sort);
+
+        if(categoryId != null){
+            return articleRepository.findByStateAndUserIdAndCategoryId(pageable,Article.PUBLISHED, user.getId(), categoryId);
+        }
+        if(tagId != null){
+            return articleRepository.findByStateAndUserIdAndTagsId(pageable, Article.PUBLISHED, user.getId(), tagId);
+        }
         return articleRepository.findByStateAndUserId(pageable, Article.PUBLISHED, user.getId());
     }
 

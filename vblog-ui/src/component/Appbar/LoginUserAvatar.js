@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Button, IconButton, MenuItem, Popover, ListItemIcon, ListItemText, Typography, Divider } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import SettingsIcon from '@material-ui/icons/Settings'
 import HomeIcon from '@material-ui/icons/Home';
 import JwtUtil from '../../util/JwtUtil';
 import { Link, useRouteMatch } from "react-router-dom";
@@ -87,7 +88,10 @@ const LoginUserAvatar = () => {
           <ListItemIcon><HomeIcon /></ListItemIcon>
           <ListItemText>{t('userMenu.homepage')}</ListItemText>
         </MenuItem>
-        <Settings loginUser={loginUser} />
+        <MenuItem component={Link} to={`/settings`} onClick={handleClose}>
+          <ListItemIcon><SettingsIcon /></ListItemIcon>
+          <ListItemText>{t('userMenu.settings')}</ListItemText>
+        </MenuItem>
         <MenuItem onClick={handleLogOut}>
           <ListItemIcon><ExitToAppIcon /></ListItemIcon>
           <ListItemText>{t('userMenu.logOut')}</ListItemText>

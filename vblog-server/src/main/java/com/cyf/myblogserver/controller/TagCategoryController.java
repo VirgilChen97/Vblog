@@ -1,12 +1,12 @@
 package com.cyf.myblogserver.controller;
 
-import com.cyf.myblogserver.data.CategoryInfoResponse;
-import com.cyf.myblogserver.data.ResponseData;
-import com.cyf.myblogserver.data.TagInfoResponse;
+import com.cyf.myblogserver.data.*;
 import com.cyf.myblogserver.entity.Category;
 import com.cyf.myblogserver.entity.Tag;
+import com.cyf.myblogserver.exception.CommonException;
 import com.cyf.myblogserver.service.TagCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -63,5 +63,17 @@ public class TagCategoryController {
             }
         }
         return ResponseData.success(categoryResponses);
+    }
+
+    @RequestMapping("/categories/{categoryId}")
+    public ResponseData<CategoryResponse> getCategory(@PathVariable Long categoryId) throws CommonException {
+        CategoryResponse response = new CategoryResponse(tagCategoryService.getCategory(categoryId));
+        return ResponseData.success(response);
+    }
+
+    @RequestMapping("/tags/{tagId}")
+    public ResponseData<TagResponse> getTag(@PathVariable Long tagId) throws CommonException {
+        TagResponse response = new TagResponse(tagCategoryService.getTag(tagId));
+        return ResponseData.success(response);
     }
 }

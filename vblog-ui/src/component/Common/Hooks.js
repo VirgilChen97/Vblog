@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useLocation } from 'react-router-dom'
 
 const useArticle = (articleId) => {
   // i18n support
@@ -140,4 +141,8 @@ const useRequest = () => {
   return [send, jsonResponse, loading, success, error]
 }
 
-export { useRequest, useUserInfo, useArticle }
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+}
+
+export { useRequest, useUserInfo, useArticle, useQuery }

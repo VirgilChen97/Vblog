@@ -4,17 +4,17 @@ import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import Chip from "@material-ui/core/Chip";
 import { useTranslation } from 'react-i18next';
-import { Divider, LinearProgress } from '@material-ui/core';
 import { useRequest } from '../Common/Hooks';
 import './sidebar.css';
+import { Link } from 'react-router-dom';
 
 const TagCard = ({ owner }) => {
 	const { t } = useTranslation()
-	const [send, tags, loading, success, error] = useRequest()
+	const [send, tags] = useRequest()
 
 	useEffect(() => {
 		const fetchAllUserTags = async () => {
-			send(null, `/tags?userId=${owner.id}`, "GET", null,)
+			send(null, `/tags?userId=${owner.id}`, "GET", null)
 		}
 		fetchAllUserTags()
 	}, [owner])
@@ -28,14 +28,16 @@ const TagCard = ({ owner }) => {
 					<Typography variant="caption">{t('tagCard.tags')}</Typography>
 				</div>
 				<div className="card-content">
-					
 				{tags.length !== 0 ? tags.map(tag => (
 					<div className="badge" key={tag.id}>
 						<Chip
-							className="badge"
+              className="badge"
+              clickable
 							avatar={<Avatar>{tag.count}</Avatar>}
 							label={tag.tagName}
-							size="small"
+              size="small"
+              component={Link}
+              to={`/page/${owner.username}/articles?tag=${tag.id}`}
 						/>
 					</div>
 				)) :

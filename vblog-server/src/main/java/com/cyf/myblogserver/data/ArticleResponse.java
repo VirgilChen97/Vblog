@@ -5,6 +5,7 @@ import com.cyf.myblogserver.entity.Category;
 import com.cyf.myblogserver.entity.Tag;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,8 +15,8 @@ public class ArticleResponse {
     private String title;
     private int state;
     UserInfoResponse user;
-    private List<Tag> tags;
-    private Category category;
+    private List<TagResponse> tags;
+    private CategoryResponse category;
     private String mdContent;
     private Date createDate;
     private Date lastModifiedDate;
@@ -25,8 +26,16 @@ public class ArticleResponse {
         this.title = article.getTitle();
         this.state = article.getState();
         this.user = new UserInfoResponse(article.getUser());
-        this.tags = article.getTags();
-        this.category = article.getCategory();
+        if(article.getTags() != null) {
+            List<TagResponse> tags = new ArrayList<>();
+            for (Tag tag : article.getTags()) {
+                tags.add(new TagResponse(tag));
+            }
+            this.tags = tags;
+        }
+        if(article.getCategory()!=null) {
+            this.category = new CategoryResponse(article.getCategory());
+        }
         this.mdContent = article.getMdContent();
         this.createDate = article.getCreateDate();
         this.lastModifiedDate = article.getLastModifiedDate();
