@@ -31,6 +31,7 @@
     "placeholder": "在这里用 Markdown 撰写博客"
   },
   "articleList":{
+    "allArticles": "全部文章",
     "noArticle": "现在还没有文章哦",
     "nextPage": "下一页",
     "prevPage": "上一页"

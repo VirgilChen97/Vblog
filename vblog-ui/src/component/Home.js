@@ -46,7 +46,7 @@ const Home = () => {
   } else {
     return (
       <div className={classes.root}>
-        <BlogAppBar owner={owner} />
+        <BlogAppBar title={owner.blogName} />
         <Container>
           <Toolbar />
           <div className="home-container">
