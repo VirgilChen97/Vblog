@@ -2,26 +2,26 @@
   "groups": [
     {
       "name": "audience",
-      "type": "com.cyf.myblogserver.component.Audience",
-      "sourceType": "com.cyf.myblogserver.component.Audience"
+      "type": "com.cyf.vblog.component.Audience",
+      "sourceType": "com.cyf.vblog.component.Audience"
     }
   ],
   "properties": [
     {
       "name": "audience.expire-second",
       "type": "java.lang.Integer",
-      "sourceType": "com.cyf.myblogserver.component.Audience",
+      "sourceType": "com.cyf.vblog.component.Audience",
       "defaultValue": 0
     },
     {
       "name": "audience.iss",
       "type": "java.lang.String",
-      "sourceType": "com.cyf.myblogserver.component.Audience"
+      "sourceType": "com.cyf.vblog.component.Audience"
     },
     {
       "name": "audience.secret",
       "type": "java.lang.String",
-      "sourceType": "com.cyf.myblogserver.component.Audience"
+      "sourceType": "com.cyf.vblog.component.Audience"
     }
   ],
   "hints": []
