@@ -1,9 +1,6 @@
 import React from 'react';
 import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Avatar from "@material-ui/core/Avatar";
 import {makeStyles} from "@material-ui/core/styles";
-import PersonIcon from '@material-ui/icons/Person'
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { useTranslation } from 'react-i18next';

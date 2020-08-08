@@ -54,7 +54,7 @@ const Login = () => {
 
 		try {
 			let response = await fetch(request)
-			if (response.status == 403) {
+			if (response.status === 403) {
 				setLoading(false)
 				setInvalid(true)
 			} else if (response.status > 400) {

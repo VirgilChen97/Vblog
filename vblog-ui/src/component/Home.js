@@ -37,7 +37,7 @@ const Home = () => {
 
   useEffect(() => {
     get(undefined, username)
-  }, [username])
+  }, [username, get])
 
   if (owner == null) {
     // Wait until we obtained the userInfo

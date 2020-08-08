@@ -6,7 +6,6 @@ import SettingsIcon from '@material-ui/icons/Settings'
 import HomeIcon from '@material-ui/icons/Home';
 import JwtUtil from '../../util/JwtUtil';
 import { Link, useRouteMatch } from "react-router-dom";
-import Settings from '../Settings';
 import UserAvatar from '../Common/UserAvatar';
 import { UserContext } from '../../App';
 import './LoginUserAvatar.css';
@@ -23,7 +22,7 @@ const LoginUserAvatar = () => {
     if(loginUser!==null){
       get(loginUser.id)
     }
-  }, [loginUser])
+  }, [loginUser, get])
 
   const handleClick = (event) => {
     setAnchor(event.currentTarget);

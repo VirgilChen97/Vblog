@@ -2,7 +2,7 @@ import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import {Link, useLocation} from "react-router-dom";
+import {Link} from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles((theme) => ({

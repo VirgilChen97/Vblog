@@ -26,7 +26,7 @@ const Settings = () => {
     if (loginUser !== null) {
       get(loginUser.id)
     }
-  }, [loginUser])
+  }, [loginUser, get])
 
   const handleSelectImage = async (e) => {
     let file = e.target.files[0]
@@ -42,7 +42,7 @@ const Settings = () => {
 
     try {
       let response = await fetch(request)
-      if (response.status == 200) {
+      if (response.status === 200) {
         let responseBody = await response.json()
         setUserInfo({
           ...userInfo,

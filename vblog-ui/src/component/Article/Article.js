@@ -18,7 +18,7 @@ const Article = () => {
   const commonClasses = useCommonStyles();
   const { t } = useTranslation()
   const { articleId } = useParams();
-  const [article, , loading, error] = useArticle(articleId)
+  const [article] = useArticle(articleId)
 
   if (article.user === null) {
     return null
