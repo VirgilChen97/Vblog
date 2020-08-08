@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.cyf</groupId>
-    <artifactId>my-blog-server</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>my-blog-server</name>
-    <description>Demo project for Spring Boot</description>
+    <artifactId>vblog</artifactId>
+    <version>0.0.1</version>
+    <name>vblog</name>
+    <description>vblog server application</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -87,6 +87,7 @@
 
 
     <build>
+        <finalName>vblog-server</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
