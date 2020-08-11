@@ -13,6 +13,7 @@ public enum Error{
     EMAIL_INVALID(40001, "This email is not valid"),
     PASSWORD_TOO_SHORT(40002, "Password must be longer than 6 digit"),
     PERMISSION_DENIED(40301, "You don't have proper permission for this operation"),
+    OLD_PASSWORD_NOT_CORRECT(40302, "Old password is not correct"),
     ALREADY_VERIFIED(40901, "User's email address is already verified")
     ;
 

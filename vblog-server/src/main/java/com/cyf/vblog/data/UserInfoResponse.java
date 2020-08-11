@@ -1,6 +1,7 @@
 package com.cyf.vblog.data;
 
 import com.cyf.vblog.entity.User;
+import com.cyf.vblog.entity.UserSettings;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -11,20 +12,14 @@ public class UserInfoResponse {
     public UserInfoResponse(User user){
         this.id = user.getId();
         this.username = user.getUsername();
-        this.nickName = user.getNickName();
-        this.title = user.getTitle();
-        this.location = user.getLocation();
-        this.blogName = user.getBlogName();
         this.email = user.getEmail();
-        this.imageUrl = user.getImageUrl();
+        this.userSettings = user.getUserSettings();
+        this.emailVerified = user.getEmailVerified();
     }
 
     Long id;
     String username;
-    String nickName;
-    String blogName;
-    String title;
-    String location;
     String email;
-    String imageUrl;
+    UserSettings userSettings;
+    Boolean emailVerified;
 }

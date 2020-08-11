@@ -4,8 +4,10 @@ import com.cyf.vblog.data.*;
 import com.cyf.vblog.entity.User;
 import com.cyf.vblog.exception.AuthenticationFailedException;
 import com.cyf.vblog.exception.CommonException;
+import com.cyf.vblog.exception.Error;
 import com.cyf.vblog.service.BlogUserDetailsService;
 import com.cyf.vblog.service.TokenService;
+import com.cyf.vblog.service.UserService;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,12 +21,12 @@ public class UserController {
 
     AuthenticationManager authenticationManager;
     TokenService tokenService;
-    BlogUserDetailsService blogUserDetailsService;
+    UserService userService;
 
-    public UserController(AuthenticationManager authenticationManager, TokenService tokenService, BlogUserDetailsService blogUserDetailsService) {
+    public UserController(AuthenticationManager authenticationManager, TokenService tokenService, UserService userService) {
         this.authenticationManager = authenticationManager;
         this.tokenService = tokenService;
-        this.blogUserDetailsService = blogUserDetailsService;
+        this.userService = userService;
     }
 
     /**
@@ -62,7 +64,7 @@ public class UserController {
      */
     @RequestMapping(value = "/users/{userId}")
     public ResponseData<UserInfoResponse> getUserInfoById (@PathVariable Long userId) throws CommonException {
-        User user = blogUserDetailsService.getUserInfo(userId);
+        User user = userService.getUserInfo(userId);
         // Because user contains hashed version of password and other data, convert with UserInfoResponse
         return ResponseData.success(new UserInfoResponse(user));
     }
@@ -75,7 +77,7 @@ public class UserController {
      */
     @RequestMapping(value = "/users")
     public ResponseData<UserInfoResponse> getUserInfoById (@RequestParam String username) throws CommonException {
-        User user = blogUserDetailsService.getUserInfoByUsername(username);
+        User user = userService.getUserInfoByUsername(username);
         return ResponseData.success(new UserInfoResponse(user));
     }
 
@@ -87,43 +89,71 @@ public class UserController {
      */
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public ResponseData register(@RequestBody User user) throws CommonException {
-        User registeredUser = blogUserDetailsService.addNewUser(user);
-        return ResponseData.success(registeredUser);
+        User registeredUser = userService.addNewUser(user);
+        return ResponseData.success(new UserInfoResponse(registeredUser));
     }
 
     /**
-     * Change user settings
+     * Change user personal settings
      * @param userId
      * @param requestBody
      * @param request
      * @return
      * @throws AuthenticationFailedException
      */
-    @RequestMapping(value = "/users/{userId}", method = RequestMethod.POST)
-    public ResponseData changeUserSettings (
-            @PathVariable Long userId,
-            @RequestBody ChangeUserSettingRequest requestBody,
+    @RequestMapping(value = "/users/{userId}/personalSettings", method = RequestMethod.POST)
+    public ResponseData changeUserPersonalSettings (
+            @PathVariable(name = "userId") Long userId,
+            @RequestBody ChangeUserPersonalSettingsRequest requestBody,
             HttpServletRequest request
-    ) throws AuthenticationFailedException {
+    ) throws CommonException {
         // If the authenticated user tried to change other user's info
         Long AuthenticatedUserId = (Long)request.getAttribute("userId");
         if(userId != AuthenticatedUserId){
-            throw new AuthenticationFailedException();
+            throw new CommonException(Error.PERMISSION_DENIED.getCode(), 403, Error.PERMISSION_DENIED.getMsg());
         }
-        blogUserDetailsService.changeUserInfo(userId, requestBody);
+        userService.changeUserPersonalSettings(userId, requestBody);
+        return ResponseData.success();
+    }
+
+    @RequestMapping(value = "/users/{userId}/password", method = RequestMethod.POST)
+    public ResponseData changeUserPassword(
+            @PathVariable Long userId,
+            @RequestBody ChangeUserPasswordRequest changeUserPasswordRequest,
+            HttpServletRequest request
+    ) throws CommonException {
+        Long AuthenticatedUserId = (Long)request.getAttribute("userId");
+        if(userId != AuthenticatedUserId){
+            throw new CommonException(Error.PERMISSION_DENIED.getCode(), 403, Error.PERMISSION_DENIED.getMsg());
+        }
+        userService.changeUserPassword(userId, changeUserPasswordRequest);
+        return ResponseData.success();
+    }
+
+    @RequestMapping(value = "/users/{userId}/email", method = RequestMethod.POST)
+    public ResponseData changeUserEmail(
+            @PathVariable Long userId,
+            @RequestBody ChangeUserEmailRequest changeUserEmailRequest,
+            HttpServletRequest request
+    ) throws CommonException {
+        Long AuthenticatedUserId = (Long)request.getAttribute("userId");
+        if(userId != AuthenticatedUserId){
+            throw new CommonException(Error.PERMISSION_DENIED.getCode(), 403, Error.PERMISSION_DENIED.getMsg());
+        }
+        userService.changeUserEmail(userId, changeUserEmailRequest.getEmail());
         return ResponseData.success();
     }
 
     @RequestMapping("/verify/{uuid}")
     public ResponseData verifyUserEmail(@PathVariable String uuid) throws CommonException {
-        blogUserDetailsService.verifyUserEmail(uuid);
+        userService.verifyUserEmail(uuid);
         return ResponseData.success();
     }
 
     @RequestMapping(value = "/verify", method = RequestMethod.POST)
     public ResponseData sendVerificationEmail(HttpServletRequest request) throws CommonException {
         Long AuthenticatedUserId = (Long)request.getAttribute("userId");
-        blogUserDetailsService.sendVerificationEmail(AuthenticatedUserId);
+        userService.sendVerificationEmail(AuthenticatedUserId);
         return ResponseData.success();
     }
 }

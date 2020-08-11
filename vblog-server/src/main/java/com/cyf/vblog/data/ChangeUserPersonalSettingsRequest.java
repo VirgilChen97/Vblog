@@ -3,11 +3,10 @@ package com.cyf.vblog.data;
 import lombok.Data;
 
 @Data
-public class ChangeUserSettingRequest {
+public class ChangeUserPersonalSettingsRequest {
     String nickName;
     String blogName;
     String location;
     String title;
-    String email;
     String imageUrl;
 }
