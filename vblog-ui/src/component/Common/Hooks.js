@@ -40,7 +40,7 @@ const useArticle = (articleId) => {
     }else{
       setMdContent("")
     }
-  }, [articleId, send])
+  }, [articleId])
   
   return [
     // article entity
@@ -108,15 +108,18 @@ const useRequest = () => {
     setLoading(true)
     try {
       let response = await fetch(request)
+      responseBody = await response.json()
       if (response.status >= 400) {
-        setError(response.status)
+        setError(responseBody.code)
         if(errorCallback !== undefined){
           errorCallback(error)
         }
+        setLoading(false)
+        return
       }
-      responseBody = await response.json()
       setJsonResponse(responseBody.data)
       setSuccess(true)
+      setTimeout(()=>setSuccess(false), 3000)
       if (successCallback !== undefined) {
         successCallback(responseBody.data)
       }

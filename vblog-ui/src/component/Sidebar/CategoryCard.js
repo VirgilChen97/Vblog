@@ -15,7 +15,7 @@ const CategoryCard = ({ owner }) => {
       send(null, `/categories?userId=${owner.id}`, "GET", null,)
     }
     fetchAllUserCategory()
-  }, [owner, send])
+  }, [owner])
 
   if (categories === null) {
     return null

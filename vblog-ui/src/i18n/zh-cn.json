@@ -67,12 +67,17 @@
     "confirmDeleteInfo": "删除后的文章无法找回"
   },
   "settings":{
+    "personalSettings": "个人设置",
     "selectAvatar": "选择头像",
     "nickName": "昵称",
     "blogTitle": "博客名称",
     "location": "地点",
     "title": "职称",
-    "save": "保存"
+    "save": "保存",
+    "passwordSettings":"密码设置",
+    "oldPassword": "旧密码",
+    "newPassword": "新密码",
+    "repeatPassword": "确认密码"
   },
   "ConfirmButton":{
     "yes": "确定",

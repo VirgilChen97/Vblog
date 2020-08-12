@@ -13,7 +13,7 @@ import AuthenticationRoute from "./component/Common/AuthenticationRoute";
 import Register from './component/LoginPage/Register';
 import JwtUtil from './util/JwtUtil';
 import Article from './component/Article/Article';
-import Settings from './component/Settings';
+import Settings from './component/Settings/Settings';
 
 export const UserContext = React.createContext(null)
 

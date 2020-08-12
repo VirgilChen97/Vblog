@@ -22,7 +22,7 @@ const LoginUserAvatar = () => {
     if(loginUser!==null){
       get(loginUser.id)
     }
-  }, [loginUser, get])
+  }, [loginUser])
 
   const handleClick = (event) => {
     setAnchor(event.currentTarget);

@@ -30,7 +30,7 @@ const ArticleList = ({ owner, editable }) => {
       getArticles(null, url, "GET", null, () => { window.scrollTo(0, 0) })
     }
     fetchArticles()
-  }, [owner, page, tag, category, getArticles, getTagOrCategory])
+  }, [owner, page, tag, category])
 
   const handleNextPage = () => {
     setPage(page + 1)

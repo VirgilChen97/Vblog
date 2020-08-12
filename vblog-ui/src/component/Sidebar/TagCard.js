@@ -17,7 +17,7 @@ const TagCard = ({ owner }) => {
 			send(null, `/tags?userId=${owner.id}`, "GET", null)
 		}
 		fetchAllUserTags()
-	}, [owner, send])
+	}, [owner])
 
 	if (tags === null) {
 		return null

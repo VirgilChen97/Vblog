@@ -35,13 +35,13 @@ const UserCard = ( {owner, editable} ) => {
 						</Grid>
 						<Grid item xs={12}>
 							<Typography align="center" variant="h6">
-								{owner.nickName === null || owner.nickName === "" ? t('userCard.noNickName'):owner.nickName}
+								{owner.userSettings.nickName === null || owner.userSettings.nickName === "" ? t('userCard.noNickName'):owner.userSettings.nickName}
 							</Typography>
 							<Typography align="center">
-								{owner.title == null ? t('userCard.noTitle'):owner.title}
+								{owner.userSettings.title == null ? t('userCard.noTitle'):owner.userSettings.title}
 							</Typography>
 							<Typography align="center">
-								{owner.location == null ? t('userCard.noLocation'):owner.location}
+								{owner.userSettings.location == null ? t('userCard.noLocation'):owner.userSettings.location}
 							</Typography>
 						</Grid>
 					</Grid>

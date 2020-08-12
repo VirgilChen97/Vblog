@@ -16,7 +16,7 @@ const UserAvatar = ({ userId, avatarClassName, ...props }) => {
 
   useEffect(() => {
     get(userId)
-  }, [userId, get])
+  }, [userId])
 
   if (loading || error || userInfo === null || userInfo.imageUrl === null) {
     return (
