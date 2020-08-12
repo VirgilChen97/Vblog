@@ -78,7 +78,7 @@ const LoginUserAvatar = () => {
         <div className="login-user-avatar-user">
           <UserAvatar userId={loginUser.id} />
           <div className="login-user-avatar-user-info">
-            {userInfo === null ? null : <Typography>{userInfo.nickName}</Typography>}
+            {userInfo === null ? null : <Typography>{userInfo.userSettings.nickName}</Typography>}
             {userInfo === null ? null : <Typography variant="caption">{userInfo.email}</Typography>}
           </div>
         </div>

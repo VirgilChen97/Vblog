@@ -5,7 +5,7 @@ import { useRequest } from '../Common/Hooks';
 import { UserContext } from '../../App'
 import { useTranslation } from 'react-i18next';
 
-const PasswordSettings = ({ userInfo }) => {
+const PasswordSettings = () => {
 
   // Save settings request hook
   const [send, , loading, success, error] = useRequest()
@@ -30,7 +30,7 @@ const PasswordSettings = ({ userInfo }) => {
   }
 
   return (
-    <Card>
+    <Card style={{width: "100%"}}>
       <CardContent>
         <Typography variant="h5">{t('settings.passwordSettings')}</Typography>
         <List>
@@ -40,6 +40,8 @@ const PasswordSettings = ({ userInfo }) => {
               onChange={e => setOldPassword(e.target.value)} 
               label={t('settings.oldPassword')} 
               value={oldPassword}
+              error={error === 40302}
+              helperText={error === 40302 ? t('settings.oldPasswordNotCorrect') : null}
             />
           </ListItem>
           <ListItem>
@@ -48,6 +50,8 @@ const PasswordSettings = ({ userInfo }) => {
               onChange={e => setNewPassword(e.target.value)} 
               label={t('settings.newPassword')} 
               value={newPassword}
+              error={error === 40002}
+              helperText={error === 40002 ? t('settings.passwordTooShort') : null}
             />
           </ListItem>
           <ListItem>

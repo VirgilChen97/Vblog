@@ -87,6 +87,9 @@ const useRequest = () => {
   const [error, setError] = useState(false)
 
   const send = async (jsonData, url, method, token, successCallback, errorCallback) => {
+    setError(false)
+    setSuccess(false)
+    setJsonResponse(null)
     let init = {
       method: method,
     }

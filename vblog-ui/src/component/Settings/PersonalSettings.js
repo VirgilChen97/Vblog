@@ -57,7 +57,7 @@ const PersonalSettings = ({ userInfo }) => {
   }
 
   return (
-    <Card>
+    <Card style={{width: "100%"}}>
       <CardContent>
         <Typography variant="h5">{t('settings.personalSettings')}</Typography>
         <List>
@@ -83,7 +83,7 @@ const PersonalSettings = ({ userInfo }) => {
             <TextField onChange={e => setBlogName(e.target.value)} label={t('settings.blogTitle')} value={blogName} />
           </ListItem>
           <ListItem>
-            <TextField onChange={e => setLocation(e.target.location)} label={t('settings.location')} value={location} />
+            <TextField onChange={e => setLocation(e.target.value)} label={t('settings.location')} value={location} />
           </ListItem>
           <ListItem>
             <TextField onChange={e => setTitle(e.target.value)} label={t('settings.title')} value={title} />
