@@ -27,7 +27,7 @@ const Article = () => {
 
   return (
     <div>
-      <BlogAppBar title={article.user.blogName} />
+      <BlogAppBar title={article.user.userSettings.blogName} />
       <Container>
         <Toolbar />
         <Card className={"article-root"}>
@@ -42,7 +42,7 @@ const Article = () => {
               </div>
               <div className="username-date">
                 <Typography component="h2">
-                  {article.user.nickName}
+                  {article.user.userSettings.nickName}
                 </Typography>
                 <Typography variant="caption" component="h2">
                   {t('articleCard.postAt')} {new Date(article.createDate).toDateString()}
