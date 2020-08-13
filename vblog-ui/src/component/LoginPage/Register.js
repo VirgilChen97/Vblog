@@ -55,6 +55,7 @@ const Register = () => {
 			return
 		}
 		// email is not valid
+		// eslint-disable-next-line 
 		let emailPattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/; // Email regex pattern
 		if(!emailPattern.test(email)){
 			setInvalid("email")

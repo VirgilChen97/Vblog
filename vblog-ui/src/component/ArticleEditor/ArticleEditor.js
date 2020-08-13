@@ -9,7 +9,9 @@ import BlogEditor from '../Common/Editor/BlogEditor';
 import './ArticleEditor.css'
 
 const PUBLISHED = 0;
+// eslint-disable-next-line 
 const DRAFT = 1;
+// eslint-disable-next-line 
 const DELETED = -1;
 
 // Edit Article and new Article page

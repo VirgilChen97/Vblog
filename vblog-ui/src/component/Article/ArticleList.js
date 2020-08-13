@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { List, ListItem, Card, Typography, Button, CardContent, Breadcrumbs } from '@material-ui/core';
+import { List, ListItem, Card, Typography, Button, Breadcrumbs } from '@material-ui/core';
 import ArticleCard from './ArticleCard';
 import { useRequest, useQuery } from '../Common/Hooks';
 import { useTranslation } from 'react-i18next';

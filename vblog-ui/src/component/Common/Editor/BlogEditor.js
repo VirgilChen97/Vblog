@@ -77,7 +77,7 @@ const BlogEditor = ({onChange, value}) => {
     return () => {
       vditor.destroy()
     }
-  }, [])
+  })
 
   const parseResult = (files, responseText) => {
     let jsonResponse = JSON.parse(responseText)

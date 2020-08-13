@@ -1,9 +1,6 @@
 import React from 'react';
 import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Avatar from "@material-ui/core/Avatar";
 import {makeStyles} from "@material-ui/core/styles";
-import PersonIcon from '@material-ui/icons/Person'
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { useTranslation } from 'react-i18next';
@@ -38,13 +35,13 @@ const UserCard = ( {owner, editable} ) => {
 						</Grid>
 						<Grid item xs={12}>
 							<Typography align="center" variant="h6">
-								{owner.nickName === null || owner.nickName === "" ? t('userCard.noNickName'):owner.nickName}
+								{owner.userSettings.nickName === null || owner.userSettings.nickName === "" ? t('userCard.noNickName'):owner.userSettings.nickName}
 							</Typography>
 							<Typography align="center">
-								{owner.title == null ? t('userCard.noTitle'):owner.title}
+								{owner.userSettings.title == null ? t('userCard.noTitle'):owner.userSettings.title}
 							</Typography>
 							<Typography align="center">
-								{owner.location == null ? t('userCard.noLocation'):owner.location}
+								{owner.userSettings.location == null ? t('userCard.noLocation'):owner.userSettings.location}
 							</Typography>
 						</Grid>
 					</Grid>

@@ -15,7 +15,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import ConfirmButton from '../Common/ConfirmButton';
 import { useRequest } from '../Common/Hooks';
 import { UserContext } from '../../App';
-import { Link, useHistory, useRouteMatch } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 /**
  * id: Article id

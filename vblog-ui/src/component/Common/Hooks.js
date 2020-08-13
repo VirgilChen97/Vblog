@@ -5,18 +5,6 @@ import { useLocation } from 'react-router-dom'
 const useArticle = (articleId) => {
   // i18n support
   const {t} = useTranslation()
-
-  /** Response Data structures
-    private Long id;
-    private String title;
-    private int state;
-    UserInfoResponse user;
-    private List<Tag> tags;
-    private Category category;
-    private String mdContent;
-    private Date createDate;
-    private Date lastModifiedDate;
-   */
   const [id, setId] = useState(null)
   const [title, setTitle] = useState(t('articleEditor.untitledArticle'))
   const [state, setState] = useState(0)
@@ -27,7 +15,7 @@ const useArticle = (articleId) => {
   const [createDate, setCreateDate] = useState(new Date())
   const [lastModifiedDate, setLastModifiedDate] = useState(new Date())
 
-  const [send, ,loading, success, error] = useRequest()
+  const [send, ,loading, , error] = useRequest()
 
   useEffect(() => {
     if(articleId !== undefined){
@@ -99,6 +87,9 @@ const useRequest = () => {
   const [error, setError] = useState(false)
 
   const send = async (jsonData, url, method, token, successCallback, errorCallback) => {
+    setError(false)
+    setSuccess(false)
+    setJsonResponse(null)
     let init = {
       method: method,
     }
@@ -120,15 +111,18 @@ const useRequest = () => {
     setLoading(true)
     try {
       let response = await fetch(request)
+      responseBody = await response.json()
       if (response.status >= 400) {
-        setError(response.status)
+        setError(responseBody.code)
         if(errorCallback !== undefined){
           errorCallback(error)
         }
+        setLoading(false)
+        return
       }
-      responseBody = await response.json()
       setJsonResponse(responseBody.data)
       setSuccess(true)
+      setTimeout(()=>setSuccess(false), 3000)
       if (successCallback !== undefined) {
         successCallback(responseBody.data)
       }

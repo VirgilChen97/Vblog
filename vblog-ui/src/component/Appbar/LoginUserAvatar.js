@@ -6,7 +6,6 @@ import SettingsIcon from '@material-ui/icons/Settings'
 import HomeIcon from '@material-ui/icons/Home';
 import JwtUtil from '../../util/JwtUtil';
 import { Link, useRouteMatch } from "react-router-dom";
-import Settings from '../Settings';
 import UserAvatar from '../Common/UserAvatar';
 import { UserContext } from '../../App';
 import './LoginUserAvatar.css';
@@ -79,7 +78,7 @@ const LoginUserAvatar = () => {
         <div className="login-user-avatar-user">
           <UserAvatar userId={loginUser.id} />
           <div className="login-user-avatar-user-info">
-            {userInfo === null ? null : <Typography>{userInfo.nickName}</Typography>}
+            {userInfo === null ? null : <Typography>{userInfo.userSettings.nickName}</Typography>}
             {userInfo === null ? null : <Typography variant="caption">{userInfo.email}</Typography>}
           </div>
         </div>
