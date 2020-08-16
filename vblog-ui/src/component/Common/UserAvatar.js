@@ -13,7 +13,6 @@ const useStyles = makeStyles(theme => ({
 const UserAvatar = ({ userId, avatarClassName, ...props }) => {
   const classes = useStyles()
   const [get, userInfo, , loading, error] = useUserInfo(userId, null)
-  console.log(userInfo)
 
   useEffect(() => {
     get(userId)

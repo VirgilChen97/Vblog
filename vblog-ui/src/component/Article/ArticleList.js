@@ -40,8 +40,6 @@ const ArticleList = ({ owner, editable }) => {
     setPage(page - 1)
   }
 
-  console.log(tagOrCategory)
-
   if (articles !== null) {
     if (articles.totalElements === 0) {
       return (

@@ -79,10 +79,19 @@
     "newPassword": "新密码",
     "repeatPassword": "确认密码",
     "oldPasswordNotCorrect": "旧密码错误",
-    "passwordTooShort": "密码需要长于6位"
+    "passwordTooShort": "密码需要长于6位",
+    "emailSettings": "邮箱设置",
+    "email":"邮箱",
+    "emailNotVerified": "邮箱未确认",
+    "resendVerificationEmail": "重新发送"
   },
   "ConfirmButton":{
     "yes": "确定",
     "no": "取消"
+  },
+  "ProgressButton":{
+    "success": "成功",
+    "save":"保存",
+    "failed": "失败"
   }
 }

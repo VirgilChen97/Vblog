@@ -13,7 +13,6 @@ const PersonalSettings = ({ userInfo }) => {
 
   // i18n
   const { t } = useTranslation()
-  console.log(userInfo)
 
   let settings = userInfo.userSettings
   const [imageUrl, setImageUrl] = useState(settings.imageUrl)

@@ -8,6 +8,8 @@ import com.cyf.vblog.exception.Error;
 import com.cyf.vblog.service.BlogUserDetailsService;
 import com.cyf.vblog.service.TokenService;
 import com.cyf.vblog.service.UserService;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
+@Slf4j
 @RestController
 @RequestMapping("/api")
 public class UserController {

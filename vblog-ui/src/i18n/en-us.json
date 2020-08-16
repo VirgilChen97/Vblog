@@ -67,12 +67,23 @@
     "confirmDeleteInfo": "Deleted article can't be restored"
   },
   "settings":{
+    "personalSettings": "Personal Settings",
     "selectAvatar": "Choose Avatar",
     "nickName": "Nick name",
     "blogTitle": "Blog name",
     "location": "Location",
     "title": "Title",
-    "save": "Save"
+    "save": "Save",
+    "passwordSettings":"Password Settings",
+    "oldPassword": "New Password",
+    "newPassword": "Old Password",
+    "repeatPassword": "Confirm Password",
+    "oldPasswordNotCorrect": "Old password is incorrect",
+    "passwordTooShort": "Password must longer than 6 characters",
+    "emailSettings": "Email Settings",
+    "email":"Email",
+    "emailNotVerified": "This email address need to be verified",
+    "resendVerificationEmail": "Resend Verification Email"
   },
   "ConfirmButton":{
     "yes": "Yes",

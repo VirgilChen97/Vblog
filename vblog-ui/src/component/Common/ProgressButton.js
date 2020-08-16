@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ProgressButton = ({ loading, success, error, children, ...rest }) => {
+const ProgressButton = ({ loading, success, error, children, disabled, ...rest }) => {
   const classes = useStyles();
 
   const buttonClassname = clsx({
@@ -62,7 +62,7 @@ const ProgressButton = ({ loading, success, error, children, ...rest }) => {
         <Button
           {...rest}
           className={buttonClassname}
-          disabled={loading}
+          disabled={disabled || loading}
           startIcon={success ? <CheckIcon /> : error ? <WarningIcon/>: <SaveIcon />}
         >
           {children}

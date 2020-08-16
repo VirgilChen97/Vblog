@@ -7,6 +7,7 @@ import com.cyf.vblog.entity.UserSettings;
 import com.cyf.vblog.exception.CommonException;
 import com.cyf.vblog.exception.Error;
 import com.cyf.vblog.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.regex.Pattern;
 
+@Slf4j
 @Service
 public class UserService {
     StringRedisTemplate redisTemplate;
@@ -130,11 +132,24 @@ public class UserService {
     }
 
     public void changeUserEmail(Long userId, String newEmailAddr) throws CommonException {
+        String emailPattern = "^([A-Za-z0-9_\\-\\.])+\\@([A-Za-z0-9_\\-\\.])+\\.([A-Za-z]{2,4})$";
+        if(!Pattern.matches(emailPattern, newEmailAddr)){
+            throw new CommonException(Error.EMAIL_INVALID.getCode(), 400, Error.EMAIL_INVALID.getMsg());
+        }
+
+        User existUser = userRepository.findByEmail(newEmailAddr);
+        if(existUser != null){
+            throw new CommonException(Error.EMAIL_ALREADY_USED.getCode(), 409, Error.EMAIL_ALREADY_USED.getMsg());
+        }
+
         User user = userRepository.findById(userId).get();
         if(newEmailAddr.equals(user.getEmail())){
             throw new CommonException(Error.EMAIL_ALREADY_USED.getCode(), 409, Error.EMAIL_ALREADY_USED.getMsg());
         }
         user.setEmail(newEmailAddr);
+        user.setEmailVerified(false);
+        userRepository.save(user);
+
         sendVerificationEmail(userId);
     }
 
@@ -143,15 +158,19 @@ public class UserService {
      * @param uuid
      */
     public void verifyUserEmail(String uuid) throws CommonException {
+        log.info("Start verify email address with uuid {}", uuid);
+
         String email = redisTemplate.opsForValue().get(uuid);
         if(email == null){
             throw new CommonException(Error.CODE_EXPIRED.getCode(), 404, Error.CODE_EXPIRED.getMsg());
         }
 
+        log.info("Find email {} with uuid {}", email, uuid);
         User user = userRepository.findByEmail(email);
         if(user == null){
             throw new CommonException(Error.CODE_EXPIRED.getCode(), 404, Error.CODE_EXPIRED.getMsg());
         }
+        log.info("Find user {} with uuid {}", user.getId(), uuid);
 
         user.setEmailVerified(true);
         userRepository.save(user);
@@ -164,6 +183,7 @@ public class UserService {
      * @param userId
      */
     public void sendVerificationEmail(Long userId) throws CommonException {
+        log.info("User with id {} requested to send verification email", userId);
         User user = userRepository.findById(userId).get();
         if(user.getEmailVerified()){
             throw new CommonException(Error.ALREADY_VERIFIED.getCode(), 409, Error.ALREADY_VERIFIED.getMsg());

@@ -7,6 +7,7 @@ import { UserContext } from '../../App'
 import BlogAppBar from '../Appbar/BlogAppBar';
 import PersonalSettings from './PersonalSettings';
 import PasswordSettings from './PasswordSettings';
+import EmailSettings from './EmailSettings'
 
 const Settings = () => {
 
@@ -39,6 +40,9 @@ const Settings = () => {
           </ListItem>
           <ListItem>
             <PasswordSettings userInfo={userInfo}/>
+          </ListItem>
+          <ListItem>
+            <EmailSettings userInfo={userInfo}/>
           </ListItem>
         </List>
       </Container>

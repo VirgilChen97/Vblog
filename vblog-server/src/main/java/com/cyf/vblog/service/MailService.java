@@ -1,6 +1,7 @@
 package com.cyf.vblog.service;
 
 import com.cyf.vblog.entity.User;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
+@Slf4j
 @Service
 public class MailService {
 
@@ -27,6 +29,7 @@ public class MailService {
     }
 
     public void sendVerificationEmail(User user){
+        log.info("Start send user {} with id {}, email {} verification email", user.getUsername(), user.getId(), user.getEmail());
         SimpleMailMessage msg = new SimpleMailMessage();
         msg.setTo(user.getEmail());
         msg.setSubject("Verification Code for Vblog");
@@ -46,7 +49,8 @@ public class MailService {
         redisTemplate.opsForValue().set(user.getEmail(), uuid.toString());
         redisTemplate.expire(user.getEmail(), 24, TimeUnit.HOURS);
 
-        msg.setText("Click the following link to activate your account \n" + serverAddr + "/verify/" + uuid);
-        //javaMailSender.send(msg);
+        msg.setText("Click the following link to activate your account \n" + serverAddr + "/api/verify/" + uuid);
+        javaMailSender.send(msg);
+        log.info("Successfully send verification eamil to user {} with id {}, email {}", user.getUsername(), user.getId(), user.getEmail());
     }
 }
