@@ -74,7 +74,10 @@ jobs:
         path: ~/.m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
-  
+        
+    - name: run unit tests
+      working-directory: vblog-server
+      run: mvn test
 
     - name: Build server
       working-directory: vblog-server
