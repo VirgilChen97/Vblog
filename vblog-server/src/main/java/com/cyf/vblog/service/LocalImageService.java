@@ -35,7 +35,7 @@ public class LocalImageService implements ImageService{
             repeat ++;
         }
 
-        file.getParentFile().mkdir();
+        file.getParentFile().mkdirs();
         image.transferTo(file);
         return "/images/" + userId + "/" + file.getName();
     }

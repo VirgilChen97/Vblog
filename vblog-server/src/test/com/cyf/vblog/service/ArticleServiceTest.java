@@ -11,19 +11,13 @@ import com.cyf.vblog.repository.ArticleRepository;
 import com.cyf.vblog.repository.CategoryRepository;
 import com.cyf.vblog.repository.TagRepository;
 import com.cyf.vblog.repository.UserRepository;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-
-import java.util.NoSuchElementException;
+import org.springframework.data.domain.Pageable;
 import java.util.Optional;
 
 import static org.mockito.Mockito.*;
@@ -98,8 +92,33 @@ class ArticleServiceTest {
     }
 
     @Test
-    void editArticle() {
+    void editArticle() throws CommonException {
+        Article article = JSONObject.parseObject(
+                "{" +
+                        "\"title\":\"Test\"," +
+                        "\"state\":0," +
+                        "\"mdContent\":\"Some content\\n\"," +
+                        "\"tags\":[{\"tagName\":\"tag1\"},{\"tagName\":\"tag2\"}]," +
+                        "\"category\":{\"categoryName\":\"cat1\"}" +
+                        "}", Article.class);
+        User user = new User();
+        user.setId(1L);
+        article.setUser(user);
+        article.setId(1L);
 
+        // try to modify a article that doesn't exist
+        when(articleRepository.findById(anyLong())).thenReturn(Optional.empty());
+        CommonException e = assertThrows(CommonException.class, ()->{articleService.editArticle(article);});
+        assertEquals(e.getInternalCode(), Error.ARTICLE_NOT_FOUND.getCode());
+
+        // try to modify a article that doesn't belongs to a user
+        Article othersArticle = new Article();
+        User otherUser = new User();
+        user.setId(2L);
+        othersArticle.setUser(otherUser);
+        when(articleRepository.findById(anyLong())).thenReturn(Optional.of(othersArticle));
+        e = assertThrows(CommonException.class, ()->{articleService.editArticle(article);});
+        assertEquals(e.getInternalCode(), Error.PERMISSION_DENIED.getCode());
     }
 
     @Test
@@ -127,6 +146,29 @@ class ArticleServiceTest {
     }
 
     @Test
-    void getArticlesByUserName() {
+    void getArticlesByUserName() throws CommonException {
+        // try to find article of a user that doesn't exist
+        when(userRepository.findByUsername("test")).thenReturn(null);
+        CommonException e = assertThrows(CommonException.class, ()->{
+            articleService.getArticlesByUserName(0, 10, "test", null, null);
+        });
+
+        User user = new User();
+        user.setId(1L);
+
+        // find article with only page and limit
+        when(userRepository.findByUsername("test")).thenReturn(user);
+        articleService.getArticlesByUserName(0, 10, "test", null, null);
+        verify(articleRepository, times(1)).findByStateAndUserId(any(Pageable.class), anyInt() ,anyLong());
+
+        // find article with category
+        when(userRepository.findByUsername("test")).thenReturn(user);
+        articleService.getArticlesByUserName(0, 10, "test", 1L, null);
+        verify(articleRepository, times(1)).findByStateAndUserIdAndCategoryId(any(Pageable.class), anyInt(), anyLong(), anyLong());
+
+        // find article with tag
+        when(userRepository.findByUsername("test")).thenReturn(user);
+        articleService.getArticlesByUserName(0, 10, "test", null, 1L);
+        verify(articleRepository, times(1)).findByStateAndUserIdAndTagsId(any(Pageable.class), anyInt(), anyLong(), anyLong());
     }
 }
