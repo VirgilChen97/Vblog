@@ -39,7 +39,7 @@ public class MailService {
 
         // Find whether there is a verification email sent before
         String lastUuid = redisTemplate.opsForValue().get(user.getEmail());
-        if(redisTemplate.opsForValue().get(user.getEmail()) != null){
+        if(lastUuid != null){
             // make previous uuid invalid
             redisTemplate.delete(lastUuid);
         }
