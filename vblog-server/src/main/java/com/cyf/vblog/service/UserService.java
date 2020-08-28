@@ -15,6 +15,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
 import java.util.regex.Pattern;
 
 @Slf4j
@@ -39,11 +40,10 @@ public class UserService {
      * @throws CommonException
      */
     public User getUserInfo(Long userId) throws CommonException {
-        User user = userRepository.findById(userId).get();
-        if(user == null){
+        try {
+            return userRepository.findById(userId).get();
+        }catch (NoSuchElementException e){
             throw new CommonException(Error.USER_NOT_FOUNT.getCode(), 404, Error.USER_NOT_FOUNT.getMsg());
-        }else{
-            return user;
         }
     }
 
