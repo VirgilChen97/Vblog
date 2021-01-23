@@ -8,8 +8,6 @@ A modern, multi-user Markdown blog System.
 
 Built with React JS, Spring Boot and Spring Security. This blog system is under development, it still contains many bugs and missing features.
 
-Online demo: [Login](http://blog.virgilchen.top), [Personal Page](http://blog.virgilchen.top/page/frankchen/articles)
-
 ![main](imgs/main.png)
 
 # Features
